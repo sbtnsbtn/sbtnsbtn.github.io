@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sebastián Mastruzzo — Redactor ❋ Contenidista</title>
+<meta name="description" content="Portfolio de Sebastián Mastruzzo. Redactor y contenidista: EPAM Neoris, Toyota Argentina, Nodus, Mercado Ads, Ford & Lincoln y más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-display: 'Archivo Black', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+
+  --hero-bg: #FAEEDA;
+  --hero-ink: #412402;
+
+  --epam-bg: #0033FF;
+  --epam-accent: #CFFF00;
+  --epam-accent2: #FF6B4A;
+
+  --toyota-bg: #6B0F2A;
+  --toyota-accent: #FFD9A0;
+
+  --nodus-bg: #1A3D2E;
+  --nodus-accent: #A0E8C8;
+
+  --mads-bg: #FFE600;
+  --mads-ink: #1A1A1A;
+
+  --google-bg: #C81E64;
+  --google-accent: #FFD9EC;
+
+  --elearn-bg: #4A1B6B;
+  --elearn-accent: #E0B8FF;
+
+  --ford-bg: #2B2B2B;
+  --ford-accent: #FF7A1A;
+
+  --press-bg: #16171F;
+  --press-accent: #E8C88A;
+
+  --contact-bg: #FAEEDA;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{ margin: 0; font-family: var(--font-body); background: #0D0D0D; overflow-x: hidden; width:100%; }
+img{ max-width: 100%; display: block; }
+video{ max-width: 100%; display: block; border-radius: var(--radius-md); background:#000; }
+a{ color: inherit; text-decoration: none; }
+
+.section{
+  padding: clamp(3rem, 8vw, 7rem) clamp(1.25rem, 6vw, 6rem);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.eyebrow{ font-size: 13px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 1rem; opacity: 0.85; font-weight: 600; }
+.section-title{ font-family: var(--font-display); line-height: 0.86; letter-spacing: -1px; margin: 0; word-break: break-word; }
+
+.chip{ display: inline-block; padding: 10px 22px; font-size: 15px; font-weight: 700; font-family: var(--font-body); border-radius: 999px; margin-top: 1.25rem; transform: rotate(-2deg); }
+
+.bajada{ font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.55; max-width: 560px; margin: 1.75rem 0; padding-left: 18px; border-left: 4px solid currentColor; }
+
+.pills{ display: flex; gap: 8px; flex-wrap: wrap; margin: 1.5rem 0; }
+.pill{ padding: 9px 20px; border-radius: 999px; font-size: 13px; font-weight: 700; cursor: pointer; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.1); color: inherit; font-family: var(--font-body); transition: transform .15s ease, background .2s ease; }
+.pill:hover{ transform: translateY(-2px); }
+.pill.active{ border: none; transform: rotate(-1deg); }
+
+.detail-panel{ border-radius: var(--radius-md); padding: 1.5rem 1.75rem; border-left: 4px solid currentColor; margin-top: 1.25rem; }
+.detail-panel .label{ font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; font-weight: 700; }
+.detail-panel .quote{ font-size: 1.15rem; font-style: italic; font-weight: 700; margin-bottom: 14px; }
+.detail-panel .rationale{ font-size: 14px; line-height: 1.65; }
+.detail-panel .my-work{ margin-top: 14px; font-size: 12px; opacity: 0.75; }
+
+.bento{ display: grid; gap: 10px; margin: 1.5rem 0; grid-template-columns: repeat(var(--cols, 4), 1fr); }
+.bento img, .bento video{ border-radius: var(--radius-md); object-fit: cover; width: 100%; height: 100%; min-height: 90px; }
+
+.piece-card{ border-radius: var(--radius-md); padding: 1.1rem; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: transform .2s ease; }
+.piece-card:hover{ transform: translateY(-4px); }
+.piece-card .p-label{ font-size: 11px; letter-spacing: 1px; opacity: 0.85; }
+.piece-card .p-title{ font-size: 1.1rem; font-weight: 800; margin-top: 6px; line-height: 1.2; }
+.piece-card .p-sub{ font-size: 12px; margin-top: 6px; opacity: 0.85; }
+
+.transition-strip{ height: 36px; width: 100%; }
+
+.next-up{ margin-top: 2.5rem; padding: 1rem 1.5rem; border-radius: var(--radius-sm); display: flex; justify-content: space-between; align-items: center; opacity: 0.9; flex-wrap: wrap; gap: 8px; }
+.next-up .nu-label{ font-size: 12px; }
+.next-up .nu-name{ font-family: var(--font-display); font-size: 1.1rem; }
+
+.video-frame{ position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: var(--radius-md); overflow: hidden; margin: 1.25rem 0; background:#000; }
+.video-frame iframe{ position: absolute; top:0; left:0; width:100%; height:100%; border:0; }
+
+.video-wrap{ margin: 1.25rem 0; }
+.video-wrap .cap{ font-size: 12px; margin-top: 6px; opacity: 0.8; }
+.see-post{ display:inline-block; margin-top:8px; font-size:11px; font-weight:700; border:1px solid currentColor; border-radius:999px; padding:5px 14px; transition: background .2s ease, color .2s ease; }
+
+/* Video slideshow: video + copy side by side, animated transitions */
+.video-slideshow{ margin: 1.5rem 0 2rem; }
+.vs-track{ position: relative; min-height: 260px; }
+.vs-slide{ display:none; grid-template-columns: 1.15fr 1fr; gap: 24px; align-items:center; }
+.vs-slide.active{ display:grid; animation: vsFadeIn .5s ease; }
+@keyframes vsFadeIn{ from{ opacity:0; transform: translateX(16px); } to{ opacity:1; transform: translateX(0); } }
+.vs-media{ display:flex; align-items:center; justify-content:center; max-height: clamp(300px, 46vh, 460px); }
+.vs-media video{ width:auto; height:100%; max-width:100%; max-height: clamp(300px, 46vh, 460px); object-fit:contain; border-radius: var(--radius-md); background:#000; }
+.vs-copy{ padding: 0.5rem 0; }
+.vs-tag{ font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:10px; }
+.vs-headline{ font-size: clamp(1.1rem, 2.4vw, 1.5rem); font-weight:800; line-height:1.25; margin-bottom:12px; }
+.vs-text{ font-size:14px; line-height:1.6; opacity:0.9; margin-bottom:14px; }
+.vs-controls{ display:flex; align-items:center; justify-content:center; gap:16px; margin-top:1.25rem; }
+.vs-arrow{ background: rgba(255,255,255,0.12); border:none; color:inherit; width:38px; height:38px; border-radius:50%; font-size:18px; cursor:pointer; transition: background .2s ease; }
+.vs-arrow:hover{ background: rgba(255,255,255,0.25); }
+.vs-dots{ display:flex; gap:8px; }
+.vs-dot{ width:8px; height:8px; border-radius:50%; background: rgba(255,255,255,0.3); cursor:pointer; transition: all .2s ease; display:inline-block; }
+.vs-dot.active{ background:#fff; transform: scale(1.3); }
+@media (max-width:700px){
+  .vs-slide.active{ grid-template-columns: 1fr; }
+  .vs-track{ min-height: unset; }
+}
+.see-post:hover{ background: currentColor; }
+.see-post:hover{ filter: brightness(1); }
+
+/* Campaign carousel (slideshow) */
+.carousel{ display:flex; gap:14px; overflow-x:auto; padding-bottom:10px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.carousel::-webkit-scrollbar{ height:6px; }
+.carousel::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.3); border-radius:3px; }
+.camp-card{ flex: 0 0 220px; scroll-snap-align:start; border-radius: var(--radius-md); overflow:hidden; cursor:pointer; transition: transform .2s ease; border:2px solid transparent; }
+.camp-card:hover{ transform: translateY(-4px); }
+.camp-card.active{ border-color: currentColor; }
+.camp-card .cc-img{ width:100%; height:140px; object-fit:cover; display:block; }
+.camp-card .cc-body{ padding:0.85rem; }
+.camp-card .cc-label{ font-size:10px; letter-spacing:1px; opacity:0.85; }
+.camp-card .cc-title{ font-size:0.95rem; font-weight:800; margin-top:4px; line-height:1.25; }
+
+.mini-gallery{ display:flex; align-items:center; gap:10px; margin-top:14px; }
+.mini-gallery img{ width:100%; max-width:320px; border-radius:6px; }
+.mini-gallery button{ background: rgba(255,255,255,0.15); border:none; color:inherit; width:34px; height:34px; border-radius:50%; font-size:16px; cursor:pointer; flex-shrink:0; }
+.mini-gallery button:hover{ background: rgba(255,255,255,0.3); }
+.gallery-count{ font-size:11px; opacity:0.7; margin-top:6px; }
+
+@media (max-width:560px){
+  .camp-card{ flex-basis: 170px; }
+  .camp-card .cc-img{ height:110px; }
+}
+
+/* Piece selector (equal-width buttons) + mirrored detail (copy left, gallery right) */
+.piece-selector{ display:flex; gap:10px; margin: 1.5rem 0; }
+.piece-btn{ flex:1; padding: 16px 18px; border-radius: var(--radius-md); border:2px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color:inherit; font-family: var(--font-body); font-weight:700; font-size:13px; line-height:1.3; cursor:pointer; text-align:left; transition: transform .15s ease, background .2s ease; }
+.piece-btn:hover{ transform: translateY(-2px); }
+
+.piece-detail{ display:grid; grid-template-columns: 1fr 1.1fr; gap:24px; align-items:center; margin-top: 1.75rem; }
+.piece-copy .vs-tag{ font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:10px; }
+.piece-copy .vs-headline{ font-size: clamp(1.1rem, 2.4vw, 1.5rem); font-weight:800; font-style:italic; line-height:1.3; margin-bottom:12px; }
+.piece-copy .vs-text{ font-size:14px; line-height:1.6; opacity:0.9; margin-bottom:14px; }
+.piece-gallery-wrap .mini-gallery{ margin-top:0; }
+.piece-gallery-wrap .gallery-count{ text-align:center; }
+
+@media (max-width:700px){
+  .piece-detail{ grid-template-columns: 1fr; }
+  .piece-selector{ flex-direction: column; }
+}
+
+/* Toyota submarca detail: image LEFT, copy RIGHT (mirrors the video slideshow layout) */
+.toy-detail{ display:grid; grid-template-columns: 1.1fr 1fr; gap:24px; align-items:center; margin-top: 1.5rem; }
+.toy-frame{ width:100%; aspect-ratio: 3 / 4; max-height: clamp(280px, 42vh, 420px); background: rgba(0,0,0,0.28); border-radius: var(--radius-md); overflow:hidden; display:flex; align-items:center; justify-content:center; flex:1 1 auto; }
+.toy-frame img, .toy-frame video{ width:100%; max-width:100%; height:100%; object-fit:contain; display:block; }
+.toy-copete{ font-size:13px; line-height:1.6; opacity:0.9; margin-top:12px; }
+.toy-placeholder{ border:2px dashed rgba(255,255,255,0.3); border-radius: var(--radius-md); min-height: 240px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; text-align:center; padding:1.5rem; opacity:0.7; }
+.toy-placeholder .icon{ font-size:28px; }
+.toy-placeholder .txt{ font-size:12px; max-width:220px; }
+@media (max-width:700px){
+  .toy-detail{ grid-template-columns: 1fr; }
+}
+
+/* EPAM hero robot easter-egg */
+.epam-hero-grid{ display:grid; grid-template-columns: 1.3fr 1fr; gap:32px; align-items:center; }
+.epam-robot-wrap{ display:flex; justify-content:center; }
+@media (max-width:900px){
+  .epam-hero-grid{ grid-template-columns: 1fr; }
+  .epam-robot-wrap{ margin-top: 1.5rem; }
+}
+@keyframes epamBodyBob { 0%,100%{ transform: translateY(0) rotate(-4deg); } 50%{ transform: translateY(-6px) rotate(4deg); } }
+@keyframes epamAntennaWiggle { 0%,100%{ transform: rotate(-10deg); } 50%{ transform: rotate(14deg); } }
+@keyframes epamBulbCycle { 0%,100%{ background:#FF6B4A; } 33%{ background:#CFFF00; } 66%{ background:#fff; } }
+@keyframes epamArmType { 0%,100%{ transform: rotate(0deg); } 50%{ transform: rotate(-24deg); } }
+@keyframes epamBlinkCursor { 50%{ opacity: 0; } }
+@keyframes epamSparkle { 0%,100%{ opacity:0; transform:scale(0.4); } 50%{ opacity:1; transform:scale(1); } }
+@keyframes epamEyeBlinkL { 0%,90%,100%{ transform: scaleY(1); } 95%{ transform: scaleY(0.1); } }
+
+/* Toyota car crossing the section */
+.toyota-car-strip{ position:relative; height:64px; overflow:hidden; margin: 0.5rem 0 2rem; }
+.toyota-car{ position:absolute; top:8px; left:-160px; width:110px; height:46px; animation: toyotaCarDrive 7s linear infinite; }
+.tc-body{ position:absolute; bottom:14px; left:0; width:110px; height:20px; background:var(--toyota-accent); border-radius:8px; }
+.tc-cabin{ position:absolute; bottom:30px; left:22px; width:56px; height:18px; background:var(--toyota-accent); border-radius:10px 10px 0 0; }
+.tc-window{ position:absolute; bottom:32px; left:30px; width:40px; height:11px; background:var(--toyota-bg); border-radius:6px 6px 0 0; }
+.tc-headlight{ position:absolute; bottom:19px; right:2px; width:6px; height:6px; border-radius:50%; background:#fff; }
+.tc-wheel{ position:absolute; bottom:2px; width:18px; height:18px; border-radius:50%; background:#1a1a1a; display:flex; align-items:center; justify-content:center; animation: toyotaWheelSpin 0.5s linear infinite; }
+.tc-hub{ width:6px; height:6px; border-radius:50%; background:var(--toyota-accent); }
+.tc-dust{ position:absolute; right:-8px; width:14px; height:2px; background:rgba(255,255,255,0.35); border-radius:2px; animation: toyotaDust 0.6s ease-out infinite; }
+@keyframes toyotaCarDrive{ 0%{ left:-160px; } 100%{ left:calc(100% + 160px); } }
+@keyframes toyotaWheelSpin{ 0%{ transform:rotate(0deg); } 100%{ transform:rotate(360deg); } }
+@keyframes toyotaDust{ 0%{ opacity:0.6; transform:translateX(0); } 100%{ opacity:0; transform:translateX(18px); } }
+@media (prefers-reduced-motion: reduce){
+  .toyota-car{ animation: none; left: 20px; }
+  .tc-wheel, .tc-dust{ animation: none; }
+}
+
+.toy-hint{ display:flex; flex-wrap:wrap; gap: 6px 18px; font-size:12px; opacity:0.75; margin: 0.75rem 0 1rem; font-style: italic; }
+
+/* Nodus neuron network animation */
+.nodus-hero-grid{ display:grid; grid-template-columns: 1.1fr 1fr; gap:28px; align-items:center; margin-bottom: 1.5rem; }
+.nodus-neuron-wrap{ display:flex; justify-content:center; }
+.nodus-neuron-svg{ width:100%; max-width:320px; height:auto; }
+.nx-line{ stroke: rgba(255,255,255,0.35); stroke-width:2; opacity:0; }
+.nx-node{ fill: var(--nodus-accent); opacity:0; }
+.nx-packet{ opacity:0; }
+@media (max-width:900px){
+  .nodus-hero-grid{ grid-template-columns: 1fr; }
+  .nodus-neuron-wrap{ margin-top:1rem; }
+}
+
+/* Mercado Ads TV playing ads on loop */
+.mads-hero-grid{ display:grid; grid-template-columns: 1.15fr 1fr; gap:28px; align-items:center; margin-bottom: 1.5rem; }
+.mads-tv-wrap{ display:flex; flex-direction:column; align-items:center; }
+.mads-tv{ position:relative; width:240px; max-width:100%; background:var(--mads-ink); border-radius:16px; padding:14px 14px 20px; box-shadow: 0 10px 0 rgba(0,0,0,0.15); }
+.mads-tv-antenna-l{ position:absolute; top:-24px; left:52px; width:3px; height:30px; background:var(--mads-ink); transform-origin:bottom center; transform:rotate(-25deg); border-radius:2px; }
+.mads-tv-antenna-r{ position:absolute; top:-24px; right:52px; width:3px; height:30px; background:var(--mads-ink); transform-origin:bottom center; transform:rotate(25deg); border-radius:2px; }
+.mads-tv-screen{ position:relative; width:100%; aspect-ratio: 4/3; background:#000; border-radius:8px; overflow:hidden; }
+.tv-ad{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; }
+.tv-ad-1{ animation: tvAd1 10s infinite; }
+.tv-ad-2{ animation: tvAd2 10s infinite; }
+.tv-ad-3{ animation: tvAd3 10s infinite; }
+.tv-ad-4{ animation: tvAd4 10s infinite; }
+.tv-ad-5{ animation: tvAd5 10s infinite; }
+.tv-scanlines{ position:absolute; inset:0; background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px); pointer-events:none; }
+.mads-tv-power{ position:absolute; bottom:6px; right:16px; width:7px; height:7px; border-radius:50%; background:#FF3B3B; animation: tvPower 2s ease-in-out infinite; }
+.mads-tv-stand{ width:64px; height:12px; background:var(--mads-ink); margin-top:-2px; border-radius:0 0 8px 8px; }
+@keyframes tvPower{ 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
+@keyframes tvAd1{ 0%{opacity:1;} 16%{opacity:1;} 20%{opacity:0;} 100%{opacity:0;} }
+@keyframes tvAd2{ 0%{opacity:0;} 18%{opacity:0;} 20%{opacity:1;} 36%{opacity:1;} 40%{opacity:0;} 100%{opacity:0;} }
+@keyframes tvAd3{ 0%{opacity:0;} 38%{opacity:0;} 40%{opacity:1;} 56%{opacity:1;} 60%{opacity:0;} 100%{opacity:0;} }
+@keyframes tvAd4{ 0%{opacity:0;} 58%{opacity:0;} 60%{opacity:1;} 76%{opacity:1;} 80%{opacity:0;} 100%{opacity:0;} }
+@keyframes tvAd5{ 0%{opacity:0;} 78%{opacity:0;} 80%{opacity:1;} 96%{opacity:1;} 100%{opacity:0;} }
+@media (max-width:900px){
+  .mads-hero-grid{ grid-template-columns: 1fr; }
+  .mads-tv-wrap{ margin-top:1rem; }
+}
+@media (prefers-reduced-motion: reduce){
+  .tv-ad-1{ animation: none; opacity:1; }
+  .tv-ad-2, .tv-ad-3, .tv-ad-4, .tv-ad-5{ animation: none; opacity:0; }
+  .mads-tv-power{ animation: none; }
+}
+
+.navdots{ position: fixed; right: 18px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 100; }
+.navdots a{ width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.35); display: block; transition: all .2s ease; }
+.navdots a:hover, .navdots a.active{ background: #fff; transform: scale(1.4); }
+
+.reveal{ opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible{ opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce){ .reveal{ opacity: 1; transform: none; transition: none; } html{ scroll-behavior: auto; } }
+
+a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px solid #fff; outline-offset: 3px; }
+
+.made-with{ text-align: center; font-size: 11px; padding: 1.5rem; opacity: 0.5; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px){
+  .navdots{ display: none; }
+  .bento{ --cols: 2 !important; }
+}
+@media (max-width: 560px){
+  .bento{ --cols: 1 !important; }
+  .bento img, .bento video{ min-height: 140px; }
+  .section{ padding-left: 1.1rem; padding-right: 1.1rem; }
+  .next-up{ flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navdots" id="navdots" aria-label="Navegación de secciones">
+  <a href="#hero" data-label="Inicio"></a>
+  <a href="#epam" data-label="EPAM"></a>
+  <a href="#toyota" data-label="Toyota"></a>
+  <a href="#nodus" data-label="Nodus"></a>
+  <a href="#mads" data-label="Mercado Ads"></a>
+  <a href="#google" data-label="Google"></a>
+  <a href="#elearn" data-label="E-learning"></a>
+  <a href="#ford" data-label="Ford"></a>
+  <a href="#press" data-label="Periodismo"></a>
+  <a href="#contact" data-label="Contacto"></a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="section reveal" style="background:var(--hero-bg); color:var(--hero-ink); min-height: 100vh; display:flex; flex-direction:column; justify-content:center;">
+  <div style="display:inline-block; background:#E24B4A; color:#fff; padding:5px 14px; font-size:12px; border-radius:4px; transform:rotate(-4deg); width:fit-content; margin-bottom: 1.5rem;">redactor ✺ contenidista</div>
+  <h1 class="section-title" style="font-size: clamp(2.5rem, 10vw, 7rem);">
+    SEBASTIÁN<br>
+    <span style="display:inline-block; background:#378ADD; color:#fff; padding: 4px 16px; transform: rotate(1deg); margin-top:10px;">MASTRUZZO</span>
+  </h1>
+  <p style="font-size: clamp(0.95rem, 2vw, 1.2rem); margin-top:1.75rem; max-width: 600px;">
+    Guiones para Google · Toyota Argentina · Nodus · Mercado Ads · Ford & Lincoln · EPAM Neoris ↯
+  </p>
+  <div style="margin-top: 2.5rem; display:flex; gap:12px; flex-wrap:wrap;">
+    <a href="#epam" style="background:var(--hero-ink); color:var(--hero-bg); padding:12px 26px; border-radius:999px; font-weight:700; font-size:14px;">Ver los trabajos ↓</a>
+    <a href="#contact" style="border:2px solid var(--hero-ink); padding:10px 24px; border-radius:999px; font-weight:700; font-size:14px;">Contacto</a>
+  </div>
+</section>
+
+<div class="transition-strip" style="background:linear-gradient(180deg, var(--hero-bg), var(--epam-bg));"></div>
+
+<!-- ============ EPAM ============ -->
+<section id="epam" class="section reveal" style="background:var(--epam-bg); color:#fff;">
+  <div class="eyebrow" style="color:var(--epam-accent);">Caso de marca ✺ 01</div>
+
+  <div class="epam-hero-grid">
+    <div>
+      <h2 class="section-title" style="font-size: clamp(2rem, 6vw, 3rem); color:rgba(255,255,255,0.5);">epam</h2>
+      <h2 class="section-title" style="font-size: clamp(3.2rem, 12vw, 7rem); margin-top:-6px;">NEORIS</h2>
+      <div class="chip" style="background:var(--epam-accent); color:var(--epam-bg);">CREATIVO SR.</div>
+
+      <p class="bajada" style="color:#E8ECFF; max-width:640px;">Me trajeron para transformar la comunicación corporativa clásica en algo con
+        <b style="color:var(--epam-accent);">pulso creativo y humano</b>. Mi desafío es encontrar formatos, narraciones, historias y
+        creatividad entre datos duros y una industria muy enfocada en el mundo corporativo. Así, reimaginé la comunicación
+        publicitaria de la marca desde las referencias que le interesaba a su público objetivo alejándose del mundo laboral:
+        <b style="color:var(--epam-accent2);">estética de videojuegos y acción</b>, narrativas impactantes y el
+        <b>mundo cibernético</b>.
+      </p>
+    </div>
+
+    <div class="epam-robot-wrap">
+      <div style="position:relative; display:flex; align-items:flex-end; gap:18px; justify-content:center;">
+
+        <div id="epam-robot" style="position:relative; width:88px; height:100px; flex-shrink:0; animation: epamBodyBob 0.9s ease-in-out infinite;">
+          <div style="position:absolute; top:-6px; left:-10px; width:6px; height:6px; border-radius:50%; background:#CFFF00; animation: epamSparkle 1.6s ease-in-out infinite;"></div>
+          <div style="position:absolute; top:2px; right:-14px; width:5px; height:5px; border-radius:50%; background:#FF6B4A; animation: epamSparkle 1.6s ease-in-out infinite 0.5s;"></div>
+          <div style="position:absolute; top:30px; right:-16px; width:7px; height:7px; border-radius:50%; background:#fff; animation: epamSparkle 1.6s ease-in-out infinite 1s;"></div>
+          <div style="position:absolute; top:34px; left:-14px; width:5px; height:5px; border-radius:50%; background:#CFFF00; animation: epamSparkle 1.6s ease-in-out infinite 0.25s;"></div>
+
+          <div style="position:absolute; top:6px; left:38px; width:3px; height:10px; background:#FF6B4A; transform-origin:bottom center; animation: epamAntennaWiggle 0.6s ease-in-out infinite;">
+            <div style="position:absolute; top:-16px; left:-5px; width:13px; height:13px; border-radius:50%; background:#FF6B4A; animation: epamBulbCycle 1.2s linear infinite;"></div>
+          </div>
+
+          <div style="position:absolute; top:14px; left:14px; width:56px; height:36px; background:#fff; border-radius:14px 14px 8px 18px; transform: rotate(-3deg);"></div>
+          <div style="position:absolute; top:26px; left:24px; width:13px; height:13px; background:#0033FF; border-radius:3px; animation: epamEyeBlinkL 3s ease-in-out infinite;"></div>
+          <div style="position:absolute; top:25px; left:47px; width:14px; height:14px; background:#FF6B4A; border-radius:50%;"></div>
+          <div style="position:absolute; top:42px; left:30px; width:18px; height:6px; border-bottom:3px solid #0033FF; border-radius:0 0 12px 4px; transform: rotate(4deg);"></div>
+
+          <div style="position:absolute; top:49px; left:35px; width:0; height:0; border-top:7px solid transparent; border-bottom:7px solid transparent; border-right:10px solid #CFFF00;"></div>
+          <div style="position:absolute; top:49px; left:43px; width:0; height:0; border-top:7px solid transparent; border-bottom:7px solid transparent; border-left:10px solid #CFFF00;"></div>
+          <div style="position:absolute; top:53px; left:41px; width:6px; height:6px; border-radius:50%; background:#FF6B4A;"></div>
+
+          <div style="position:absolute; top:56px; left:18px; width:52px; height:38px; background:#CFFF00; border-radius:10px 10px 16px 16px;"></div>
+
+          <div id="epam-arm-left" style="position:absolute; top:60px; left:2px; width:18px; height:6px; background:#fff; border-radius:3px; transform-origin: right center; animation: epamArmType 0.3s ease-in-out infinite;"></div>
+          <div id="epam-arm-right" style="position:absolute; top:60px; right:2px; width:18px; height:6px; background:#fff; border-radius:3px; transform-origin: left center; animation: epamArmType 0.3s ease-in-out infinite 0.15s;"></div>
+        </div>
+
+        <div style="background:#001a80; border-radius:8px; padding:14px 16px; font-family:monospace; font-size:12px; color:#CFFF00; min-width:210px; min-height:90px; line-height:1.7;">
+          <div id="epam-term-lines"></div><span id="epam-term-cursor" style="display:inline-block; width:7px; height:13px; background:#CFFF00; vertical-align:middle; animation: epamBlinkCursor 0.8s step-end infinite;"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="eyebrow" style="color:#A8B4FF; font-size:12px;">El cambio de tono</div>
+  <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:2rem;">
+    <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:4px; padding:1.1rem;">
+      <div style="font-size:10px; letter-spacing:1px; color:#A8B4FF; margin-bottom:10px;">ANTES</div>
+      <div style="font-size:14px; color:#D0D6FF; line-height:1.4;">"Somos el acelerador que impulsa el crecimiento en Iberoamérica"</div>
+    </div>
+    <div style="flex:1; min-width:220px; background:var(--epam-accent); border-radius:4px; padding:1.1rem;">
+      <div style="font-size:10px; letter-spacing:1px; color:var(--epam-bg); margin-bottom:10px; font-weight:700;">DESPUÉS</div>
+      <div style="font-size:17px; color:var(--epam-bg); font-weight:700; line-height:1.3;">"No eres fumigador. Eres desarrollador."</div>
+    </div>
+  </div>
+
+  <div class="eyebrow" style="color:#A8B4FF; font-size:12px;">Los videos ✺ producción real</div>
+  <div class="video-slideshow" id="epam-vs">
+    <div class="vs-track">
+
+      <div class="vs-slide active">
+        <div class="vs-media">
+          <video controls preload="metadata">
+            <source src="media/alder-lopez.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="vs-copy">
+          <div class="vs-tag" style="color:var(--epam-accent);">VOZ EXPERTA</div>
+          <div class="vs-headline">EL 55% DE LOS TRABAJADORES SE RESISTE A USAR IA EN SUS TRABAJOS</div>
+          <div class="vs-text">Uno de nuestros principales expertos en el tema, Alder López, nos explica el por qué detrás de ese dato.</div>
+          <a href="https://www.linkedin.com/posts/epamneoris_usa-la-inteligencia-artificial-con-inteligencia-activity-7475544191733776384-ubkI?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>
+        </div>
+      </div>
+
+      <div class="vs-slide">
+        <div class="vs-media">
+          <video controls preload="metadata">
+            <source src="media/campana-testing.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="vs-copy">
+          <div class="vs-tag" style="color:var(--epam-accent);">CAMPAÑA · TESTING</div>
+          <div class="vs-headline">🚒🔥 NO ERES BOMBERO. 👾🖥️ ERES DESARROLLADOR.</div>
+          <div class="vs-text">Resuelve los problemas de tu organización de raíz. Un proceso ágil de Testing puede reducir hasta el 80% de bugs en producción, lo que se traduce en tiempo y dinero ganado para tu organización.</div>
+          <a href="https://www.linkedin.com/posts/epamneoris_testing-activity-7460002115441123329-azPy?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>
+        </div>
+      </div>
+
+      <div class="vs-slide">
+        <div class="vs-media">
+          <video controls preload="metadata">
+            <source src="media/nico-febraban.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="vs-copy">
+          <div class="vs-tag" style="color:var(--epam-accent);">COBERTURA EN VIVO</div>
+          <div class="vs-headline">¡Arrancó Febraban Tech 2026!</div>
+          <div class="vs-text">Desde São Paulo, Nicolás Carmona nos cuenta los 3 datos clave de la convención fintech más importante de Brasil. Nuestro stand es el A65 — si estás ahí, vení a saludar.</div>
+          <a href="https://www.linkedin.com/posts/epamneoris_arranc%C3%B3-febraban-tech-2026-desde-s%C3%A3o-activity-7498016480752533506-VBfl?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>
+        </div>
+      </div>
+
+      <div class="vs-slide">
+        <div class="vs-media">
+          <video controls preload="metadata">
+            <source src="media/cementeras.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="vs-copy">
+          <div class="vs-tag" style="color:var(--epam-accent);">CASO DE ÉXITO · CEMENTERAS</div>
+          <div class="vs-headline">Una IA pensada exclusivamente para las cementeras</div>
+          <div class="vs-text">Todo lo que necesitás monitorear, lo vigila Computer Vision. Ganá seguridad, autonomía y trazabilidad con nuestro software.</div>
+          <a href="https://www.linkedin.com/posts/epamneoris_sabes-todo-lo-que-hace-computer-vision-activity-7485349112045948932--F11?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="vs-controls">
+      <button class="vs-arrow" onclick="vsNav('epam-vs', -1)" aria-label="Video anterior">‹</button>
+      <div class="vs-dots" id="epam-vs-dots">
+        <span class="vs-dot active" onclick="vsGo('epam-vs', 0)"></span>
+        <span class="vs-dot" onclick="vsGo('epam-vs', 1)"></span>
+        <span class="vs-dot" onclick="vsGo('epam-vs', 2)"></span>
+        <span class="vs-dot" onclick="vsGo('epam-vs', 3)"></span>
+      </div>
+      <button class="vs-arrow" onclick="vsNav('epam-vs', 1)" aria-label="Video siguiente">›</button>
+    </div>
+  </div>
+
+  <div class="eyebrow" style="color:#A8B4FF; font-size:12px;">Las piezas ✺ tocá una campaña para ver el detalle</div>
+  <div class="piece-selector" id="epam-piece-selector">
+    <button class="piece-btn active" data-key="epam-migracion" style="background:var(--epam-accent); color:var(--epam-bg); border-color:var(--epam-accent);">CAMPAÑA #1 · SERVICIO DE DIGITALIZACIÓN</button>
+    <button class="piece-btn" data-key="epam-testing">CAMPAÑA #2 · SERVICIO DE TESTING</button>
+  </div>
+
+  <div id="epam-piece-detail" class="piece-detail"></div>
+
+  <div class="next-up" style="background:var(--toyota-bg);">
+    <div class="nu-label">Siguiente marca ↓</div>
+    <div class="nu-name" style="color:#fff;">TOYOTA ARGENTINA</div>
+  </div>
+</section>
+
+<div class="transition-strip" style="background:linear-gradient(180deg, var(--epam-bg), var(--toyota-bg));"></div>
+
+<!-- ============ TOYOTA ARGENTINA ============ -->
+<section id="toyota" class="section reveal" style="background:var(--toyota-bg); color:#fff;">
+  <div class="eyebrow" style="color:var(--toyota-accent);">Caso de marca ✺ 02</div>
+  <h2 class="section-title" style="font-size: clamp(1.7rem, 5vw, 2.6rem); color:rgba(255,255,255,0.55);">toyota</h2>
+  <h2 class="section-title" style="font-size: clamp(2.6rem, 10vw, 5.5rem); margin-top:-4px;">ARGENTINA</h2>
+  <div class="chip" style="background:var(--toyota-accent); color:var(--toyota-bg);">CREATIVO SR.</div>
+
+  <p class="bajada" style="color:#FFE3D0;">Toyota tiene múltiples marcas para públicos distintos — necesitaba
+    <b style="color:var(--toyota-accent);">tonos diferenciados, no un solo eslogan</b>. El estilo de comunicación
+    austero de los japoneses debía amalgamarse con un estilo más informal propio de la comunicación argentina.
+    El resultado fue explorar puntos medios de aspirar a piezas más creativas sin dejar de lado el espíritu de la marca.
+    Elegí una submarca para ver el detalle:
+  </p>
+
+  <div class="toyota-car-strip" aria-hidden="true">
+    <div class="toyota-car">
+      <div class="tc-body"></div>
+      <div class="tc-cabin"></div>
+      <div class="tc-window"></div>
+      <div class="tc-headlight"></div>
+      <div class="tc-wheel" style="left:14px;"><div class="tc-hub"></div></div>
+      <div class="tc-wheel" style="left:82px;"><div class="tc-hub"></div></div>
+      <div class="tc-dust" style="top:18px; animation-delay:0s;"></div>
+      <div class="tc-dust" style="top:28px; animation-delay:0.25s;"></div>
+      <div class="tc-dust" style="top:38px; animation-delay:0.5s;"></div>
+    </div>
+  </div>
+
+  <div class="pills" id="toyota-pills">
+    <button class="pill active" data-target="toyota-argentina" style="background:var(--toyota-accent); color:var(--toyota-bg);">Toyota Argentina</button>
+    <button class="pill" data-target="toyota-gazoo">Gazoo Racing</button>
+    <button class="pill" data-target="toyota-kinto">Kinto</button>
+    <button class="pill" data-target="toyota-boutique">Boutique</button>
+    <button class="pill" data-target="toyota-club">Club Toyota</button>
+  </div>
+
+  <div class="toy-hint">
+    <div>↑ Hacé clic arriba para ver las piezas de cada marca</div>
+    <div>↓ Hacé clic en las flechas para ver más piezas en cada marca</div>
+  </div>
+
+  <div id="toyota-detail" class="toy-detail"></div>
+
+  <div class="next-up" style="background:var(--nodus-bg);">
+    <div class="nu-label">Siguiente marca ↓</div>
+    <div class="nu-name" style="color:#fff;">NODUS</div>
+  </div>
+</section>
+
+<div class="transition-strip" style="background:linear-gradient(180deg, var(--toyota-bg), var(--nodus-bg));"></div>
+
+<!-- ============ NODUS ============ -->
+<section id="nodus" class="section reveal" style="background:var(--nodus-bg); color:#fff;">
+  <div class="eyebrow" style="color:var(--nodus-accent);">Caso de marca ✺ 03</div>
+
+  <div class="nodus-hero-grid">
+    <div>
+      <h2 class="section-title" style="font-size: clamp(2.6rem, 12vw, 6.5rem);">NODUS</h2>
+      <div class="chip" style="background:var(--nodus-accent); color:var(--nodus-bg);">REBRANDING</div>
+
+      <p class="bajada" style="color:#D8F0E4;">Nodus necesitaba <b style="color:var(--nodus-accent);">explicar claramente qué brindaban</b>.
+        El retrabajo se enfocó en dos aspectos: contar creativamente sus servicios y posicionarlos como
+        <b>partner estratégico</b>, no como proveedor.
+      </p>
+
+      <div class="eyebrow" style="color:#8FCBAE; font-size:12px;">El eje del rebranding</div>
+      <div style="background:rgba(0,0,0,0.2); border-radius:4px; padding:1.25rem; margin-bottom:1.5rem; border-left:3px solid #fff;">
+        <div style="font-size: clamp(1.2rem, 3vw, 1.6rem); color:#fff; font-weight:700; font-style:italic;">"The power in collaboration"</div>
+        <div style="font-size:13px; color:#C4E8D6; margin-top:8px;">Nuevo eslogan — presentación de servicios a través de un "nosotros", no de una lista de features</div>
+      </div>
+    </div>
+
+    <div class="nodus-neuron-wrap" aria-hidden="true">
+      <svg viewBox="0 0 300 300" class="nodus-neuron-svg">
+        <!-- connections (draw progressively) -->
+        <line x1="150" y1="150" x2="90" y2="90" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="0.3s" fill="freeze"/></line>
+        <line x1="150" y1="150" x2="210" y2="90" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="0.6s" fill="freeze"/></line>
+        <line x1="150" y1="150" x2="60" y2="180" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="0.9s" fill="freeze"/></line>
+        <line x1="150" y1="150" x2="240" y2="180" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="1.2s" fill="freeze"/></line>
+        <line x1="150" y1="150" x2="150" y2="60" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="1.5s" fill="freeze"/></line>
+        <line x1="150" y1="150" x2="150" y2="240" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="1.8s" fill="freeze"/></line>
+        <line x1="90" y1="90" x2="150" y2="60" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.35s" begin="2.1s" fill="freeze"/></line>
+        <line x1="210" y1="90" x2="150" y2="60" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.35s" begin="2.25s" fill="freeze"/></line>
+        <line x1="90" y1="90" x2="30" y2="120" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.35s" begin="2.4s" fill="freeze"/></line>
+        <line x1="210" y1="90" x2="270" y2="120" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.35s" begin="2.55s" fill="freeze"/></line>
+        <line x1="60" y1="180" x2="30" y2="120" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.35s" begin="2.7s" fill="freeze"/></line>
+        <line x1="240" y1="180" x2="270" y2="120" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.35s" begin="2.85s" fill="freeze"/></line>
+        <line x1="60" y1="180" x2="100" y2="220" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.35s" begin="3.0s" fill="freeze"/></line>
+        <line x1="240" y1="180" x2="200" y2="220" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.35s" begin="3.15s" fill="freeze"/></line>
+        <line x1="150" y1="240" x2="100" y2="220" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.35s" begin="3.3s" fill="freeze"/></line>
+        <line x1="150" y1="240" x2="200" y2="220" class="nx-line"><animate attributeName="opacity" from="0" to="1" dur="0.35s" begin="3.45s" fill="freeze"/></line>
+
+        <!-- neurons (fade + scale in as their first connection arrives) -->
+        <circle cx="150" cy="150" r="9" class="nx-node"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="0s" fill="freeze"/></circle>
+        <circle cx="90" cy="90" r="7" class="nx-node"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="0.3s" fill="freeze"/></circle>
+        <circle cx="210" cy="90" r="7" class="nx-node"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="0.6s" fill="freeze"/></circle>
+        <circle cx="60" cy="180" r="7" class="nx-node"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="0.9s" fill="freeze"/></circle>
+        <circle cx="240" cy="180" r="7" class="nx-node"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1.2s" fill="freeze"/></circle>
+        <circle cx="150" cy="60" r="7" class="nx-node"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1.5s" fill="freeze"/></circle>
+        <circle cx="150" cy="240" r="7" class="nx-node"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1.8s" fill="freeze"/></circle>
+        <circle cx="30" cy="120" r="6" class="nx-node"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2.4s" fill="freeze"/></circle>
+        <circle cx="270" cy="120" r="6" class="nx-node"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2.55s" fill="freeze"/></circle>
+        <circle cx="100" cy="220" r="6" class="nx-node"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="3.0s" fill="freeze"/></circle>
+        <circle cx="200" cy="220" r="6" class="nx-node"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="3.15s" fill="freeze"/></circle>
+
+        <!-- traveling colored squares (packets exchanging back and forth) -->
+        <rect x="-4" y="-4" width="8" height="8" class="nx-packet" fill="var(--nodus-accent)" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="4s" fill="freeze"/>
+          <animateMotion dur="2.4s" begin="4s" repeatCount="indefinite" path="M150,150 L150,60 L150,150"/>
+        </rect>
+        <rect x="-4" y="-4" width="8" height="8" class="nx-packet" fill="#fff" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="4.2s" fill="freeze"/>
+          <animateMotion dur="2.8s" begin="4.2s" repeatCount="indefinite" path="M150,150 L60,180 L150,150"/>
+        </rect>
+        <rect x="-4" y="-4" width="8" height="8" class="nx-packet" fill="#FF6B4A" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="4.4s" fill="freeze"/>
+          <animateMotion dur="2.2s" begin="4.4s" repeatCount="indefinite" path="M210,90 L270,120 L210,90"/>
+        </rect>
+        <rect x="-4" y="-4" width="8" height="8" class="nx-packet" fill="#E8C88A" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="4.6s" fill="freeze"/>
+          <animateMotion dur="2.6s" begin="4.6s" repeatCount="indefinite" path="M150,240 L200,220 L150,240"/>
+        </rect>
+        <rect x="-4" y="-4" width="8" height="8" class="nx-packet" fill="#fff" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="4.8s" fill="freeze"/>
+          <animateMotion dur="3s" begin="4.8s" repeatCount="indefinite" path="M90,90 L30,120 L90,90"/>
+        </rect>
+      </svg>
+    </div>
+  </div>
+
+  <div class="eyebrow" style="color:#8FCBAE; font-size:12px;">Pieza real</div>
+  <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-21-235401.png?w=1024" alt="Pieza Nodus" style="border-radius:6px; transform:rotate(-1deg); margin-bottom:1.5rem;">
+
+  <div class="detail-panel" style="background:rgba(0,0,0,0.25); color:var(--nodus-accent);">
+    <div class="label">Detalle ampliado · rebranding</div>
+    <div class="quote" style="color:#fff;">"Saber explicar. Creativamente."</div>
+    <div class="rationale" style="color:#C4E8D6;"><b style="color:#fff;">Racional:</b> Nodus tenía servicios complejos de explicar de forma clara. En vez de listar features técnicas, la estrategia fue narrar el valor desde la colaboración — posicionando a Nodus como socio estratégico del cliente, no como proveedor externo.</div>
+    <div class="my-work">Mi trabajo: rebranding de mensaje, nuevo eslogan, redacción de la página oficial</div>
+  </div>
+
+  <div class="next-up" style="background:var(--mads-bg);">
+    <div class="nu-label" style="color:var(--mads-ink);">Siguiente marca ↓</div>
+    <div class="nu-name" style="color:var(--mads-ink);">MERCADO ADS</div>
+  </div>
+</section>
+
+<div class="transition-strip" style="background:linear-gradient(180deg, var(--nodus-bg), var(--mads-bg));"></div>
+
+<!-- ============ MERCADO ADS ============ -->
+<section id="mads" class="section reveal" style="background:var(--mads-bg); color:var(--mads-ink);">
+  <div class="eyebrow" style="color:#6B5A00;">Caso de marca ✺ 04</div>
+
+  <div class="mads-hero-grid">
+    <div>
+      <h2 class="section-title" style="font-size: clamp(2.2rem, 7vw, 3.6rem);">MERCADO</h2>
+      <h2 class="section-title" style="font-size: clamp(3rem, 10vw, 5.5rem); margin-top:2px;">ADS</h2>
+      <div class="chip" style="background:var(--mads-ink); color:var(--mads-bg);">E-LEARNING + COMERCIAL</div>
+
+      <p class="bajada" style="color:#3A3200;">El desafío del e-learning: <b style="color:var(--mads-ink);">no es obligatorio para quien lo toma</b>.
+        Había que producir contenido interesante que explicara lo técnico sin volverse aburrido — con storytelling, video y recursos gráficos.
+      </p>
+    </div>
+
+    <div class="mads-tv-wrap" aria-hidden="true">
+      <div class="mads-tv">
+        <div class="mads-tv-antenna-l"></div>
+        <div class="mads-tv-antenna-r"></div>
+        <div class="mads-tv-screen">
+          <img class="tv-ad tv-ad-1" src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/3-open-graph-logo.png?w=1024" alt="">
+          <img class="tv-ad tv-ad-2" src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-114910-2.png?w=762" alt="">
+          <img class="tv-ad tv-ad-3" src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-115324.png?w=789" alt="">
+          <img class="tv-ad tv-ad-4" src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-115353.png?w=787" alt="">
+          <img class="tv-ad tv-ad-5" src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-120139.png?w=1024" alt="">
+          <div class="tv-scanlines"></div>
+        </div>
+        <div class="mads-tv-power"></div>
+      </div>
+      <div class="mads-tv-stand"></div>
+    </div>
+  </div>
+
+  <div class="eyebrow" style="color:#6B5A00; font-size:12px;">Galería ✺ piezas reales</div>
+  <div class="bento" style="--cols:3;">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/3-open-graph-logo.png?w=1024" alt="Mercado Ads" style="grid-row: span 2;">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-114910-2.png?w=762" alt="Mercado Ads">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-115324.png?w=789" alt="Mercado Ads">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-115353.png?w=787" alt="Mercado Ads">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-120139.png?w=1024" alt="Mercado Ads">
+  </div>
+
+  <div class="eyebrow" style="color:#6B5A00; font-size:12px;">Los videos ✺</div>
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:14px;">
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/PwNoGj0i5Zs" title="Mercado Ads e-learning video 1" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/6rU9N-A2PnA" title="Mercado Ads e-learning video 2" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <div class="detail-panel" style="background:rgba(0,0,0,0.08); color:var(--mads-ink);">
+    <div class="label" style="color:#6B5A00;">Detalle ampliado</div>
+    <div class="quote">"Aprender nunca fue tan interesante"</div>
+    <div class="rationale" style="color:#4A4000;"><b>Racional:</b> el contenido comercial y de e-learning corre riesgo de sentirse como un trámite. La estrategia combinó storytelling narrativo con recursos gráficos y video para que el contenido técnico se sintiera atractivo, no obligatorio.</div>
+    <div class="my-work" style="color:#8A7A00;">Mi trabajo: redacción de contenido comercial y e-learning, storytelling, guion para video</div>
+  </div>
+
+  <div class="next-up" style="background:var(--google-bg);">
+    <div class="nu-label" style="color:var(--google-accent);">Siguiente ↓</div>
+    <div class="nu-name" style="color:#fff;">GOOGLE</div>
+  </div>
+</section>
+
+<div class="transition-strip" style="background:linear-gradient(180deg, var(--mads-bg), var(--google-bg));"></div>
+
+<!-- ============ GOOGLE ============ -->
+<section id="google" class="section reveal" style="background:var(--google-bg); color:#fff; padding-bottom: 3rem;">
+  <div class="eyebrow" style="color:var(--google-accent);">Caso de marca ✺ 05</div>
+  <h2 class="section-title" style="font-size: clamp(2.5rem, 9vw, 5rem);">GOOGLE</h2>
+  <div class="chip" style="background:var(--google-accent); color:var(--google-bg);">GUIONES AUDIOVISUALES</div>
+  <p class="bajada" style="color:#FFE3F0;">Redacción de guiones para la filmación de anuncios de congreso comercial.</p>
+
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:16px; margin-top:1.5rem;">
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/VY5BjLkILMw" title="De espectadores a compradores" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/996mG_ToGRk" title="Consumidor Omnicanal" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <div class="next-up" style="background:var(--elearn-bg);">
+    <div class="nu-label" style="color:#EBD8FF;">Siguiente ↓</div>
+    <div class="nu-name" style="color:#fff;">E-LEARNING Y COMUNICACIÓN INTERNA</div>
+  </div>
+</section>
+
+<div class="transition-strip" style="background:linear-gradient(180deg, var(--google-bg), var(--elearn-bg));"></div>
+
+<!-- ============ E-LEARNING Y COMUNICACIÓN INTERNA ============ -->
+<section id="elearn" class="section reveal" style="background:var(--elearn-bg); color:#fff;">
+  <div class="eyebrow" style="color:var(--elearn-accent);">Caso de marca ✺ 06</div>
+  <h2 class="section-title" style="font-size: clamp(1.8rem, 6vw, 3rem);">E-LEARNING Y</h2>
+  <h2 class="section-title" style="font-size: clamp(1.8rem, 6vw, 3rem); margin-top:2px;">COMUNICACIÓN</h2>
+  <h2 class="section-title" style="font-size: clamp(1.8rem, 6vw, 3rem); margin-top:2px;">INTERNA</h2>
+
+  <p class="bajada" style="color:#EBD8FF;">Contenido interno para tres clientes distintos, cada uno con su propio objetivo: capacitación técnica, management y ventas.</p>
+
+  <div class="pills" id="elearn-pills">
+    <button class="pill active" data-target="elearn-veritran" style="background:var(--elearn-accent); color:var(--elearn-bg);">Veritran</button>
+    <button class="pill" data-target="elearn-patagonia">Banco Patagonia</button>
+    <button class="pill" data-target="elearn-bimbo">Bimbo</button>
+  </div>
+
+  <div id="elearn-detail" class="detail-panel" style="background:rgba(0,0,0,0.2); color:#fff;"></div>
+
+  <div class="eyebrow" style="color:#C9A8F0; font-size:12px; margin-top:1.75rem;">Galería general de piezas de e-learning</div>
+  <div class="bento" style="--cols:4;">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/100957935_10216177109651443_2577795321874612224_n.jpg?w=960" alt="Pieza e-learning">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/100957935_10216177109651443_2577795321874612224_n-1.jpg?w=960" alt="Pieza e-learning">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-10-18-a-las-10.53.40-1.webp" alt="Pieza e-learning">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-10-18-a-las-11.34.31-1.webp" alt="Pieza e-learning">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-11-05-a-las-10.22.43.webp" alt="Pieza e-learning">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-11-05-a-las-10.23.12.webp" alt="Pieza e-learning">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-11-05-a-las-10.23.40.webp" alt="Pieza e-learning">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2022-03-04-a-las-12.20.17.webp" alt="Pieza e-learning">
+  </div>
+  <div style="font-size:12px; color:#C9A8F0; margin-top:-0.5rem;">⚠ Estas piezas no vienen etiquetadas por cliente en el sitio original — avisame si querés que reparta cada imagen bajo su marca correspondiente.</div>
+
+  <div class="next-up" style="background:var(--ford-bg); margin-top:1.75rem;">
+    <div class="nu-label" style="color:#E0C4A8;">Siguiente ↓</div>
+    <div class="nu-name" style="color:#fff;">FORD &amp; LINCOLN</div>
+  </div>
+</section>
+
+<div class="transition-strip" style="background:linear-gradient(180deg, var(--elearn-bg), var(--ford-bg));"></div>
+
+<!-- ============ FORD & LINCOLN ============ -->
+<section id="ford" class="section reveal" style="background:var(--ford-bg); color:#fff;">
+  <div class="eyebrow" style="color:var(--ford-accent);">Caso de marca ✺ 07</div>
+  <h2 class="section-title" style="font-size: clamp(2.4rem, 9vw, 5rem);">FORD &amp;</h2>
+  <h2 class="section-title" style="font-size: clamp(2.4rem, 9vw, 5rem); margin-top:2px;">LINCOLN</h2>
+  <div class="chip" style="background:var(--ford-accent); color:var(--ford-bg);">EDICIÓN Y UX</div>
+
+  <p class="bajada" style="color:#D8D8D8;">Como en un <b style="color:var(--ford-accent);">taller del siglo XXI</b>, las piezas web de retail
+    de Ford llegaban para ser montadas en distintos formatos. Edición, accesibilidad, redacción UX y montaje en CMS.
+  </p>
+
+  <div class="eyebrow" style="color:#999; font-size:12px;">Campañas montadas ✺ piezas reales</div>
+  <div class="bento" style="--cols:3;">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/bronco-campaign-1.webp" alt="Bronco Campaign">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/bronco-campaign-2-1.webp" alt="Bronco Campaign">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/bronco-campaign-3-1.webp" alt="Bronco Campaign">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/motorcraft-1-1.webp" alt="Motorcraft">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/motorcraft-2-1.webp" alt="Motorcraft">
+    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/580b585b2edbce24c47b2c67.png?w=300" alt="Ford pieza web">
+  </div>
+  <div style="display:flex; gap:8px; margin: 1rem 0 1.5rem;">
+    <div style="background:rgba(255,122,26,0.15); border:1px solid var(--ford-accent); border-radius:999px; padding:5px 14px; font-size:11px; color:var(--ford-accent);">Bronco Campaign</div>
+    <div style="background:rgba(255,122,26,0.15); border:1px solid var(--ford-accent); border-radius:999px; padding:5px 14px; font-size:11px; color:var(--ford-accent);">Motorcraft</div>
+  </div>
+
+  <div class="detail-panel" style="background:rgba(0,0,0,0.3); color:var(--ford-accent);">
+    <div class="label">Detalle ampliado</div>
+    <div class="quote" style="color:#fff;">"Fordismo siglo XXI"</div>
+    <div class="rationale" style="color:#C8C8C8;"><b style="color:#fff;">Racional:</b> las piezas web de campañas de retail llegaban ya diseñadas y había que "montarlas" — como en una línea de ensamblaje. El trabajo combinó edición de contenido, cumplimiento de normas de accesibilidad, redacción UX y montaje directo en CMS.</div>
+    <div class="my-work">Mi trabajo: edición, redacción de accesibilidad, redacción UX, montaje web</div>
+  </div>
+
+  <div class="next-up" style="background:var(--press-bg);">
+    <div class="nu-label" style="color:var(--press-accent);">Siguiente ↓</div>
+    <div class="nu-name" style="color:#fff;">REDACCIÓN PERIODÍSTICA</div>
+  </div>
+</section>
+
+<div class="transition-strip" style="background:linear-gradient(180deg, var(--ford-bg), var(--press-bg));"></div>
+
+<!-- ============ REDACCIÓN PERIODÍSTICA ============ -->
+<section id="press" class="section reveal" style="background:var(--press-bg); color:#fff;">
+  <div class="eyebrow" style="color:var(--press-accent);">Caso de marca ✺ 08</div>
+  <h2 class="section-title" style="font-size: clamp(2rem, 6vw, 3rem);">REDACCIÓN</h2>
+  <h2 class="section-title" style="font-size: clamp(2rem, 6vw, 3rem); color:var(--press-accent); margin-top:2px;">PERIODÍSTICA</h2>
+
+  <p class="bajada" style="color:#C8C8D8;">Escritura propia, sin brief de cliente: notas culturales y narrativa breve.</p>
+
+  <div class="pills" id="press-pills">
+    <button class="pill active" data-target="press-indiehoy" style="background:var(--press-accent); color:var(--press-bg);">Indie Hoy</button>
+    <button class="pill" data-target="press-narrativa">Narrativa Breve</button>
+  </div>
+
+  <div id="press-detail" class="detail-panel" style="background:rgba(255,255,255,0.06); color:#fff;"></div>
+
+  <div class="next-up" style="background:var(--contact-bg);">
+    <div class="nu-label" style="color:var(--hero-ink);">Siguiente ↓</div>
+    <div class="nu-name" style="color:var(--hero-ink);">CONTACTO</div>
+  </div>
+</section>
+
+<div class="transition-strip" style="background:linear-gradient(180deg, var(--press-bg), var(--contact-bg));"></div>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contact" class="section reveal" style="background:var(--contact-bg); color:var(--hero-ink); min-height:70vh; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;">
+  <h2 class="section-title" style="font-size: clamp(2.5rem, 9vw, 5.5rem);">CHARLEMOS</h2>
+  <p style="font-size: clamp(1rem, 2vw, 1.2rem); margin: 1.5rem 0 2rem; max-width:520px;">
+    Hacé clic para ir a mi LinkedIn o descargate mi CV. Nos vemos.
+  </p>
+  <div style="display:flex; gap:14px; flex-wrap:wrap;">
+    <a href="https://www.linkedin.com/in/sebastian-mastruzzo/" target="_blank" rel="noopener" style="background:var(--hero-ink); color:var(--hero-bg); padding:14px 30px; border-radius:999px; font-weight:700; font-size:15px;">LinkedIn ↗</a>
+    <a href="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/sebastian-mastruzzo-cv-castellano.pdf" target="_blank" rel="noopener" style="border:2px solid var(--hero-ink); padding:12px 28px; border-radius:999px; font-weight:700; font-size:15px;">Descargar CV ↓</a>
+  </div>
+</section>
+
+<div class="made-with" style="background:var(--contact-bg); color:var(--hero-ink);">Diseñado y construido por Sebastián Mastruzzo · 2026</div>
+
+<script>
+const DETAILS = {
+  "epam-migracion": {
+    label: "Campaña #1 · Servicio de digitalización",
+    quote: "\u201cEsto no es un juego de niños. Esto lo tienen que hacer profesionales.\u201d",
+    rationale: "Muchas organizaciones estaban \u201catrapadas\u201d pagando tarifas cada vez más altas por su proveedor de infraestructura actual, con miedo a migrar por costo y downtime. La estética gamer apela directo al público de IT y arma una narrativa clara de héroe vs. obstáculo, sin polémica.",
+    work: "Mi trabajo: concepto, copy, guion técnico",
+    gallery: ["media/migracion-1.jpg","media/migracion-2.jpg","media/migracion-3.jpg","media/migracion-4.jpg"],
+    linkedin: "https://www.linkedin.com/posts/epamneoris_caso-de-%C3%A9xtio-activity-7491168729159073792-DJ4z?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg"
+  },
+  "epam-testing": {
+    label: "Campaña #2 · Servicio de testing",
+    quote: "\u201cNo eres fumigador. Eres desarrollador.\u201d",
+    rationale: "Una temática técnica y poco atractiva a priori (testing de software) se cuenta con humor a través de una mascota recurrente con forma de insecto (bug) — contraste dramático entre el disfraz literal y el mensaje real para hacerla memorable.",
+    work: "Mi trabajo: guion, guion técnico para la edición, dirección en el rodaje",
+    gallery: ["media/testing-1.jpg","media/testing-2.jpg","media/testing-3.jpg","media/testing-4.jpg","media/testing-5.jpg"],
+    linkedin: "https://www.linkedin.com/posts/epamneoris_es-momento-de-dejar-de-reaccionar-y-empezar-activity-7475920602109743104-2hpI?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg"
+  },
+  "epam-alder": {
+    label: "Voz experta",
+    quote: "\u201cEl 55% de los trabajadores se resiste a usar IA en sus trabajos\u201d",
+    rationale: "Alder López, uno de los expertos de EPAM Neoris, explica el dato en primera persona — humanizar una estadística dura con una cara y una voz reales de la propia empresa.",
+    work: "Mi trabajo: guion, guion técnico para la edición, dirección en el rodaje"
+  },
+  "toyota-argentina": {
+    label: "Toyota Argentina · directo y universal",
+    quote: "\u201cConectate con lo que te mueve\u201d",
+    rationale: "Es la marca central que aúna a todas las demás — necesitaba un tono directo y universal. Eslogan creado para el lanzamiento de Servicios Conectados.",
+    work: "Mi trabajo: dirección de redacción creativa, junto al equipo de diseño de VML",
+    pieces: [
+      {type:"video", src:"media/toyota-hilux.mp4", caption:"Cuando tenés la confiabilidad y versatilidad de una Hilux, ningún camino se siente como un desafío 😌", link:"https://www.instagram.com/p/DMvBZHis25a/"},
+      {type:"image", src:"https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2025/05/screenshot-2025-05-19-at-10.49.10e280afam.png", caption:"", link:""},
+      {type:"image", src:"https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2025/05/screenshot-2025-05-19-at-10.50.14e280afam.png", caption:"", link:""}
+    ]
+  },
+  "toyota-club": {
+    label: "Club Toyota · comunidad y pertenencia",
+    quote: "\u201cSer parte de club está buenísimo\u201d",
+    rationale: "El sistema de membresía necesitaba generar sentido de comunidad, no solo comunicar beneficios. El eslogan modular permite variaciones (\u201c...está lleno de adrenalina\u201d, \u201c...de beneficios\u201d) y habilita contenido generado por usuarios en #AventurasToyoteras (UGC intervenido).",
+    work: "Mi trabajo: sistema de eslóganes, tono de marca",
+    pieces: [
+      {type:"video", src:"media/toyota-landcruiser.mp4", caption:"Estas Land Cruiser lo han visto todo... quizás, demasiado. La imbatible durabilidad de Toyota las hacen ideales para afrontar todo lo que se te ocurra.\n\n👉 Contanos qué hiciste vos con la tuya.", link:"https://www.instagram.com/p/DOectz8jnyz/"},
+      {type:"image", src:"https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/screenshot-2025-05-19-at-10.27.11e280afam-1.png", caption:"", link:""},
+      {type:"image", src:"https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2025/05/screenshot-2025-05-19-at-11.01.23e280afam.png", caption:"", link:""}
+    ]
+  },
+  "toyota-kinto": {
+    label: "Kinto · descontracturado y aspiracional",
+    quote: "Sensación de viaje y diversión",
+    rationale: "La agencia de alquiler de autos de Toyota necesitaba, para un público variado, un tono más informal y aspiracional que la marca central — enfocado en la experiencia del viaje.",
+    work: "Mi trabajo: dirección de redacción creativa",
+    pieces: [
+      {type:"image", src:"https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/screenshot-2025-05-19-at-10.47.22e280afam.png", caption:"", link:""}
+    ]
+  },
+  "toyota-gazoo": {
+    label: "Gazoo Racing",
+    quote: "Adrenalina y pasión.",
+    rationale: "Gazoo Racing es la escudería de Toyota. Su contenido es deportivo, con una estética propia tanto visual como verbalmente. Siempre enfocados en comunicar acción, <b>adrenalina</b> y velocidad.",
+    work: "",
+    pieces: [
+      {type:"image", src:"https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2025/05/screenshot-2025-05-19-at-10.50.47e280afam.png", caption:"", link:""}
+    ]
+  },
+  "toyota-boutique": {
+    label: "Boutique",
+    quote: "\u201cEn Boutique siempre hay algo para vos\u201d",
+    rationale: "Boutique es la tienda de merch de Toyota Argentina donde había desde camisetas hasta herramientas para el vehículo o termos eléctricos. El eslogan buscaba sintetizar que en esa variedad enorme, todos los fanáticos iban a encontrar algo que quisieran.",
+    work: "",
+    pieces: []
+  },
+  "elearn-veritran": {
+    label: "Veritran · Academy",
+    quote: "Programación low-code",
+    rationale: "Redacción para la Academy de Veritran sobre programación low-code — contenido técnico de capacitación interna.",
+    work: "Mi trabajo: redacción de contenido de e-learning"
+  },
+  "elearn-patagonia": {
+    label: "Banco Patagonia",
+    quote: "Curso interno de management",
+    rationale: "Producción de curso interno sobre management para Banco Patagonia.",
+    work: "Mi trabajo: producción de contenido e-learning"
+  },
+  "elearn-bimbo": {
+    label: "Bimbo",
+    quote: "Curso en inglés para vendedores",
+    rationale: "Redacción de curso de e-learning en inglés dirigido al equipo de ventas de Bimbo.",
+    work: "Mi trabajo: redacción de e-learning en inglés"
+  },
+  "press-indiehoy": {
+    label: "Indie Hoy · revista de cultura",
+    quote: "Perfil a Camila Sosa Villada",
+    rationale: "Colaboraciones periodísticas en la revista de cultura Indie Hoy: perfil/entrevista sobre la autora, y una nota sobre literatura queer para leer en cuarentena.",
+    work: "",
+    image: "https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/05/logo-indie-hoy.webp?w=1024",
+    links: [
+      {label: "Ver perfil ↗", url: "https://indiehoy.com/libros/camila-sosa-villada-no-admiten-que-las-travestis-puedan-hacer-mundo-o-lenguaje/"},
+      {label: "Ver nota ↗", url: "https://indiehoy.com/libros/4-libros-de-literatura-queer-para-leer-en-cuarentena/"}
+    ]
+  },
+  "press-narrativa": {
+    label: "Narrativa Breve",
+    quote: "Primer premio — Universidad Nacional de Hurlingham",
+    rationale: "Primer premio de Narrativa Breve otorgado por la Universidad Nacional de Hurlingham.",
+    work: "",
+    gallery: [
+      "https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/119528137_1736168373202790_6340858274301386519_n.jpg?w=1024",
+      "https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/05/1152525.jpg?w=1024"
+    ]
+  }
+};
+
+const galleryState = {};
+
+function renderDetail(panelId, key){
+  const d = DETAILS[key];
+  if(!d) return;
+  const panel = document.getElementById(panelId);
+  let html = `<div class="label">${d.label}</div><div class="quote">${d.quote}</div><div class="rationale"><b>Racional:</b> ${d.rationale}</div>`;
+  if(d.work) html += `<div class="my-work">${d.work}</div>`;
+  if(d.image) html += `<img src="${d.image}" style="margin-top:12px; border-radius:4px; max-width:220px;">`;
+  if(d.links){
+    html += `<div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">`;
+    d.links.forEach(l => { html += `<a href="${l.url}" target="_blank" rel="noopener" style="background:rgba(232,200,138,0.15); border:1px solid var(--press-accent); border-radius:999px; padding:5px 14px; font-size:11px; color:var(--press-accent);">${l.label}</a>`; });
+    html += `</div>`;
+  }
+  if(d.gallery && !d.linkedin){
+    // simple grid gallery (used elsewhere, e.g. Narrativa Breve)
+    html += `<div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px;">`;
+    d.gallery.forEach(src => { html += `<img src="${src}" style="border-radius:4px; height:110px; object-fit:cover;">`; });
+    html += `</div>`;
+  } else if(d.gallery && d.linkedin){
+    // navigable mini-gallery (EPAM campaign cards)
+    galleryState[key] = galleryState[key] || 0;
+    html += `<div class="mini-gallery" id="gallery-${key}">
+      <button onclick="shiftGallery('${panelId}','${key}',-1)" aria-label="Anterior">‹</button>
+      <img src="${d.gallery[galleryState[key]]}" alt="${d.label}">
+      <button onclick="shiftGallery('${panelId}','${key}',1)" aria-label="Siguiente">›</button>
+    </div>
+    <div class="gallery-count">${galleryState[key]+1} / ${d.gallery.length}</div>`;
+  }
+  if(d.linkedin){
+    html += `<a href="${d.linkedin}" target="_blank" rel="noopener" class="see-post" style="border-color:currentColor; margin-top:14px;">Ver publicación ↗</a>`;
+  }
+  panel.innerHTML = html;
+}
+
+function shiftGallery(panelId, key, dir){
+  const d = DETAILS[key];
+  const len = d.gallery.length;
+  galleryState[key] = ((galleryState[key] + dir) % len + len) % len;
+  renderDetail(panelId, key);
+}
+
+/* ===== Video slideshow (video + copy side by side) ===== */
+const vsState = {};
+
+function vsGo(containerId, index){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  const slides = container.querySelectorAll('.vs-slide');
+  const dots = document.getElementById(containerId + '-dots').querySelectorAll('.vs-dot');
+  slides.forEach((s, i) => {
+    if(i === index){
+      s.classList.add('active');
+    } else {
+      if(s.classList.contains('active')){
+        const v = s.querySelector('video');
+        if(v) v.pause();
+      }
+      s.classList.remove('active');
+    }
+  });
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  container.dataset.current = index;
+}
+
+function vsNav(containerId, dir){
+  const container = document.getElementById(containerId);
+  const slides = container.querySelectorAll('.vs-slide');
+  const current = parseInt(container.dataset.current || '0', 10);
+  const next = ((current + dir) % slides.length + slides.length) % slides.length;
+  vsGo(containerId, next);
+}
+
+function vsInitAutoplay(containerId, intervalMs){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  const state = { hover: false, videoPlaying: false, timer: null };
+  vsState[containerId] = state;
+
+  function tick(){
+    if(!state.hover && !state.videoPlaying){
+      vsNav(containerId, 1);
+    }
+  }
+  state.timer = setInterval(tick, intervalMs);
+
+  container.addEventListener('mouseenter', () => { state.hover = true; });
+  container.addEventListener('mouseleave', () => { state.hover = false; });
+  container.addEventListener('focusin', () => { state.hover = true; });
+  container.addEventListener('focusout', () => { state.hover = false; });
+  container.addEventListener('touchstart', () => { state.hover = true; }, {passive:true});
+
+  container.querySelectorAll('video').forEach(v => {
+    v.addEventListener('play', () => { state.videoPlaying = true; });
+    v.addEventListener('pause', () => { state.videoPlaying = false; });
+    v.addEventListener('ended', () => { state.videoPlaying = false; });
+  });
+}
+
+/* ===== EPAM "Las piezas" — mirrored layout: copy left, gallery right ===== */
+function renderPieceDetail(key){
+  const d = DETAILS[key];
+  if(!d) return;
+  const panel = document.getElementById('epam-piece-detail');
+  galleryState[key] = galleryState[key] || 0;
+  const idx = galleryState[key];
+
+  let html = `
+    <div class="piece-copy">
+      <div class="vs-tag" style="color:var(--epam-accent);">${d.label}</div>
+      <div class="vs-headline">${d.quote}</div>
+      <div class="vs-text"><b>Racional:</b> ${d.rationale}</div>
+      ${d.linkedin ? `<a href="${d.linkedin}" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>` : ''}
+    </div>
+    <div class="piece-gallery-wrap">
+      <div class="mini-gallery">
+        <button onclick="pieceShift('${key}', -1)" aria-label="Anterior">‹</button>
+        <img src="${d.gallery[idx]}" alt="${d.label}">
+        <button onclick="pieceShift('${key}', 1)" aria-label="Siguiente">›</button>
+      </div>
+      <div class="gallery-count">${idx + 1} / ${d.gallery.length}</div>
+    </div>
+  `;
+  panel.innerHTML = html;
+}
+
+function pieceShift(key, dir){
+  const len = DETAILS[key].gallery.length;
+  galleryState[key] = ((galleryState[key] + dir) % len + len) % len;
+  renderPieceDetail(key);
+}
+
+/* ===== Toyota submarcas — image/video LEFT, copy RIGHT. Each piece can carry its own copete + link, and auto-advances unless hovered/playing ===== */
+function renderToyotaDetail(panelId, key){
+  const d = DETAILS[key];
+  if(!d) return;
+  const panel = document.getElementById(panelId);
+  let mediaHtml;
+
+  if(d.pieces && d.pieces.length > 0){
+    galleryState[key] = galleryState[key] || 0;
+    const idx = galleryState[key];
+    const piece = d.pieces[idx];
+    const hasMultiple = d.pieces.length > 1;
+
+    const mediaTag = piece.type === 'video'
+      ? `<video controls preload="metadata"><source src="${piece.src}" type="video/mp4"></video>`
+      : `<img src="${piece.src}" alt="${d.label}">`;
+
+    mediaHtml = `<div class="toy-media">
+      <div class="mini-gallery" style="${hasMultiple ? '' : 'display:block;'}">
+        ${hasMultiple ? `<button onclick="toyotaShift('${key}', -1)" aria-label="Anterior">‹</button>` : ''}
+        <div class="toy-frame">${mediaTag}</div>
+        ${hasMultiple ? `<button onclick="toyotaShift('${key}', 1)" aria-label="Siguiente">›</button>` : ''}
+      </div>
+      ${hasMultiple ? `<div class="gallery-count" style="text-align:center;">${idx+1} / ${d.pieces.length}</div>` : ''}
+      ${piece.caption ? `<div class="toy-copete">${piece.caption.replace(/\n/g,'<br>')}</div>` : ''}
+      ${piece.link ? `<a href="${piece.link}" target="_blank" rel="noopener" class="see-post" style="border-color:var(--toyota-accent); color:var(--toyota-accent); margin-top:10px;">Ver publicación ↗</a>` : ''}
+    </div>`;
+  } else {
+    mediaHtml = `<div class="toy-placeholder">
+      <div class="icon">🖼️ 🎬</div>
+      <div class="txt">Imágenes y videos de esta submarca — próximamente</div>
+    </div>`;
+  }
+
+  const copyHtml = `<div class="vs-copy">
+    <div class="vs-tag" style="color:var(--toyota-accent);">${d.label}</div>
+    <div class="vs-headline">${d.quote}</div>
+    <div class="vs-text">${d.rationale}</div>
+    ${d.work ? `<div style="font-size:12px; opacity:0.7; margin-top:6px;">${d.work}</div>` : ''}
+  </div>`;
+
+  panel.innerHTML = mediaHtml + copyHtml;
+}
+
+function toyotaShift(key, dir){
+  const len = DETAILS[key].pieces.length;
+  galleryState[key] = ((galleryState[key] + dir) % len + len) % len;
+  renderToyotaDetail('toyota-detail', key);
+}
+
+/* Auto-advance the active submarca's pieces unless hovering or a video is playing */
+function initToyotaAutoplay(intervalMs){
+  const panel = document.getElementById('toyota-detail');
+  if(!panel) return;
+  const state = { hover: false };
+  panel.addEventListener('mouseenter', () => { state.hover = true; });
+  panel.addEventListener('mouseleave', () => { state.hover = false; });
+  panel.addEventListener('focusin', () => { state.hover = true; });
+  panel.addEventListener('focusout', () => { state.hover = false; });
+  panel.addEventListener('touchstart', () => { state.hover = true; }, {passive:true});
+
+  setInterval(() => {
+    const activeBtn = document.querySelector('#toyota-pills .pill.active');
+    if(!activeBtn) return;
+    const key = activeBtn.dataset.target;
+    const d = DETAILS[key];
+    if(!d || !d.pieces || d.pieces.length <= 1) return;
+    if(state.hover) return;
+    const video = panel.querySelector('video');
+    if(video && !video.paused) return;
+    toyotaShift(key, 1);
+  }, intervalMs);
+}
+
+renderPieceDetail('epam-migracion');
+renderToyotaDetail('toyota-detail', 'toyota-argentina');
+initToyotaAutoplay(5000);
+renderDetail('elearn-detail', 'elearn-veritran');
+renderDetail('press-detail', 'press-indiehoy');
+
+document.querySelectorAll('#epam-piece-selector .piece-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#epam-piece-selector .piece-btn').forEach(b => {
+      b.classList.remove('active');
+      b.style.background = '';
+      b.style.color = '';
+      b.style.borderColor = '';
+    });
+    btn.classList.add('active');
+    btn.style.background = 'var(--epam-accent)';
+    btn.style.color = 'var(--epam-bg)';
+    btn.style.borderColor = 'var(--epam-accent)';
+    renderPieceDetail(btn.dataset.key);
+  });
+});
+
+function wirePills(containerId, panelId, activeBg, activeColor, renderFn){
+  renderFn = renderFn || renderDetail;
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  container.querySelectorAll('.pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      container.querySelectorAll('.pill').forEach(b => { b.classList.remove('active'); b.style.background = ''; b.style.color = ''; });
+      btn.classList.add('active');
+      btn.style.background = activeBg;
+      btn.style.color = activeColor;
+      renderFn(panelId, btn.dataset.target);
+    });
+  });
+}
+wirePills('toyota-pills', 'toyota-detail', 'var(--toyota-accent)', 'var(--toyota-bg)', renderToyotaDetail);
+wirePills('elearn-pills', 'elearn-detail', 'var(--elearn-accent)', 'var(--elearn-bg)');
+wirePills('press-pills', 'press-detail', 'var(--press-accent)', 'var(--press-bg)');
+
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); } }); }, {threshold: 0.12});
+revealEls.forEach(el => io.observe(el));
+
+const navLinks = document.querySelectorAll('#navdots a');
+const sections = document.querySelectorAll('section[id]');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const id = entry.target.getAttribute('id');
+    const link = document.querySelector(`#navdots a[href="#${id}"]`);
+    if(!link) return;
+    if(entry.isIntersecting){ navLinks.forEach(l => l.classList.remove('active')); link.classList.add('active'); }
+  });
+}, {threshold: 0.5});
+sections.forEach(s => navObserver.observe(s));
+
+vsInitAutoplay('epam-vs', 6000);
+
+/* ===== EPAM hero robot: terminal typing synced with arm animation ===== */
+(function(){
+  const lines = [
+    "> reimaginando_campaña.js",
+    "> cargando: narración divertida",
+    "> render(videojuegos_estética)",
+    "> status: pulso humano ✓"
+  ];
+  let lineIndex = 0, charIndex = 0;
+  const termEl = document.getElementById('epam-term-lines');
+  const armLeft = document.getElementById('epam-arm-left');
+  const armRight = document.getElementById('epam-arm-right');
+  if(!termEl || !armLeft || !armRight) return;
+
+  function setTyping(active){
+    const speed = active ? '0.3s' : '1.4s';
+    armLeft.style.animationDuration = speed;
+    armRight.style.animationDuration = speed;
+  }
+
+  function typeStep(){
+    if(lineIndex < lines.length){
+      setTyping(true);
+      let html = lines.slice(0, lineIndex).map(l => `<div>${l}</div>`).join('');
+      html += lines[lineIndex].slice(0, charIndex);
+      termEl.innerHTML = html;
+      if(charIndex < lines[lineIndex].length){
+        charIndex++;
+        setTimeout(typeStep, 45);
+      } else {
+        lineIndex++;
+        charIndex = 0;
+        setTyping(false);
+        setTimeout(typeStep, 450);
+      }
+    } else {
+      setTyping(false);
+      setTimeout(() => { termEl.innerHTML = ''; lineIndex = 0; charIndex = 0; typeStep(); }, 1800);
+    }
+  }
+  typeStep();
+})();
+</script>
+
+</body>
+</html>
