@@ -214,6 +214,14 @@ a{ color: inherit; text-decoration: none; }
 
 .toy-hint{ display:flex; flex-wrap:wrap; gap: 6px 18px; font-size:12px; opacity:0.75; margin: 0.75rem 0 1rem; font-style: italic; }
 
+/* Toyota Argentina — featured video piece, between bajada and tabs */
+.toy-featured{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap:24px; align-items:center; background:rgba(0,0,0,0.18); border-radius: var(--radius-md); padding:1.25rem; margin: 1.5rem 0; }
+.toy-featured-media{ aspect-ratio: 3/4; max-height: clamp(260px, 40vh, 380px); background:#000; border-radius: var(--radius-md); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.toy-featured-media video{ width:100%; height:100%; object-fit:contain; display:block; }
+@media (max-width:700px){
+  .toy-featured{ grid-template-columns: 1fr; }
+}
+
 /* Nodus neuron network animation */
 .nodus-hero-grid{ display:grid; grid-template-columns: 1.1fr 1fr; gap:28px; align-items:center; margin-bottom: 1.5rem; }
 .nodus-neuron-wrap{ display:flex; justify-content:center; }
@@ -486,6 +494,20 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
     El resultado fue explorar puntos medios de aspirar a piezas más creativas sin dejar de lado el espíritu de la marca.
     Elegí una submarca para ver el detalle:
   </p>
+
+  <div class="toy-featured">
+    <div class="toy-featured-media">
+      <video controls preload="metadata">
+        <source src="media/toyota-yaris-cross.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="toy-featured-copy">
+      <div class="vs-tag" style="color:var(--toyota-accent);">PIEZA DESTACADA</div>
+      <div class="vs-headline">"La espera terminó."</div>
+      <div class="vs-text">Te presentamos el nuevo Yaris Cross. Un SUV donde conviven todas tus versiones. Bienvenido a tu primer Toyota híbrido.</div>
+      <a href="https://www.instagram.com/p/DVHju0VEoam/" target="_blank" rel="noopener" class="see-post" style="border-color:var(--toyota-accent); color:var(--toyota-accent);">Ver publicación ↗</a>
+    </div>
+  </div>
 
   <div class="toyota-car-strip" aria-hidden="true">
     <div class="toyota-car">
