@@ -170,8 +170,12 @@ a{ color: inherit; text-decoration: none; }
 /* Toyota submarca detail: image LEFT, copy RIGHT (mirrors the video slideshow layout) */
 .toy-detail{ display:grid; grid-template-columns: 1.1fr 1fr; gap:24px; align-items:center; margin-top: 1.5rem; }
 .toy-frame{ width:100%; aspect-ratio: 3 / 4; max-height: clamp(280px, 42vh, 420px); background: rgba(0,0,0,0.28); border-radius: var(--radius-md); overflow:hidden; display:flex; align-items:center; justify-content:center; flex:1 1 auto; }
+.toy-frame-landscape{ aspect-ratio: 16 / 9; max-height: clamp(200px, 38vh, 420px); }
+.toy-detail.toy-stacked{ grid-template-columns: 1fr; }
+.toy-detail.toy-stacked .toy-media{ max-width: 640px; margin: 0 auto; width:100%; }
 .toy-frame img, .toy-frame video{ width:100%; max-width:100%; height:100%; object-fit:contain; display:block; }
 .toy-copete{ font-size:13px; line-height:1.6; opacity:0.9; margin-top:12px; }
+.copyout-label{ font-size:10px; letter-spacing:1.5px; font-weight:700; opacity:0.6; margin-bottom:4px; text-transform:uppercase; }
 .toy-placeholder{ border:2px dashed rgba(255,255,255,0.3); border-radius: var(--radius-md); min-height: 240px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; text-align:center; padding:1.5rem; opacity:0.7; }
 .toy-placeholder .icon{ font-size:28px; }
 .toy-placeholder .txt{ font-size:12px; max-width:220px; }
@@ -405,6 +409,7 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
         <div class="vs-copy">
           <div class="vs-tag" style="color:var(--epam-accent);">VOZ EXPERTA</div>
           <div class="vs-headline">EL 55% DE LOS TRABAJADORES SE RESISTE A USAR IA EN SUS TRABAJOS</div>
+          <div class="copyout-label">Copy out</div>
           <div class="vs-text">Uno de nuestros principales expertos en el tema, Alder López, nos explica el por qué detrás de ese dato.</div>
           <a href="https://www.linkedin.com/posts/epamneoris_usa-la-inteligencia-artificial-con-inteligencia-activity-7475544191733776384-ubkI?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>
         </div>
@@ -419,6 +424,7 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
         <div class="vs-copy">
           <div class="vs-tag" style="color:var(--epam-accent);">CAMPAÑA · TESTING</div>
           <div class="vs-headline">🚒🔥 NO ERES BOMBERO. 👾🖥️ ERES DESARROLLADOR.</div>
+          <div class="copyout-label">Copy out</div>
           <div class="vs-text">Resuelve los problemas de tu organización de raíz. Un proceso ágil de Testing puede reducir hasta el 80% de bugs en producción, lo que se traduce en tiempo y dinero ganado para tu organización.</div>
           <a href="https://www.linkedin.com/posts/epamneoris_testing-activity-7460002115441123329-azPy?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>
         </div>
@@ -433,6 +439,7 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
         <div class="vs-copy">
           <div class="vs-tag" style="color:var(--epam-accent);">COBERTURA EN VIVO</div>
           <div class="vs-headline">¡Arrancó Febraban Tech 2026!</div>
+          <div class="copyout-label">Copy out</div>
           <div class="vs-text">Desde São Paulo, Nicolás Carmona nos cuenta los 3 datos clave de la convención fintech más importante de Brasil. Nuestro stand es el A65 — si estás ahí, vení a saludar.</div>
           <a href="https://www.linkedin.com/posts/epamneoris_arranc%C3%B3-febraban-tech-2026-desde-s%C3%A3o-activity-7498016480752533506-VBfl?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>
         </div>
@@ -447,6 +454,7 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
         <div class="vs-copy">
           <div class="vs-tag" style="color:var(--epam-accent);">CASO DE ÉXITO · CEMENTERAS</div>
           <div class="vs-headline">Una IA pensada exclusivamente para las cementeras</div>
+          <div class="copyout-label">Copy out</div>
           <div class="vs-text">Todo lo que necesitás monitorear, lo vigila Computer Vision. Ganá seguridad, autonomía y trazabilidad con nuestro software.</div>
           <a href="https://www.linkedin.com/posts/epamneoris_sabes-todo-lo-que-hace-computer-vision-activity-7485349112045948932--F11?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>
         </div>
@@ -504,6 +512,7 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
     <div class="toy-featured-copy">
       <div class="vs-tag" style="color:var(--toyota-accent);">PIEZA DESTACADA</div>
       <div class="vs-headline">"La espera terminó."</div>
+      <div class="copyout-label">Copy out</div>
       <div class="vs-text">Te presentamos el nuevo Yaris Cross. Un SUV donde conviven todas tus versiones. Bienvenido a tu primer Toyota híbrido.</div>
       <a href="https://www.instagram.com/p/DVHju0VEoam/" target="_blank" rel="noopener" class="see-post" style="border-color:var(--toyota-accent); color:var(--toyota-accent);">Ver publicación ↗</a>
     </div>
@@ -910,6 +919,7 @@ const DETAILS = {
     rationale: "Gazoo Racing es la escudería de Toyota. Su contenido es deportivo, con una estética propia tanto visual como verbalmente. Siempre enfocados en comunicar acción, <b>adrenalina</b> y velocidad.",
     work: "",
     pieces: [
+      {type:"video", src:"media/toyota-gazoo-corolla.mp4", caption:"🤔¿Cuáles son las funciones que se encuentran en el volante del Corolla Cross GR-S de @supertc2000?\n\n🗣️Te lo cuenta @misil1misil 🚀", link:"https://www.instagram.com/p/DQzXUeggIx7/"},
       {type:"image", src:"https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2025/05/screenshot-2025-05-19-at-10.50.47e280afam.png", caption:"", link:""}
     ]
   },
@@ -918,7 +928,9 @@ const DETAILS = {
     quote: "\u201cEn Boutique siempre hay algo para vos\u201d",
     rationale: "Boutique es la tienda de merch de Toyota Argentina donde había desde camisetas hasta herramientas para el vehículo o termos eléctricos. El eslogan buscaba sintetizar que en esa variedad enorme, todos los fanáticos iban a encontrar algo que quisieran.",
     work: "",
-    pieces: []
+    pieces: [
+      {type:"video", src:"media/toyota-boutique.mp4", caption:"", link:"", orientation:"landscape"}
+    ]
   },
   "elearn-veritran": {
     label: "Veritran · Academy",
@@ -1099,12 +1111,14 @@ function renderToyotaDetail(panelId, key){
   if(!d) return;
   const panel = document.getElementById(panelId);
   let mediaHtml;
+  let isLandscape = false;
 
   if(d.pieces && d.pieces.length > 0){
     galleryState[key] = galleryState[key] || 0;
     const idx = galleryState[key];
     const piece = d.pieces[idx];
     const hasMultiple = d.pieces.length > 1;
+    isLandscape = piece.orientation === 'landscape';
 
     const mediaTag = piece.type === 'video'
       ? `<video controls preload="metadata"><source src="${piece.src}" type="video/mp4"></video>`
@@ -1113,11 +1127,11 @@ function renderToyotaDetail(panelId, key){
     mediaHtml = `<div class="toy-media">
       <div class="mini-gallery" style="${hasMultiple ? '' : 'display:block;'}">
         ${hasMultiple ? `<button onclick="toyotaShift('${key}', -1)" aria-label="Anterior">‹</button>` : ''}
-        <div class="toy-frame">${mediaTag}</div>
+        <div class="toy-frame${isLandscape ? ' toy-frame-landscape' : ''}">${mediaTag}</div>
         ${hasMultiple ? `<button onclick="toyotaShift('${key}', 1)" aria-label="Siguiente">›</button>` : ''}
       </div>
       ${hasMultiple ? `<div class="gallery-count" style="text-align:center;">${idx+1} / ${d.pieces.length}</div>` : ''}
-      ${piece.caption ? `<div class="toy-copete">${piece.caption.replace(/\n/g,'<br>')}</div>` : ''}
+      ${piece.caption ? `<div class="copyout-label">Copy out</div><div class="toy-copete">${piece.caption.replace(/\n/g,'<br>')}</div>` : ''}
       ${piece.link ? `<a href="${piece.link}" target="_blank" rel="noopener" class="see-post" style="border-color:var(--toyota-accent); color:var(--toyota-accent); margin-top:10px;">Ver publicación ↗</a>` : ''}
     </div>`;
   } else {
@@ -1126,6 +1140,8 @@ function renderToyotaDetail(panelId, key){
       <div class="txt">Imágenes y videos de esta submarca — próximamente</div>
     </div>`;
   }
+
+  panel.classList.toggle('toy-stacked', isLandscape);
 
   const copyHtml = `<div class="vs-copy">
     <div class="vs-tag" style="color:var(--toyota-accent);">${d.label}</div>
