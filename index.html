@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sebastián Mastruzzo — Redactor ❋ Contenidista</title>
-<meta name="description" content="Portfolio de Sebastián Mastruzzo. Redactor y contenidista: EPAM Neoris, Toyota Argentina, Nodus, Mercado Ads, Ford & Lincoln y más.">
+<title>Sebastián Mastruzzo — Redactor ❋ Creativo</title>
+<meta name="description" content="Portfolio de Sebastián Mastruzzo. Redactor y creativo: EPAM Neoris, Toyota Argentina, Nodus, Mercado Ads, Ford & Lincoln y más.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,6 +15,12 @@
 
   --hero-bg: #FAEEDA;
   --hero-ink: #412402;
+
+  /* Banner principal (paleta propia; Contacto sigue usando --hero-*) */
+  --banner-bg: #FF4D2D;
+  --banner-ink: #14090A;
+  --banner-cream: #FFF4E0;
+  --banner-lime: #CFFF00;
 
   --epam-bg: #0033FF;
   --epam-accent: #CFFF00;
@@ -124,8 +130,22 @@ a{ color: inherit; text-decoration: none; }
   .vs-slide.active{ grid-template-columns: 1fr; }
   .vs-track{ min-height: unset; }
 }
-.see-post:hover{ background: currentColor; }
-.see-post:hover{ filter: brightness(1); }
+.see-post:hover{ background: rgba(128,128,128,0.3); }
+
+/* YouTube embeds grid */
+.yt-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:16px; }
+.yt-item .video-frame{ margin-bottom: 0.5rem; }
+
+/* Mercado Ads auto-playing gallery */
+.mads-gallery{ margin: 1.5rem 0 2rem; }
+.mads-gallery .mini-gallery{ max-width: 900px; margin: 0 auto; }
+.mads-gallery .mini-gallery button{ background: rgba(0,0,0,0.12); }
+.mads-gallery .mini-gallery button:hover{ background: rgba(0,0,0,0.24); }
+.mads-gallery-frame{ flex:1 1 auto; width:100%; height: clamp(260px, 46vh, 460px); background: rgba(0,0,0,0.07); border-radius: var(--radius-md); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.mads-gallery .mads-gallery-frame img{ width:100%; max-width:100%; height:100%; object-fit:contain; display:block; border-radius:0; animation: madsGalFade .5s ease; }
+.cta-btn{ display:inline-block; padding:12px 26px; border-radius:999px; font-weight:700; font-size:14px; background:var(--mads-ink); color:var(--mads-bg); transition: transform .15s ease; }
+.cta-btn:hover{ transform: translateY(-2px); }
+@keyframes madsGalFade{ from{ opacity:0; } to{ opacity:1; } }
 
 /* Campaign carousel (slideshow) */
 .carousel{ display:flex; gap:14px; overflow-x:auto; padding-bottom:10px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
@@ -169,11 +189,12 @@ a{ color: inherit; text-decoration: none; }
 
 /* Toyota submarca detail: image LEFT, copy RIGHT (mirrors the video slideshow layout) */
 .toy-detail{ display:grid; grid-template-columns: 1.1fr 1fr; gap:24px; align-items:center; margin-top: 1.5rem; }
-.toy-frame{ width:100%; aspect-ratio: 3 / 4; max-height: clamp(280px, 42vh, 420px); background: rgba(0,0,0,0.28); border-radius: var(--radius-md); overflow:hidden; display:flex; align-items:center; justify-content:center; flex:1 1 auto; }
-.toy-frame-landscape{ aspect-ratio: 16 / 9; max-height: clamp(200px, 38vh, 420px); }
+.toy-frame{ width:100%; max-height: clamp(280px, 42vh, 420px); background: rgba(0,0,0,0.28); border-radius: var(--radius-md); overflow:hidden; display:flex; align-items:center; justify-content:center; flex:1 1 auto; }
+.toy-frame-landscape{ max-height: clamp(220px, 38vh, 380px); }
 .toy-detail.toy-stacked{ grid-template-columns: 1fr; }
 .toy-detail.toy-stacked .toy-media{ max-width: 640px; margin: 0 auto; width:100%; }
-.toy-frame img, .toy-frame video{ width:100%; max-width:100%; height:100%; object-fit:contain; display:block; }
+.toy-frame img, .toy-frame video{ width:auto; height:auto; max-width:100%; max-height: clamp(280px, 42vh, 420px); object-fit:contain; display:block; }
+.toy-frame-landscape img, .toy-frame-landscape video{ max-height: clamp(220px, 38vh, 380px); }
 .toy-copete{ font-size:13px; line-height:1.6; opacity:0.9; margin-top:12px; }
 .copyout-label{ font-size:10px; letter-spacing:1.5px; font-weight:700; opacity:0.6; margin-bottom:4px; text-transform:uppercase; }
 .toy-placeholder{ border:2px dashed rgba(255,255,255,0.3); border-radius: var(--radius-md); min-height: 240px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; text-align:center; padding:1.5rem; opacity:0.7; }
@@ -238,6 +259,12 @@ a{ color: inherit; text-decoration: none; }
   .nodus-neuron-wrap{ margin-top:1rem; }
 }
 
+/* Nodus full-width gallery (video + 2 images, single column) */
+.nodus-gallery{ margin: 1.5rem 0; }
+.nodus-gallery .mini-gallery{ max-width: 900px; margin: 0 auto; }
+.nodus-gallery-frame{ flex:1 1 auto; width:100%; max-height: clamp(260px, 50vh, 520px); background: rgba(0,0,0,0.25); border-radius: var(--radius-md); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.nodus-gallery-frame img, .nodus-gallery-frame video{ width:auto; height:auto; max-width:100%; max-height: clamp(260px, 50vh, 520px); object-fit:contain; display:block; }
+
 /* Mercado Ads TV playing ads on loop */
 .mads-hero-grid{ display:grid; grid-template-columns: 1.15fr 1fr; gap:28px; align-items:center; margin-bottom: 1.5rem; }
 .mads-tv-wrap{ display:flex; flex-direction:column; align-items:center; }
@@ -283,6 +310,53 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
 .made-with{ text-align: center; font-size: 11px; padding: 1.5rem; opacity: 0.5; }
 
+
+/* ===== HERO BANNER ===== */
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.hero-banner{ background:var(--banner-bg); color:var(--banner-ink); min-height:100vh; display:flex; flex-direction:column; justify-content:center; }
+.hero-tag{ display:inline-block; background:var(--banner-ink); color:var(--banner-lime); padding:6px 16px; font-size:12px; font-weight:700; letter-spacing:1px; border-radius:4px; transform:rotate(-4deg); width:fit-content; margin-bottom:1.5rem; }
+.hero-name{ font-family:var(--font-display); font-weight:400; margin:0; line-height:0.86; letter-spacing:-1px; font-size:clamp(2.5rem, 10vw, 7rem); }
+.hero-line1{ color:var(--banner-cream); }
+.hero-line2{ display:inline-block; background:var(--banner-lime); color:var(--banner-ink); padding:4px 16px; transform:rotate(1deg); margin-top:10px; }
+.hero-name .ch{ display:inline-block; animation: chIn .7s cubic-bezier(.2,.9,.3,1.5) both, chWave 5s ease-in-out infinite; animation-delay: calc(var(--i) * 45ms), calc(2s + var(--i) * 80ms); transition: translate .2s ease; }
+.hero-name .ch:hover{ translate: 0 -0.12em; }
+@keyframes chIn{ from{ opacity:0; transform: translateY(.7em) rotate(10deg) scale(.7); } to{ opacity:1; transform:none; } }
+@keyframes chWave{ 0%,14%,100%{ transform: translateY(0) rotate(0deg); } 5%{ transform: translateY(-.16em) rotate(-5deg); } 10%{ transform: translateY(.03em) rotate(2deg); } }
+
+/* Perinola: prisma 3D que gira mostrando una palabra por cara */
+.hero-spin{ margin-top:1.75rem; }
+.perinola{ display:inline-block; perspective:700px; overflow:hidden; background:var(--banner-ink); border-radius:16px; padding:0.18em 0.6em; font-family:var(--font-display); font-size:clamp(1.4rem, 4.6vw, 2.8rem); line-height:1.25; transform:rotate(-1.5deg); }
+.perinola-prism{ display:grid; transform-style:preserve-3d; will-change:transform; animation: perinolaSpin 8s cubic-bezier(.5,-0.3,.3,1.35) infinite; }
+.pface{ grid-area:1 / 1; text-align:center; white-space:nowrap; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+.pface.f1{ transform: rotateX(0deg)   translateZ(0.625em); color:#CFFF00; }
+.pface.f2{ transform: rotateX(-90deg) translateZ(0.625em); color:#FFB84D; }
+.pface.f3{ transform: rotateX(180deg) translateZ(0.625em); color:#7DF9E0; }
+.pface.f4{ transform: rotateX(90deg)  translateZ(0.625em); color:#FF9AD5; }
+@keyframes perinolaSpin{
+  0%,20%  { transform: translateZ(-0.625em) rotateX(0deg); }
+  25%,45% { transform: translateZ(-0.625em) rotateX(90deg); }
+  50%,70% { transform: translateZ(-0.625em) rotateX(180deg); }
+  75%,95% { transform: translateZ(-0.625em) rotateX(270deg); }
+  100%    { transform: translateZ(-0.625em) rotateX(360deg); }
+}
+
+.hero-brands{ margin:1.25rem 0 0; font-weight:700; font-size:clamp(.9rem, 1.25vw, 1.1rem); line-height:1.9; color:var(--banner-ink); }
+.hero-brands .nb{ white-space:nowrap; }
+.hero-brands .nb:not(:last-child)::after{ content:"✺"; color:var(--banner-cream); margin:0 .55em 0 .55em; }
+.hero-cta{ margin-top:2.25rem; display:flex; gap:12px; flex-wrap:wrap; }
+.hero-btn{ padding:12px 26px; border-radius:999px; font-weight:700; font-size:14px; transition: transform .15s ease; }
+.hero-btn:hover{ transform: translateY(-2px); }
+.hero-btn-solid{ background:var(--banner-ink); color:var(--banner-cream); }
+.hero-btn-outline{ border:2px solid var(--banner-ink); padding:10px 24px; }
+
+@media (prefers-reduced-motion: reduce){
+  .hero-name .ch{ animation:none; opacity:1; }
+  .perinola{ overflow:visible; transform:none; background:none; padding:0; perspective:none; }
+  .perinola-prism{ display:block; animation:none; transform:none; }
+  .pface{ display:inline; transform:none !important; backface-visibility:visible; color:var(--banner-ink) !important; }
+  .pface + .pface::before{ content:" · "; }
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px){
   .navdots{ display: none; }
@@ -312,22 +386,44 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 </nav>
 
 <!-- ============ HERO ============ -->
-<section id="hero" class="section reveal" style="background:var(--hero-bg); color:var(--hero-ink); min-height: 100vh; display:flex; flex-direction:column; justify-content:center;">
-  <div style="display:inline-block; background:#E24B4A; color:#fff; padding:5px 14px; font-size:12px; border-radius:4px; transform:rotate(-4deg); width:fit-content; margin-bottom: 1.5rem;">redactor ✺ contenidista</div>
-  <h1 class="section-title" style="font-size: clamp(2.5rem, 10vw, 7rem);">
-    SEBASTIÁN<br>
-    <span style="display:inline-block; background:#378ADD; color:#fff; padding: 4px 16px; transform: rotate(1deg); margin-top:10px;">MASTRUZZO</span>
+<section id="hero" class="section reveal hero-banner">
+  <div class="hero-tag">redactor ✺ creativo</div>
+
+  <h1 class="hero-name" aria-label="Sebastián Mastruzzo">
+    <span class="hero-line1 split" aria-hidden="true" data-offset="0">SEBASTIÁN</span><br>
+    <span class="hero-line2" aria-hidden="true"><span class="split" data-offset="9">MASTRUZZO</span></span>
   </h1>
-  <p style="font-size: clamp(0.95rem, 2vw, 1.2rem); margin-top:1.75rem; max-width: 600px;">
-    Guiones para Google · Toyota Argentina · Nodus · Mercado Ads · Ford & Lincoln · EPAM Neoris ↯
+
+  <div class="hero-spin">
+    <span class="sr-only">Guiones, creatividad, redes sociales, publicidad</span>
+    <span class="perinola" aria-hidden="true">
+      <span class="perinola-prism">
+        <span class="pface f1">Guiones</span>
+        <span class="pface f2">Creatividad</span>
+        <span class="pface f3">Redes sociales</span>
+        <span class="pface f4">Publicidad</span>
+      </span>
+    </span>
+  </div>
+
+  <p class="hero-brands">
+    <span class="nb">Google</span>
+    <span class="nb">Toyota Argentina</span>
+    <span class="nb">Ford USA</span>
+    <span class="nb">EPAM NEORIS</span>
+    <span class="nb">Philip Morris</span>
+    <span class="nb">Pizza Hut</span>
+    <span class="nb">MercadoLibre</span>
+    <span class="nb">MercadoAds</span>
   </p>
-  <div style="margin-top: 2.5rem; display:flex; gap:12px; flex-wrap:wrap;">
-    <a href="#epam" style="background:var(--hero-ink); color:var(--hero-bg); padding:12px 26px; border-radius:999px; font-weight:700; font-size:14px;">Ver los trabajos ↓</a>
-    <a href="#contact" style="border:2px solid var(--hero-ink); padding:10px 24px; border-radius:999px; font-weight:700; font-size:14px;">Contacto</a>
+
+  <div class="hero-cta">
+    <a href="#epam" class="hero-btn hero-btn-solid">Ver los trabajos ↓</a>
+    <a href="#contact" class="hero-btn hero-btn-outline">Contacto</a>
   </div>
 </section>
 
-<div class="transition-strip" style="background:linear-gradient(180deg, var(--hero-bg), var(--epam-bg));"></div>
+<div class="transition-strip" style="background:linear-gradient(180deg, var(--banner-bg), var(--epam-bg));"></div>
 
 <!-- ============ EPAM ============ -->
 <section id="epam" class="section reveal" style="background:var(--epam-bg); color:#fff;">
@@ -402,7 +498,7 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
       <div class="vs-slide active">
         <div class="vs-media">
-          <video controls preload="metadata">
+          <video controls autoplay muted playsinline preload="metadata">
             <source src="media/alder-lopez.mp4" type="video/mp4">
           </video>
         </div>
@@ -417,7 +513,7 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
       <div class="vs-slide">
         <div class="vs-media">
-          <video controls preload="metadata">
+          <video controls autoplay muted playsinline preload="metadata">
             <source src="media/campana-testing.mp4" type="video/mp4">
           </video>
         </div>
@@ -432,7 +528,7 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
       <div class="vs-slide">
         <div class="vs-media">
-          <video controls preload="metadata">
+          <video controls autoplay muted playsinline preload="metadata">
             <source src="media/nico-febraban.mp4" type="video/mp4">
           </video>
         </div>
@@ -447,7 +543,7 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
       <div class="vs-slide">
         <div class="vs-media">
-          <video controls preload="metadata">
+          <video controls autoplay muted playsinline preload="metadata">
             <source src="media/cementeras.mp4" type="video/mp4">
           </video>
         </div>
@@ -505,7 +601,7 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
   <div class="toy-featured">
     <div class="toy-featured-media">
-      <video controls preload="metadata">
+      <video controls autoplay muted playsinline preload="metadata">
         <source src="media/toyota-yaris-cross.mp4" type="video/mp4">
       </video>
     </div>
@@ -634,8 +730,15 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
     </div>
   </div>
 
-  <div class="eyebrow" style="color:#8FCBAE; font-size:12px;">Pieza real</div>
-  <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-21-235401.png?w=1024" alt="Pieza Nodus" style="border-radius:6px; transform:rotate(-1deg); margin-bottom:1.5rem;">
+  <div class="eyebrow" style="color:#8FCBAE; font-size:12px;">Piezas reales ✺ tocá las flechas para ver más</div>
+  <div class="nodus-gallery">
+    <div class="mini-gallery">
+      <button onclick="nodusShift(-1)" aria-label="Anterior">‹</button>
+      <div class="nodus-gallery-frame" id="nodus-gallery-frame"></div>
+      <button onclick="nodusShift(1)" aria-label="Siguiente">›</button>
+    </div>
+    <div class="gallery-count" id="nodus-gallery-count" style="text-align:center;"></div>
+  </div>
 
   <div class="detail-panel" style="background:rgba(0,0,0,0.25); color:var(--nodus-accent);">
     <div class="label">Detalle ampliado · rebranding</div>
@@ -685,22 +788,33 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
     </div>
   </div>
 
-  <div class="eyebrow" style="color:#6B5A00; font-size:12px;">Galería ✺ piezas reales</div>
-  <div class="bento" style="--cols:3;">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/3-open-graph-logo.png?w=1024" alt="Mercado Ads" style="grid-row: span 2;">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-114910-2.png?w=762" alt="Mercado Ads">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-115324.png?w=789" alt="Mercado Ads">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-115353.png?w=787" alt="Mercado Ads">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-120139.png?w=1024" alt="Mercado Ads">
+  <div class="eyebrow" style="color:#6B5A00; font-size:12px;">Galería ✺ se reproduce sola · pasá el mouse para pausar</div>
+  <div class="mads-gallery" id="mads-gallery">
+    <div class="mini-gallery">
+      <button onclick="madsShift(-1)" aria-label="Anterior">‹</button>
+      <div class="mads-gallery-frame" id="mads-gallery-frame"></div>
+      <button onclick="madsShift(1)" aria-label="Siguiente">›</button>
+    </div>
+    <div class="gallery-count" id="mads-gallery-count" style="text-align:center;"></div>
   </div>
 
-  <div class="eyebrow" style="color:#6B5A00; font-size:12px;">Los videos ✺</div>
-  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:14px;">
-    <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/PwNoGj0i5Zs" title="Mercado Ads e-learning video 1" allowfullscreen loading="lazy"></iframe>
+  <div style="text-align:center; margin: -0.5rem 0 2rem;">
+    <a href="https://academy.mercadoads.com/student/catalog" target="_blank" rel="noopener" class="cta-btn">Ir a la Academy de Mercado Ads ↗</a>
+  </div>
+
+  <div class="eyebrow" style="color:#6B5A00; font-size:12px;">Los videos ✺ arrancan en silencio</div>
+  <div class="yt-grid">
+    <div class="yt-item">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/PwNoGj0i5Zs?autoplay=1&mute=1&playsinline=1&rel=0" title="Mercado Ads · video de e-learning 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a href="https://www.youtube.com/watch?v=PwNoGj0i5Zs" target="_blank" rel="noopener" class="see-post" style="border-color:var(--mads-ink); color:var(--mads-ink);">Ver en YouTube ↗</a>
     </div>
-    <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/6rU9N-A2PnA" title="Mercado Ads e-learning video 2" allowfullscreen loading="lazy"></iframe>
+    <div class="yt-item">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/mc1l_mbz_B4?autoplay=1&mute=1&playsinline=1&rel=0" title="Mercado Ads · video de e-learning 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a href="https://www.youtube.com/watch?v=mc1l_mbz_B4" target="_blank" rel="noopener" class="see-post" style="border-color:var(--mads-ink); color:var(--mads-ink);">Ver en YouTube ↗</a>
     </div>
   </div>
 
@@ -726,12 +840,18 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
   <div class="chip" style="background:var(--google-accent); color:var(--google-bg);">GUIONES AUDIOVISUALES</div>
   <p class="bajada" style="color:#FFE3F0;">Redacción de guiones para la filmación de anuncios de congreso comercial.</p>
 
-  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:16px; margin-top:1.5rem;">
-    <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/VY5BjLkILMw" title="De espectadores a compradores" allowfullscreen loading="lazy"></iframe>
+  <div class="yt-grid" style="margin-top:1.5rem;">
+    <div class="yt-item">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/VY5BjLkILMw?autoplay=1&mute=1&playsinline=1&rel=0" title="De espectadores a compradores" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a href="https://www.youtube.com/watch?v=VY5BjLkILMw" target="_blank" rel="noopener" class="see-post" style="border-color:#fff; color:#fff;">Ver en YouTube ↗</a>
     </div>
-    <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/996mG_ToGRk" title="Consumidor Omnicanal" allowfullscreen loading="lazy"></iframe>
+    <div class="yt-item">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/996mG_ToGRk?autoplay=1&mute=1&playsinline=1&rel=0" title="Consumidor Omnicanal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <a href="https://www.youtube.com/watch?v=996mG_ToGRk" target="_blank" rel="noopener" class="see-post" style="border-color:#fff; color:#fff;">Ver en YouTube ↗</a>
     </div>
   </div>
 
@@ -1121,7 +1241,7 @@ function renderToyotaDetail(panelId, key){
     isLandscape = piece.orientation === 'landscape';
 
     const mediaTag = piece.type === 'video'
-      ? `<video controls preload="metadata"><source src="${piece.src}" type="video/mp4"></video>`
+      ? `<video controls autoplay muted playsinline preload="metadata"><source src="${piece.src}" type="video/mp4"></video>`
       : `<img src="${piece.src}" alt="${d.label}">`;
 
     mediaHtml = `<div class="toy-media">
@@ -1182,6 +1302,81 @@ function initToyotaAutoplay(intervalMs){
     toyotaShift(key, 1);
   }, intervalMs);
 }
+
+/* ===== Hero: nombre letra por letra (para la animación) ===== */
+(function splitHeroName(){
+  document.querySelectorAll('.hero-name .split').forEach(el => {
+    const text = el.textContent;
+    const offset = parseInt(el.dataset.offset || '0', 10);
+    el.textContent = '';
+    Array.from(text).forEach((c, i) => {
+      const s = document.createElement('span');
+      s.className = 'ch';
+      s.style.setProperty('--i', i + offset);
+      s.textContent = c === ' ' ? '\u00A0' : c;
+      el.appendChild(s);
+    });
+  });
+})();
+
+/* ===== Mercado Ads auto-playing gallery ===== */
+const MADS_IMAGES = [
+  'https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/3-open-graph-logo.png?w=1024',
+  'https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-114910-2.png?w=762',
+  'https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-115324.png?w=789',
+  'https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-115353.png?w=787',
+  'https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-22-120139.png?w=1024'
+];
+let madsIndex = 0;
+function renderMadsGallery(){
+  const frame = document.getElementById('mads-gallery-frame');
+  if(!frame) return;
+  frame.innerHTML = `<img src="${MADS_IMAGES[madsIndex]}" alt="Pieza Mercado Ads ${madsIndex + 1}">`;
+  const count = document.getElementById('mads-gallery-count');
+  if(count) count.textContent = `${madsIndex + 1} / ${MADS_IMAGES.length}`;
+}
+function madsShift(dir){
+  const n = MADS_IMAGES.length;
+  madsIndex = ((madsIndex + dir) % n + n) % n;
+  renderMadsGallery();
+}
+(function initMadsAutoplay(){
+  const box = document.getElementById('mads-gallery');
+  if(!box) return;
+  const state = { hover: false };
+  box.addEventListener('mouseenter', () => { state.hover = true; });
+  box.addEventListener('mouseleave', () => { state.hover = false; });
+  box.addEventListener('focusin', () => { state.hover = true; });
+  box.addEventListener('focusout', () => { state.hover = false; });
+  box.addEventListener('touchstart', () => { state.hover = true; }, {passive:true});
+  box.addEventListener('touchend', () => { setTimeout(() => { state.hover = false; }, 5000); }, {passive:true});
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion) return;
+  setInterval(() => { if(!state.hover) madsShift(1); }, 3500);
+})();
+renderMadsGallery();
+
+/* ===== Nodus full-width gallery ===== */
+const NODUS_PIECES = [
+  {type:'video', src:'media/nodus-intro.mp4'},
+  {type:'image', src:'https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2023-03-21-235401.png?w=1024'},
+  {type:'image', src:'media/nodus-website.jpg'}
+];
+let nodusIndex = 0;
+function renderNodusGallery(){
+  const piece = NODUS_PIECES[nodusIndex];
+  const frame = document.getElementById('nodus-gallery-frame');
+  if(!frame) return;
+  frame.innerHTML = piece.type === 'video'
+    ? `<video controls autoplay muted playsinline preload="metadata"><source src="${piece.src}" type="video/mp4"></video>`
+    : `<img src="${piece.src}" alt="Pieza Nodus">`;
+  document.getElementById('nodus-gallery-count').textContent = `${nodusIndex+1} / ${NODUS_PIECES.length}`;
+}
+function nodusShift(dir){
+  nodusIndex = ((nodusIndex + dir) % NODUS_PIECES.length + NODUS_PIECES.length) % NODUS_PIECES.length;
+  renderNodusGallery();
+}
+renderNodusGallery();
 
 renderPieceDetail('epam-migracion');
 renderToyotaDetail('toyota-detail', 'toyota-argentina');
