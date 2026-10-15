@@ -8,6 +8,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+/* Idioma inicial: ?lang= en la URL > elección guardada > idioma del navegador > español */
+(function(){
+  var lang = 'es';
+  try {
+    var q = new URLSearchParams(location.search).get('lang');
+    var saved = localStorage.getItem('lang');
+    var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+    if (q === 'en' || q === 'es') lang = q;
+    else if (saved === 'en' || saved === 'es') lang = saved;
+    else if (nav.indexOf('en') === 0) lang = 'en';
+  } catch(e){}
+  document.documentElement.lang = lang;
+})();
+</script>
 <style>
 :root{
   --font-display: 'Archivo Black', sans-serif;
@@ -357,6 +372,25 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
   .pface + .pface::before{ content:" · "; }
 }
 
+
+/* E-learning gallery (single column, fixed-height stage) */
+.elearn-gallery{ margin: 1.5rem 0 2rem; }
+.elearn-gallery .mini-gallery{ max-width: 900px; margin: 0 auto; }
+.elearn-gallery-frame{ flex:1 1 auto; width:100%; height: clamp(260px, 46vh, 460px); background: rgba(0,0,0,0.25); border-radius: var(--radius-md); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.elearn-gallery .elearn-gallery-frame img{ width:100%; max-width:100%; height:100%; object-fit:contain; display:block; border-radius:0; animation: madsGalFade .5s ease; }
+
+
+/* ===== IDIOMAS (ES / EN) ===== */
+.en{ display:none; }
+html[lang="en"] .es{ display:none; }
+html[lang="en"] .en{ display:inline; }
+.orig{ display:block; margin-top:.45em; font-size:.8em; font-weight:400; font-style:italic; letter-spacing:0; text-transform:none; line-height:1.4; opacity:.65; }
+.vs-headline .orig{ font-size:.55em; font-weight:400; }
+.lang-switch{ position:fixed; top:14px; right:14px; z-index:300; display:flex; background:rgba(20,9,10,.88); border-radius:999px; padding:3px; box-shadow:0 2px 10px rgba(0,0,0,.25); }
+.lang-switch button{ border:0; background:transparent; color:#FFF4E0; font:700 12px var(--font-body); letter-spacing:.5px; padding:6px 12px; border-radius:999px; cursor:pointer; transition:background .2s ease, color .2s ease; }
+.lang-switch button:hover{ background:rgba(255,255,255,.15); }
+.lang-switch button[aria-pressed="true"]{ background:#CFFF00; color:#14090A; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px){
   .navdots{ display: none; }
@@ -371,6 +405,12 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 </style>
 </head>
 <body>
+
+<div class="lang-switch" role="group" aria-label="Idioma / Language">
+  <button type="button" data-lang="es" aria-pressed="true" onclick="setLang('es')" title="Español">ES</button>
+  <button type="button" data-lang="en" aria-pressed="false" onclick="setLang('en')" title="English">EN</button>
+</div>
+
 
 <nav class="navdots" id="navdots" aria-label="Navegación de secciones">
   <a href="#hero" data-label="Inicio"></a>
@@ -387,7 +427,7 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
 <!-- ============ HERO ============ -->
 <section id="hero" class="section reveal hero-banner">
-  <div class="hero-tag">redactor ✺ creativo</div>
+  <div class="hero-tag"><span class="es">redactor ✺ creativo</span><span class="en">copywriter ✺ creative</span></div>
 
   <h1 class="hero-name" aria-label="Sebastián Mastruzzo">
     <span class="hero-line1 split" aria-hidden="true" data-offset="0">SEBASTIÁN</span><br>
@@ -395,13 +435,13 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
   </h1>
 
   <div class="hero-spin">
-    <span class="sr-only">Guiones, creatividad, redes sociales, publicidad</span>
+    <span class="sr-only"><span class="es">Guiones, creatividad, redes sociales, publicidad</span><span class="en">Scriptwriting, creativity, social media, advertising</span></span>
     <span class="perinola" aria-hidden="true">
       <span class="perinola-prism">
-        <span class="pface f1">Guiones</span>
-        <span class="pface f2">Creatividad</span>
-        <span class="pface f3">Redes sociales</span>
-        <span class="pface f4">Publicidad</span>
+        <span class="pface f1"><span class="es">Guiones</span><span class="en">Scriptwriting</span></span>
+        <span class="pface f2"><span class="es">Creatividad</span><span class="en">Creativity</span></span>
+        <span class="pface f3"><span class="es">Redes sociales</span><span class="en">Social media</span></span>
+        <span class="pface f4"><span class="es">Publicidad</span><span class="en">Advertising</span></span>
       </span>
     </span>
   </div>
@@ -418,8 +458,8 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
   </p>
 
   <div class="hero-cta">
-    <a href="#epam" class="hero-btn hero-btn-solid">Ver los trabajos ↓</a>
-    <a href="#contact" class="hero-btn hero-btn-outline">Contacto</a>
+    <a href="#epam" class="hero-btn hero-btn-solid"><span class="es">Ver los trabajos ↓</span><span class="en">See the work ↓</span></a>
+    <a href="#contact" class="hero-btn hero-btn-outline"><span class="es">Contacto</span><span class="en">Contact</span></a>
   </div>
 </section>
 
@@ -427,21 +467,21 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
 <!-- ============ EPAM ============ -->
 <section id="epam" class="section reveal" style="background:var(--epam-bg); color:#fff;">
-  <div class="eyebrow" style="color:var(--epam-accent);">Caso de marca ✺ 01</div>
+  <div class="eyebrow" style="color:var(--epam-accent);"><span class="es">Caso de marca ✺ 01</span><span class="en">Brand case ✺ 01</span></div>
 
   <div class="epam-hero-grid">
     <div>
       <h2 class="section-title" style="font-size: clamp(2rem, 6vw, 3rem); color:rgba(255,255,255,0.5);">epam</h2>
       <h2 class="section-title" style="font-size: clamp(3.2rem, 12vw, 7rem); margin-top:-6px;">NEORIS</h2>
-      <div class="chip" style="background:var(--epam-accent); color:var(--epam-bg);">CREATIVO SR.</div>
+      <div class="chip" style="background:var(--epam-accent); color:var(--epam-bg);"><span class="es">CREATIVO SR.</span><span class="en">SENIOR CREATIVE</span></div>
 
-      <p class="bajada" style="color:#E8ECFF; max-width:640px;">Me trajeron para transformar la comunicación corporativa clásica en algo con
+      <p class="bajada" style="color:#E8ECFF; max-width:640px;"><span class="es">Me trajeron para transformar la comunicación corporativa clásica en algo con
         <b style="color:var(--epam-accent);">pulso creativo y humano</b>. Mi desafío es encontrar formatos, narraciones, historias y
         creatividad entre datos duros y una industria muy enfocada en el mundo corporativo. Así, reimaginé la comunicación
         publicitaria de la marca desde las referencias que le interesaba a su público objetivo alejándose del mundo laboral:
         <b style="color:var(--epam-accent2);">estética de videojuegos y acción</b>, narrativas impactantes y el
         <b>mundo cibernético</b>.
-      </p>
+      </span><span class="en">They brought me in to turn classic corporate communication into something with a <b style="color:var(--epam-accent);">creative, human pulse</b>. My challenge is to find formats, narratives, stories and creativity amid hard data and an industry deeply focused on the corporate world. So I reimagined the brand's advertising communication from the references its target audience cares about away from the workplace: <b style="color:var(--epam-accent2);">video-game and action aesthetics</b>, striking narratives and the <b>cyber world</b>.</span></p>
     </div>
 
     <div class="epam-robot-wrap">
@@ -480,19 +520,19 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
   </div>
 
 
-  <div class="eyebrow" style="color:#A8B4FF; font-size:12px;">El cambio de tono</div>
+  <div class="eyebrow" style="color:#A8B4FF; font-size:12px;"><span class="es">El cambio de tono</span><span class="en">The shift in tone</span></div>
   <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:2rem;">
     <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:4px; padding:1.1rem;">
-      <div style="font-size:10px; letter-spacing:1px; color:#A8B4FF; margin-bottom:10px;">ANTES</div>
-      <div style="font-size:14px; color:#D0D6FF; line-height:1.4;">"Somos el acelerador que impulsa el crecimiento en Iberoamérica"</div>
+      <div style="font-size:10px; letter-spacing:1px; color:#A8B4FF; margin-bottom:10px;"><span class="es">ANTES</span><span class="en">BEFORE</span></div>
+      <div style="font-size:14px; color:#D0D6FF; line-height:1.4;"><span class="es">"Somos el acelerador que impulsa el crecimiento en Iberoamérica"</span><span class="en">"We are the accelerator driving growth across Iberoamerica"<span class="orig">Original (ES): "Somos el acelerador que impulsa el crecimiento en Iberoamérica"</span></span></div>
     </div>
     <div style="flex:1; min-width:220px; background:var(--epam-accent); border-radius:4px; padding:1.1rem;">
-      <div style="font-size:10px; letter-spacing:1px; color:var(--epam-bg); margin-bottom:10px; font-weight:700;">DESPUÉS</div>
-      <div style="font-size:17px; color:var(--epam-bg); font-weight:700; line-height:1.3;">"No eres fumigador. Eres desarrollador."</div>
+      <div style="font-size:10px; letter-spacing:1px; color:var(--epam-bg); margin-bottom:10px; font-weight:700;"><span class="es">DESPUÉS</span><span class="en">AFTER</span></div>
+      <div style="font-size:17px; color:var(--epam-bg); font-weight:700; line-height:1.3;"><span class="es">"No eres fumigador. Eres desarrollador."</span><span class="en">"You're not an exterminator. You're a developer."<span class="orig">Original (ES): "No eres fumigador. Eres desarrollador."</span></span></div>
     </div>
   </div>
 
-  <div class="eyebrow" style="color:#A8B4FF; font-size:12px;">Los videos ✺ producción real</div>
+  <div class="eyebrow" style="color:#A8B4FF; font-size:12px;"><span class="es">Los videos ✺ producción real</span><span class="en">The videos ✺ real production</span></div>
   <div class="video-slideshow" id="epam-vs">
     <div class="vs-track">
 
@@ -503,11 +543,11 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
           </video>
         </div>
         <div class="vs-copy">
-          <div class="vs-tag" style="color:var(--epam-accent);">VOZ EXPERTA</div>
-          <div class="vs-headline">EL 55% DE LOS TRABAJADORES SE RESISTE A USAR IA EN SUS TRABAJOS</div>
+          <div class="vs-tag" style="color:var(--epam-accent);"><span class="es">VOZ EXPERTA</span><span class="en">EXPERT VOICE</span></div>
+          <div class="vs-headline"><span class="es">EL 55% DE LOS TRABAJADORES SE RESISTE A USAR IA EN SUS TRABAJOS</span><span class="en">55% OF WORKERS RESIST USING AI IN THEIR JOBS<span class="orig">Original (ES): EL 55% DE LOS TRABAJADORES SE RESISTE A USAR IA EN SUS TRABAJOS</span></span></div>
           <div class="copyout-label">Copy out</div>
-          <div class="vs-text">Uno de nuestros principales expertos en el tema, Alder López, nos explica el por qué detrás de ese dato.</div>
-          <a href="https://www.linkedin.com/posts/epamneoris_usa-la-inteligencia-artificial-con-inteligencia-activity-7475544191733776384-ubkI?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>
+          <div class="vs-text"><span class="es">Uno de nuestros principales expertos en el tema, Alder López, nos explica el por qué detrás de ese dato.</span><span class="en">One of our leading experts on the subject, Alder López, explains the why behind that figure.<span class="orig">Original (ES): Uno de nuestros principales expertos en el tema, Alder López, nos explica el por qué detrás de ese dato.</span></span></div>
+          <a href="https://www.linkedin.com/posts/epamneoris_usa-la-inteligencia-artificial-con-inteligencia-activity-7475544191733776384-ubkI?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);"><span class="es">Ver publicación ↗</span><span class="en">See post ↗</span></a>
         </div>
       </div>
 
@@ -518,11 +558,11 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
           </video>
         </div>
         <div class="vs-copy">
-          <div class="vs-tag" style="color:var(--epam-accent);">CAMPAÑA · TESTING</div>
-          <div class="vs-headline">🚒🔥 NO ERES BOMBERO. 👾🖥️ ERES DESARROLLADOR.</div>
+          <div class="vs-tag" style="color:var(--epam-accent);"><span class="es">CAMPAÑA · TESTING</span><span class="en">CAMPAIGN · TESTING</span></div>
+          <div class="vs-headline"><span class="es">🚒🔥 NO ERES BOMBERO. 👾🖥️ ERES DESARROLLADOR.</span><span class="en">🚒🔥 YOU'RE NOT A FIREFIGHTER. 👾🖥️ YOU'RE A DEVELOPER.<span class="orig">Original (ES): 🚒🔥 NO ERES BOMBERO. 👾🖥️ ERES DESARROLLADOR.</span></span></div>
           <div class="copyout-label">Copy out</div>
-          <div class="vs-text">Resuelve los problemas de tu organización de raíz. Un proceso ágil de Testing puede reducir hasta el 80% de bugs en producción, lo que se traduce en tiempo y dinero ganado para tu organización.</div>
-          <a href="https://www.linkedin.com/posts/epamneoris_testing-activity-7460002115441123329-azPy?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>
+          <div class="vs-text"><span class="es">Resuelve los problemas de tu organización de raíz. Un proceso ágil de Testing puede reducir hasta el 80% de bugs en producción, lo que se traduce en tiempo y dinero ganado para tu organización.</span><span class="en">Solve your organization's problems at the root. An agile Testing process can cut up to 80% of production bugs, which means time and money saved for your organization.<span class="orig">Original (ES): Resuelve los problemas de tu organización de raíz. Un proceso ágil de Testing puede reducir hasta el 80% de bugs en producción, lo que se traduce en tiempo y dinero ganado para tu organización.</span></span></div>
+          <a href="https://www.linkedin.com/posts/epamneoris_testing-activity-7460002115441123329-azPy?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);"><span class="es">Ver publicación ↗</span><span class="en">See post ↗</span></a>
         </div>
       </div>
 
@@ -533,11 +573,11 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
           </video>
         </div>
         <div class="vs-copy">
-          <div class="vs-tag" style="color:var(--epam-accent);">COBERTURA EN VIVO</div>
-          <div class="vs-headline">¡Arrancó Febraban Tech 2026!</div>
+          <div class="vs-tag" style="color:var(--epam-accent);"><span class="es">COBERTURA EN VIVO</span><span class="en">LIVE COVERAGE</span></div>
+          <div class="vs-headline"><span class="es">¡Arrancó Febraban Tech 2026!</span><span class="en">Febraban Tech 2026 has kicked off!<span class="orig">Original (ES): ¡Arrancó Febraban Tech 2026!</span></span></div>
           <div class="copyout-label">Copy out</div>
-          <div class="vs-text">Desde São Paulo, Nicolás Carmona nos cuenta los 3 datos clave de la convención fintech más importante de Brasil. Nuestro stand es el A65 — si estás ahí, vení a saludar.</div>
-          <a href="https://www.linkedin.com/posts/epamneoris_arranc%C3%B3-febraban-tech-2026-desde-s%C3%A3o-activity-7498016480752533506-VBfl?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>
+          <div class="vs-text"><span class="es">Desde São Paulo, Nicolás Carmona nos cuenta los 3 datos clave de la convención fintech más importante de Brasil. Nuestro stand es el A65 — si estás ahí, vení a saludar.</span><span class="en">From São Paulo, Nicolás Carmona shares the 3 key takeaways from Brazil's most important fintech convention. Our booth is A65 — if you're there, come say hi.<span class="orig">Original (ES): Desde São Paulo, Nicolás Carmona nos cuenta los 3 datos clave de la convención fintech más importante de Brasil. Nuestro stand es el A65 — si estás ahí, vení a saludar.</span></span></div>
+          <a href="https://www.linkedin.com/posts/epamneoris_arranc%C3%B3-febraban-tech-2026-desde-s%C3%A3o-activity-7498016480752533506-VBfl?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);"><span class="es">Ver publicación ↗</span><span class="en">See post ↗</span></a>
         </div>
       </div>
 
@@ -548,37 +588,37 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
           </video>
         </div>
         <div class="vs-copy">
-          <div class="vs-tag" style="color:var(--epam-accent);">CASO DE ÉXITO · CEMENTERAS</div>
-          <div class="vs-headline">Una IA pensada exclusivamente para las cementeras</div>
+          <div class="vs-tag" style="color:var(--epam-accent);"><span class="es">CASO DE ÉXITO · CEMENTERAS</span><span class="en">SUCCESS STORY · CEMENT PLANTS</span></div>
+          <div class="vs-headline"><span class="es">Una IA pensada exclusivamente para las cementeras</span><span class="en">An AI designed exclusively for cement plants<span class="orig">Original (ES): Una IA pensada exclusivamente para las cementeras</span></span></div>
           <div class="copyout-label">Copy out</div>
-          <div class="vs-text">Todo lo que necesitás monitorear, lo vigila Computer Vision. Ganá seguridad, autonomía y trazabilidad con nuestro software.</div>
-          <a href="https://www.linkedin.com/posts/epamneoris_sabes-todo-lo-que-hace-computer-vision-activity-7485349112045948932--F11?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>
+          <div class="vs-text"><span class="es">Todo lo que necesitás monitorear, lo vigila Computer Vision. Ganá seguridad, autonomía y trazabilidad con nuestro software.</span><span class="en">Everything you need to monitor, Computer Vision watches over. Gain safety, autonomy and traceability with our software.<span class="orig">Original (ES): Todo lo que necesitás monitorear, lo vigila Computer Vision. Ganá seguridad, autonomía y trazabilidad con nuestro software.</span></span></div>
+          <a href="https://www.linkedin.com/posts/epamneoris_sabes-todo-lo-que-hace-computer-vision-activity-7485349112045948932--F11?utm_source=share&utm_medium=member_desktop&rcm=ACoAACNe-roBylW9ecqfVTLzhAncLQeTmaMSANg" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);"><span class="es">Ver publicación ↗</span><span class="en">See post ↗</span></a>
         </div>
       </div>
 
     </div>
     <div class="vs-controls">
-      <button class="vs-arrow" onclick="vsNav('epam-vs', -1)" aria-label="Video anterior">‹</button>
+      <button class="vs-arrow" onclick="vsNav('epam-vs', -1)" aria-label="Video anterior / Previous video">‹</button>
       <div class="vs-dots" id="epam-vs-dots">
         <span class="vs-dot active" onclick="vsGo('epam-vs', 0)"></span>
         <span class="vs-dot" onclick="vsGo('epam-vs', 1)"></span>
         <span class="vs-dot" onclick="vsGo('epam-vs', 2)"></span>
         <span class="vs-dot" onclick="vsGo('epam-vs', 3)"></span>
       </div>
-      <button class="vs-arrow" onclick="vsNav('epam-vs', 1)" aria-label="Video siguiente">›</button>
+      <button class="vs-arrow" onclick="vsNav('epam-vs', 1)" aria-label="Video siguiente / Next video">›</button>
     </div>
   </div>
 
-  <div class="eyebrow" style="color:#A8B4FF; font-size:12px;">Las piezas ✺ tocá una campaña para ver el detalle</div>
+  <div class="eyebrow" style="color:#A8B4FF; font-size:12px;"><span class="es">Las piezas ✺ tocá una campaña para ver el detalle</span><span class="en">The pieces ✺ tap a campaign to see the details</span></div>
   <div class="piece-selector" id="epam-piece-selector">
-    <button class="piece-btn active" data-key="epam-migracion" style="background:var(--epam-accent); color:var(--epam-bg); border-color:var(--epam-accent);">CAMPAÑA #1 · SERVICIO DE DIGITALIZACIÓN</button>
-    <button class="piece-btn" data-key="epam-testing">CAMPAÑA #2 · SERVICIO DE TESTING</button>
+    <button class="piece-btn active" data-key="epam-migracion" style="background:var(--epam-accent); color:var(--epam-bg); border-color:var(--epam-accent);"><span class="es">CAMPAÑA #1 · SERVICIO DE DIGITALIZACIÓN</span><span class="en">CAMPAIGN #1 · DIGITALIZATION SERVICE</span></button>
+    <button class="piece-btn" data-key="epam-testing"><span class="es">CAMPAÑA #2 · SERVICIO DE TESTING</span><span class="en">CAMPAIGN #2 · TESTING SERVICE</span></button>
   </div>
 
   <div id="epam-piece-detail" class="piece-detail"></div>
 
   <div class="next-up" style="background:var(--toyota-bg);">
-    <div class="nu-label">Siguiente marca ↓</div>
+    <div class="nu-label"><span class="es">Siguiente marca ↓</span><span class="en">Next brand ↓</span></div>
     <div class="nu-name" style="color:#fff;">TOYOTA ARGENTINA</div>
   </div>
 </section>
@@ -587,17 +627,17 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
 <!-- ============ TOYOTA ARGENTINA ============ -->
 <section id="toyota" class="section reveal" style="background:var(--toyota-bg); color:#fff;">
-  <div class="eyebrow" style="color:var(--toyota-accent);">Caso de marca ✺ 02</div>
+  <div class="eyebrow" style="color:var(--toyota-accent);"><span class="es">Caso de marca ✺ 02</span><span class="en">Brand case ✺ 02</span></div>
   <h2 class="section-title" style="font-size: clamp(1.7rem, 5vw, 2.6rem); color:rgba(255,255,255,0.55);">toyota</h2>
   <h2 class="section-title" style="font-size: clamp(2.6rem, 10vw, 5.5rem); margin-top:-4px;">ARGENTINA</h2>
-  <div class="chip" style="background:var(--toyota-accent); color:var(--toyota-bg);">CREATIVO SR.</div>
+  <div class="chip" style="background:var(--toyota-accent); color:var(--toyota-bg);"><span class="es">CREATIVO SR.</span><span class="en">SENIOR CREATIVE</span></div>
 
-  <p class="bajada" style="color:#FFE3D0;">Toyota tiene múltiples marcas para públicos distintos — necesitaba
+  <p class="bajada" style="color:#FFE3D0;"><span class="es">Toyota tiene múltiples marcas para públicos distintos — necesitaba
     <b style="color:var(--toyota-accent);">tonos diferenciados, no un solo eslogan</b>. El estilo de comunicación
     austero de los japoneses debía amalgamarse con un estilo más informal propio de la comunicación argentina.
     El resultado fue explorar puntos medios de aspirar a piezas más creativas sin dejar de lado el espíritu de la marca.
     Elegí una submarca para ver el detalle:
-  </p>
+  </span><span class="en">Toyota has multiple brands for different audiences — it needed <b style="color:var(--toyota-accent);">distinct tones, not a single slogan</b>. The austere communication style of the Japanese had to blend with the more informal style of Argentine communication. The result was exploring middle grounds: aiming for more creative pieces without losing the spirit of the brand. Pick a sub-brand to see the details:</span></p>
 
   <div class="toy-featured">
     <div class="toy-featured-media">
@@ -606,11 +646,11 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
       </video>
     </div>
     <div class="toy-featured-copy">
-      <div class="vs-tag" style="color:var(--toyota-accent);">PIEZA DESTACADA</div>
-      <div class="vs-headline">"La espera terminó."</div>
+      <div class="vs-tag" style="color:var(--toyota-accent);"><span class="es">PIEZA DESTACADA</span><span class="en">FEATURED PIECE</span></div>
+      <div class="vs-headline"><span class="es">"La espera terminó."</span><span class="en">"The wait is over."<span class="orig">Original (ES): "La espera terminó."</span></span></div>
       <div class="copyout-label">Copy out</div>
-      <div class="vs-text">Te presentamos el nuevo Yaris Cross. Un SUV donde conviven todas tus versiones. Bienvenido a tu primer Toyota híbrido.</div>
-      <a href="https://www.instagram.com/p/DVHju0VEoam/" target="_blank" rel="noopener" class="see-post" style="border-color:var(--toyota-accent); color:var(--toyota-accent);">Ver publicación ↗</a>
+      <div class="vs-text"><span class="es">Te presentamos el nuevo Yaris Cross. Un SUV donde conviven todas tus versiones. Bienvenido a tu primer Toyota híbrido.</span><span class="en">Introducing the new Yaris Cross. An SUV where all your versions live together. Welcome to your first hybrid Toyota.<span class="orig">Original (ES): Te presentamos el nuevo Yaris Cross. Un SUV donde conviven todas tus versiones. Bienvenido a tu primer Toyota híbrido.</span></span></div>
+      <a href="https://www.instagram.com/p/DVHju0VEoam/" target="_blank" rel="noopener" class="see-post" style="border-color:var(--toyota-accent); color:var(--toyota-accent);"><span class="es">Ver publicación ↗</span><span class="en">See post ↗</span></a>
     </div>
   </div>
 
@@ -637,14 +677,14 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
   </div>
 
   <div class="toy-hint">
-    <div>↑ Hacé clic arriba para ver las piezas de cada marca</div>
-    <div>↓ Hacé clic en las flechas para ver más piezas en cada marca</div>
+    <div><span class="es">↑ Hacé clic arriba para ver las piezas de cada marca</span><span class="en">↑ Click above to see each brand's pieces</span></div>
+    <div><span class="es">↓ Hacé clic en las flechas para ver más piezas en cada marca</span><span class="en">↓ Click the arrows to see more pieces for each brand</span></div>
   </div>
 
   <div id="toyota-detail" class="toy-detail"></div>
 
   <div class="next-up" style="background:var(--nodus-bg);">
-    <div class="nu-label">Siguiente marca ↓</div>
+    <div class="nu-label"><span class="es">Siguiente marca ↓</span><span class="en">Next brand ↓</span></div>
     <div class="nu-name" style="color:#fff;">NODUS</div>
   </div>
 </section>
@@ -653,22 +693,22 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
 <!-- ============ NODUS ============ -->
 <section id="nodus" class="section reveal" style="background:var(--nodus-bg); color:#fff;">
-  <div class="eyebrow" style="color:var(--nodus-accent);">Caso de marca ✺ 03</div>
+  <div class="eyebrow" style="color:var(--nodus-accent);"><span class="es">Caso de marca ✺ 03</span><span class="en">Brand case ✺ 03</span></div>
 
   <div class="nodus-hero-grid">
     <div>
       <h2 class="section-title" style="font-size: clamp(2.6rem, 12vw, 6.5rem);">NODUS</h2>
       <div class="chip" style="background:var(--nodus-accent); color:var(--nodus-bg);">REBRANDING</div>
 
-      <p class="bajada" style="color:#D8F0E4;">Nodus necesitaba <b style="color:var(--nodus-accent);">explicar claramente qué brindaban</b>.
+      <p class="bajada" style="color:#D8F0E4;"><span class="es">Nodus necesitaba <b style="color:var(--nodus-accent);">explicar claramente qué brindaban</b>.
         El retrabajo se enfocó en dos aspectos: contar creativamente sus servicios y posicionarlos como
         <b>partner estratégico</b>, no como proveedor.
-      </p>
+      </span><span class="en">Nodus needed to <b style="color:var(--nodus-accent);">clearly explain what they offered</b>. The rework focused on two things: telling the story of their services creatively and positioning them as a <b>strategic partner</b>, not a vendor.</span></p>
 
-      <div class="eyebrow" style="color:#8FCBAE; font-size:12px;">El eje del rebranding</div>
+      <div class="eyebrow" style="color:#8FCBAE; font-size:12px;"><span class="es">El eje del rebranding</span><span class="en">The axis of the rebrand</span></div>
       <div style="background:rgba(0,0,0,0.2); border-radius:4px; padding:1.25rem; margin-bottom:1.5rem; border-left:3px solid #fff;">
         <div style="font-size: clamp(1.2rem, 3vw, 1.6rem); color:#fff; font-weight:700; font-style:italic;">"The power in collaboration"</div>
-        <div style="font-size:13px; color:#C4E8D6; margin-top:8px;">Nuevo eslogan — presentación de servicios a través de un "nosotros", no de una lista de features</div>
+        <div style="font-size:13px; color:#C4E8D6; margin-top:8px;"><span class="es">Nuevo eslogan — presentación de servicios a través de un "nosotros", no de una lista de features</span><span class="en">New slogan — services presented through an "us", not a list of features</span></div>
       </div>
     </div>
 
@@ -730,25 +770,25 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
     </div>
   </div>
 
-  <div class="eyebrow" style="color:#8FCBAE; font-size:12px;">Piezas reales ✺ tocá las flechas para ver más</div>
+  <div class="eyebrow" style="color:#8FCBAE; font-size:12px;"><span class="es">Piezas reales ✺ tocá las flechas para ver más</span><span class="en">Real pieces ✺ tap the arrows to see more</span></div>
   <div class="nodus-gallery">
     <div class="mini-gallery">
-      <button onclick="nodusShift(-1)" aria-label="Anterior">‹</button>
+      <button onclick="nodusShift(-1)" aria-label="Anterior / Previous">‹</button>
       <div class="nodus-gallery-frame" id="nodus-gallery-frame"></div>
-      <button onclick="nodusShift(1)" aria-label="Siguiente">›</button>
+      <button onclick="nodusShift(1)" aria-label="Siguiente / Next">›</button>
     </div>
     <div class="gallery-count" id="nodus-gallery-count" style="text-align:center;"></div>
   </div>
 
   <div class="detail-panel" style="background:rgba(0,0,0,0.25); color:var(--nodus-accent);">
-    <div class="label">Detalle ampliado · rebranding</div>
-    <div class="quote" style="color:#fff;">"Saber explicar. Creativamente."</div>
-    <div class="rationale" style="color:#C4E8D6;"><b style="color:#fff;">Racional:</b> Nodus tenía servicios complejos de explicar de forma clara. En vez de listar features técnicas, la estrategia fue narrar el valor desde la colaboración — posicionando a Nodus como socio estratégico del cliente, no como proveedor externo.</div>
-    <div class="my-work">Mi trabajo: rebranding de mensaje, nuevo eslogan, redacción de la página oficial</div>
+    <div class="label"><span class="es">Detalle ampliado · rebranding</span><span class="en">Expanded detail · rebrand</span></div>
+    <div class="quote" style="color:#fff;"><span class="es">"Saber explicar. Creativamente."</span><span class="en">"Knowing how to explain. Creatively."<span class="orig">Original (ES): "Saber explicar. Creativamente."</span></span></div>
+    <div class="rationale" style="color:#C4E8D6;"><span class="es"><b style="color:#fff;">Racional:</b> Nodus tenía servicios complejos de explicar de forma clara. En vez de listar features técnicas, la estrategia fue narrar el valor desde la colaboración — posicionando a Nodus como socio estratégico del cliente, no como proveedor externo.</span><span class="en"><b style="color:#fff;">Rationale:</b> Nodus had complex services that were hard to explain clearly. Instead of listing technical features, the strategy was to narrate the value through collaboration — positioning Nodus as the client's strategic partner, not an external vendor.</span></div>
+    <div class="my-work"><span class="es">Mi trabajo: rebranding de mensaje, nuevo eslogan, redacción de la página oficial</span><span class="en">My work: messaging rebrand, new slogan, copywriting for the official website</span></div>
   </div>
 
   <div class="next-up" style="background:var(--mads-bg);">
-    <div class="nu-label" style="color:var(--mads-ink);">Siguiente marca ↓</div>
+    <div class="nu-label" style="color:var(--mads-ink);"><span class="es">Siguiente marca ↓</span><span class="en">Next brand ↓</span></div>
     <div class="nu-name" style="color:var(--mads-ink);">MERCADO ADS</div>
   </div>
 </section>
@@ -757,17 +797,17 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
 <!-- ============ MERCADO ADS ============ -->
 <section id="mads" class="section reveal" style="background:var(--mads-bg); color:var(--mads-ink);">
-  <div class="eyebrow" style="color:#6B5A00;">Caso de marca ✺ 04</div>
+  <div class="eyebrow" style="color:#6B5A00;"><span class="es">Caso de marca ✺ 04</span><span class="en">Brand case ✺ 04</span></div>
 
   <div class="mads-hero-grid">
     <div>
       <h2 class="section-title" style="font-size: clamp(2.2rem, 7vw, 3.6rem);">MERCADO</h2>
       <h2 class="section-title" style="font-size: clamp(3rem, 10vw, 5.5rem); margin-top:2px;">ADS</h2>
-      <div class="chip" style="background:var(--mads-ink); color:var(--mads-bg);">E-LEARNING + COMERCIAL</div>
+      <div class="chip" style="background:var(--mads-ink); color:var(--mads-bg);"><span class="es">E-LEARNING + COMERCIAL</span><span class="en">E-LEARNING + COMMERCIAL</span></div>
 
-      <p class="bajada" style="color:#3A3200;">El desafío del e-learning: <b style="color:var(--mads-ink);">no es obligatorio para quien lo toma</b>.
+      <p class="bajada" style="color:#3A3200;"><span class="es">El desafío del e-learning: <b style="color:var(--mads-ink);">no es obligatorio para quien lo toma</b>.
         Había que producir contenido interesante que explicara lo técnico sin volverse aburrido — con storytelling, video y recursos gráficos.
-      </p>
+      </span><span class="en">The e-learning challenge: <b style="color:var(--mads-ink);">it isn't mandatory for whoever takes it</b>. The goal was to produce engaging content that explained technical topics without getting boring — with storytelling, video and graphic resources.</span></p>
     </div>
 
     <div class="mads-tv-wrap" aria-hidden="true">
@@ -788,45 +828,45 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
     </div>
   </div>
 
-  <div class="eyebrow" style="color:#6B5A00; font-size:12px;">Galería ✺ se reproduce sola · pasá el mouse para pausar</div>
+  <div class="eyebrow" style="color:#6B5A00; font-size:12px;"><span class="es">Galería ✺ se reproduce sola · pasá el mouse para pausar</span><span class="en">Gallery ✺ plays on its own · hover to pause</span></div>
   <div class="mads-gallery" id="mads-gallery">
     <div class="mini-gallery">
-      <button onclick="madsShift(-1)" aria-label="Anterior">‹</button>
+      <button onclick="madsShift(-1)" aria-label="Anterior / Previous">‹</button>
       <div class="mads-gallery-frame" id="mads-gallery-frame"></div>
-      <button onclick="madsShift(1)" aria-label="Siguiente">›</button>
+      <button onclick="madsShift(1)" aria-label="Siguiente / Next">›</button>
     </div>
     <div class="gallery-count" id="mads-gallery-count" style="text-align:center;"></div>
   </div>
 
   <div style="text-align:center; margin: -0.5rem 0 2rem;">
-    <a href="https://academy.mercadoads.com/student/catalog" target="_blank" rel="noopener" class="cta-btn">Ir a la Academy de Mercado Ads ↗</a>
+    <a href="https://academy.mercadoads.com/student/catalog" target="_blank" rel="noopener" class="cta-btn"><span class="es">Ir a la Academy de Mercado Ads ↗</span><span class="en">Go to the Mercado Ads Academy ↗</span></a>
   </div>
 
-  <div class="eyebrow" style="color:#6B5A00; font-size:12px;">Los videos ✺ arrancan en silencio</div>
+  <div class="eyebrow" style="color:#6B5A00; font-size:12px;"><span class="es">Los videos ✺ arrancan en silencio</span><span class="en">The videos ✺ start muted</span></div>
   <div class="yt-grid">
     <div class="yt-item">
       <div class="video-frame">
         <iframe src="https://www.youtube.com/embed/PwNoGj0i5Zs?autoplay=1&mute=1&playsinline=1&rel=0" title="Mercado Ads · video de e-learning 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
       </div>
-      <a href="https://www.youtube.com/watch?v=PwNoGj0i5Zs" target="_blank" rel="noopener" class="see-post" style="border-color:var(--mads-ink); color:var(--mads-ink);">Ver en YouTube ↗</a>
+      <a href="https://www.youtube.com/watch?v=PwNoGj0i5Zs" target="_blank" rel="noopener" class="see-post" style="border-color:var(--mads-ink); color:var(--mads-ink);"><span class="es">Ver en YouTube ↗</span><span class="en">Watch on YouTube ↗</span></a>
     </div>
     <div class="yt-item">
       <div class="video-frame">
         <iframe src="https://www.youtube.com/embed/mc1l_mbz_B4?autoplay=1&mute=1&playsinline=1&rel=0" title="Mercado Ads · video de e-learning 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
       </div>
-      <a href="https://www.youtube.com/watch?v=mc1l_mbz_B4" target="_blank" rel="noopener" class="see-post" style="border-color:var(--mads-ink); color:var(--mads-ink);">Ver en YouTube ↗</a>
+      <a href="https://www.youtube.com/watch?v=mc1l_mbz_B4" target="_blank" rel="noopener" class="see-post" style="border-color:var(--mads-ink); color:var(--mads-ink);"><span class="es">Ver en YouTube ↗</span><span class="en">Watch on YouTube ↗</span></a>
     </div>
   </div>
 
   <div class="detail-panel" style="background:rgba(0,0,0,0.08); color:var(--mads-ink);">
-    <div class="label" style="color:#6B5A00;">Detalle ampliado</div>
-    <div class="quote">"Aprender nunca fue tan interesante"</div>
-    <div class="rationale" style="color:#4A4000;"><b>Racional:</b> el contenido comercial y de e-learning corre riesgo de sentirse como un trámite. La estrategia combinó storytelling narrativo con recursos gráficos y video para que el contenido técnico se sintiera atractivo, no obligatorio.</div>
-    <div class="my-work" style="color:#8A7A00;">Mi trabajo: redacción de contenido comercial y e-learning, storytelling, guion para video</div>
+    <div class="label" style="color:#6B5A00;"><span class="es">Detalle ampliado</span><span class="en">Expanded detail</span></div>
+    <div class="quote"><span class="es">"Aprender nunca fue tan interesante"</span><span class="en">"Learning has never been so interesting"<span class="orig">Original (ES): "Aprender nunca fue tan interesante"</span></span></div>
+    <div class="rationale" style="color:#4A4000;"><span class="es"><b>Racional:</b> el contenido comercial y de e-learning corre riesgo de sentirse como un trámite. La estrategia combinó storytelling narrativo con recursos gráficos y video para que el contenido técnico se sintiera atractivo, no obligatorio.</span><span class="en"><b>Rationale:</b> commercial and e-learning content risks feeling like a chore. The strategy combined narrative storytelling with graphic resources and video so that technical content felt appealing, not obligatory.</span></div>
+    <div class="my-work" style="color:#8A7A00;"><span class="es">Mi trabajo: redacción de contenido comercial y e-learning, storytelling, guion para video</span><span class="en">My work: commercial and e-learning copywriting, storytelling, video scripts</span></div>
   </div>
 
   <div class="next-up" style="background:var(--google-bg);">
-    <div class="nu-label" style="color:var(--google-accent);">Siguiente ↓</div>
+    <div class="nu-label" style="color:var(--google-accent);"><span class="es">Siguiente ↓</span><span class="en">Next ↓</span></div>
     <div class="nu-name" style="color:#fff;">GOOGLE</div>
   </div>
 </section>
@@ -835,29 +875,29 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
 <!-- ============ GOOGLE ============ -->
 <section id="google" class="section reveal" style="background:var(--google-bg); color:#fff; padding-bottom: 3rem;">
-  <div class="eyebrow" style="color:var(--google-accent);">Caso de marca ✺ 05</div>
+  <div class="eyebrow" style="color:var(--google-accent);"><span class="es">Caso de marca ✺ 05</span><span class="en">Brand case ✺ 05</span></div>
   <h2 class="section-title" style="font-size: clamp(2.5rem, 9vw, 5rem);">GOOGLE</h2>
-  <div class="chip" style="background:var(--google-accent); color:var(--google-bg);">GUIONES AUDIOVISUALES</div>
-  <p class="bajada" style="color:#FFE3F0;">Redacción de guiones para la filmación de anuncios de congreso comercial.</p>
+  <div class="chip" style="background:var(--google-accent); color:var(--google-bg);"><span class="es">GUIONES AUDIOVISUALES</span><span class="en">AUDIOVISUAL SCRIPTS</span></div>
+  <p class="bajada" style="color:#FFE3F0;"><span class="es">Redacción de anuncios de Google Argentina.<br>Dirección de las grabaciones.</span><span class="en">Ad copywriting for Google Argentina.<br>Direction of the shoots.</span></p>
 
   <div class="yt-grid" style="margin-top:1.5rem;">
     <div class="yt-item">
       <div class="video-frame">
         <iframe src="https://www.youtube.com/embed/VY5BjLkILMw?autoplay=1&mute=1&playsinline=1&rel=0" title="De espectadores a compradores" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
       </div>
-      <a href="https://www.youtube.com/watch?v=VY5BjLkILMw" target="_blank" rel="noopener" class="see-post" style="border-color:#fff; color:#fff;">Ver en YouTube ↗</a>
+      <a href="https://www.youtube.com/watch?v=VY5BjLkILMw" target="_blank" rel="noopener" class="see-post" style="border-color:#fff; color:#fff;"><span class="es">Ver en YouTube ↗</span><span class="en">Watch on YouTube ↗</span></a>
     </div>
     <div class="yt-item">
       <div class="video-frame">
         <iframe src="https://www.youtube.com/embed/996mG_ToGRk?autoplay=1&mute=1&playsinline=1&rel=0" title="Consumidor Omnicanal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
       </div>
-      <a href="https://www.youtube.com/watch?v=996mG_ToGRk" target="_blank" rel="noopener" class="see-post" style="border-color:#fff; color:#fff;">Ver en YouTube ↗</a>
+      <a href="https://www.youtube.com/watch?v=996mG_ToGRk" target="_blank" rel="noopener" class="see-post" style="border-color:#fff; color:#fff;"><span class="es">Ver en YouTube ↗</span><span class="en">Watch on YouTube ↗</span></a>
     </div>
   </div>
 
   <div class="next-up" style="background:var(--elearn-bg);">
-    <div class="nu-label" style="color:#EBD8FF;">Siguiente ↓</div>
-    <div class="nu-name" style="color:#fff;">E-LEARNING Y COMUNICACIÓN INTERNA</div>
+    <div class="nu-label" style="color:#EBD8FF;"><span class="es">Siguiente ↓</span><span class="en">Next ↓</span></div>
+    <div class="nu-name" style="color:#fff;"><span class="es">E-LEARNING Y COMUNICACIÓN INTERNA</span><span class="en">E-LEARNING & INTERNAL COMMUNICATION</span></div>
   </div>
 </section>
 
@@ -865,12 +905,12 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
 <!-- ============ E-LEARNING Y COMUNICACIÓN INTERNA ============ -->
 <section id="elearn" class="section reveal" style="background:var(--elearn-bg); color:#fff;">
-  <div class="eyebrow" style="color:var(--elearn-accent);">Caso de marca ✺ 06</div>
-  <h2 class="section-title" style="font-size: clamp(1.8rem, 6vw, 3rem);">E-LEARNING Y</h2>
-  <h2 class="section-title" style="font-size: clamp(1.8rem, 6vw, 3rem); margin-top:2px;">COMUNICACIÓN</h2>
-  <h2 class="section-title" style="font-size: clamp(1.8rem, 6vw, 3rem); margin-top:2px;">INTERNA</h2>
+  <div class="eyebrow" style="color:var(--elearn-accent);"><span class="es">Caso de marca ✺ 06</span><span class="en">Brand case ✺ 06</span></div>
+  <h2 class="section-title" style="font-size: clamp(1.8rem, 6vw, 3rem);"><span class="es">E-LEARNING Y</span><span class="en">E-LEARNING &</span></h2>
+  <h2 class="section-title" style="font-size: clamp(1.8rem, 6vw, 3rem); margin-top:2px;"><span class="es">COMUNICACIÓN</span><span class="en">INTERNAL</span></h2>
+  <h2 class="section-title" style="font-size: clamp(1.8rem, 6vw, 3rem); margin-top:2px;"><span class="es">INTERNA</span><span class="en">COMMUNICATION</span></h2>
 
-  <p class="bajada" style="color:#EBD8FF;">Contenido interno para tres clientes distintos, cada uno con su propio objetivo: capacitación técnica, management y ventas.</p>
+  <p class="bajada" style="color:#EBD8FF;"><span class="es">Contenido interno para tres clientes distintos, cada uno con su propio objetivo: capacitación técnica, management y ventas.</span><span class="en">Internal content for three different clients, each with its own goal: technical training, management and sales.</span></p>
 
   <div class="pills" id="elearn-pills">
     <button class="pill active" data-target="elearn-veritran" style="background:var(--elearn-accent); color:var(--elearn-bg);">Veritran</button>
@@ -880,21 +920,18 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
   <div id="elearn-detail" class="detail-panel" style="background:rgba(0,0,0,0.2); color:#fff;"></div>
 
-  <div class="eyebrow" style="color:#C9A8F0; font-size:12px; margin-top:1.75rem;">Galería general de piezas de e-learning</div>
-  <div class="bento" style="--cols:4;">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/100957935_10216177109651443_2577795321874612224_n.jpg?w=960" alt="Pieza e-learning">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/100957935_10216177109651443_2577795321874612224_n-1.jpg?w=960" alt="Pieza e-learning">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-10-18-a-las-10.53.40-1.webp" alt="Pieza e-learning">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-10-18-a-las-11.34.31-1.webp" alt="Pieza e-learning">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-11-05-a-las-10.22.43.webp" alt="Pieza e-learning">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-11-05-a-las-10.23.12.webp" alt="Pieza e-learning">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-11-05-a-las-10.23.40.webp" alt="Pieza e-learning">
-    <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2022-03-04-a-las-12.20.17.webp" alt="Pieza e-learning">
+  <div class="eyebrow" style="color:#C9A8F0; font-size:12px; margin-top:1.75rem;"><span class="es">Piezas de e-learning ✺ tocá las flechas para ver más</span><span class="en">E-learning pieces ✺ tap the arrows to see more</span></div>
+  <div class="elearn-gallery">
+    <div class="mini-gallery">
+      <button onclick="elearnShift(-1)" aria-label="Anterior / Previous">‹</button>
+      <div class="elearn-gallery-frame" id="elearn-gallery-frame"></div>
+      <button onclick="elearnShift(1)" aria-label="Siguiente / Next">›</button>
+    </div>
+    <div class="gallery-count" id="elearn-gallery-count" style="text-align:center;"></div>
   </div>
-  <div style="font-size:12px; color:#C9A8F0; margin-top:-0.5rem;">⚠ Estas piezas no vienen etiquetadas por cliente en el sitio original — avisame si querés que reparta cada imagen bajo su marca correspondiente.</div>
 
   <div class="next-up" style="background:var(--ford-bg); margin-top:1.75rem;">
-    <div class="nu-label" style="color:#E0C4A8;">Siguiente ↓</div>
+    <div class="nu-label" style="color:#E0C4A8;"><span class="es">Siguiente ↓</span><span class="en">Next ↓</span></div>
     <div class="nu-name" style="color:#fff;">FORD &amp; LINCOLN</div>
   </div>
 </section>
@@ -903,16 +940,16 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
 <!-- ============ FORD & LINCOLN ============ -->
 <section id="ford" class="section reveal" style="background:var(--ford-bg); color:#fff;">
-  <div class="eyebrow" style="color:var(--ford-accent);">Caso de marca ✺ 07</div>
+  <div class="eyebrow" style="color:var(--ford-accent);"><span class="es">Caso de marca ✺ 07</span><span class="en">Brand case ✺ 07</span></div>
   <h2 class="section-title" style="font-size: clamp(2.4rem, 9vw, 5rem);">FORD &amp;</h2>
   <h2 class="section-title" style="font-size: clamp(2.4rem, 9vw, 5rem); margin-top:2px;">LINCOLN</h2>
-  <div class="chip" style="background:var(--ford-accent); color:var(--ford-bg);">EDICIÓN Y UX</div>
+  <div class="chip" style="background:var(--ford-accent); color:var(--ford-bg);"><span class="es">EDICIÓN Y UX</span><span class="en">EDITING & UX</span></div>
 
-  <p class="bajada" style="color:#D8D8D8;">Como en un <b style="color:var(--ford-accent);">taller del siglo XXI</b>, las piezas web de retail
+  <p class="bajada" style="color:#D8D8D8;"><span class="es">Como en un <b style="color:var(--ford-accent);">taller del siglo XXI</b>, las piezas web de retail
     de Ford llegaban para ser montadas en distintos formatos. Edición, accesibilidad, redacción UX y montaje en CMS.
-  </p>
+  </span><span class="en">Like in a <b style="color:var(--ford-accent);">21st-century workshop</b>, Ford's retail web pieces arrived to be assembled in different formats. Editing, accessibility, UX writing and CMS building.</span></p>
 
-  <div class="eyebrow" style="color:#999; font-size:12px;">Campañas montadas ✺ piezas reales</div>
+  <div class="eyebrow" style="color:#999; font-size:12px;"><span class="es">Campañas montadas ✺ piezas reales</span><span class="en">Assembled campaigns ✺ real pieces</span></div>
   <div class="bento" style="--cols:3;">
     <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/bronco-campaign-1.webp" alt="Bronco Campaign">
     <img src="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/bronco-campaign-2-1.webp" alt="Bronco Campaign">
@@ -927,15 +964,15 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
   </div>
 
   <div class="detail-panel" style="background:rgba(0,0,0,0.3); color:var(--ford-accent);">
-    <div class="label">Detalle ampliado</div>
-    <div class="quote" style="color:#fff;">"Fordismo siglo XXI"</div>
-    <div class="rationale" style="color:#C8C8C8;"><b style="color:#fff;">Racional:</b> las piezas web de campañas de retail llegaban ya diseñadas y había que "montarlas" — como en una línea de ensamblaje. El trabajo combinó edición de contenido, cumplimiento de normas de accesibilidad, redacción UX y montaje directo en CMS.</div>
-    <div class="my-work">Mi trabajo: edición, redacción de accesibilidad, redacción UX, montaje web</div>
+    <div class="label"><span class="es">Detalle ampliado</span><span class="en">Expanded detail</span></div>
+    <div class="quote" style="color:#fff;"><span class="es">"Fordismo siglo XXI"</span><span class="en">"21st-century Fordism"<span class="orig">Original (ES): "Fordismo siglo XXI"</span></span></div>
+    <div class="rationale" style="color:#C8C8C8;"><span class="es"><b style="color:#fff;">Racional:</b> las piezas web de campañas de retail llegaban ya diseñadas y había que "montarlas" — como en una línea de ensamblaje. El trabajo combinó edición de contenido, cumplimiento de normas de accesibilidad, redacción UX y montaje directo en CMS.</span><span class="en"><b style="color:#fff;">Rationale:</b> the retail campaign web pieces arrived already designed and had to be "assembled" — like on an assembly line. The work combined content editing, accessibility compliance, UX writing and direct CMS building.</span></div>
+    <div class="my-work"><span class="es">Mi trabajo: edición, redacción de accesibilidad, redacción UX, montaje web</span><span class="en">My work: editing, accessibility copy, UX writing, web assembly</span></div>
   </div>
 
   <div class="next-up" style="background:var(--press-bg);">
-    <div class="nu-label" style="color:var(--press-accent);">Siguiente ↓</div>
-    <div class="nu-name" style="color:#fff;">REDACCIÓN PERIODÍSTICA</div>
+    <div class="nu-label" style="color:var(--press-accent);"><span class="es">Siguiente ↓</span><span class="en">Next ↓</span></div>
+    <div class="nu-name" style="color:#fff;"><span class="es">REDACCIÓN PERIODÍSTICA</span><span class="en">JOURNALISTIC WRITING</span></div>
   </div>
 </section>
 
@@ -943,22 +980,22 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
 <!-- ============ REDACCIÓN PERIODÍSTICA ============ -->
 <section id="press" class="section reveal" style="background:var(--press-bg); color:#fff;">
-  <div class="eyebrow" style="color:var(--press-accent);">Caso de marca ✺ 08</div>
-  <h2 class="section-title" style="font-size: clamp(2rem, 6vw, 3rem);">REDACCIÓN</h2>
-  <h2 class="section-title" style="font-size: clamp(2rem, 6vw, 3rem); color:var(--press-accent); margin-top:2px;">PERIODÍSTICA</h2>
+  <div class="eyebrow" style="color:var(--press-accent);"><span class="es">Caso de marca ✺ 08</span><span class="en">Brand case ✺ 08</span></div>
+  <h2 class="section-title" style="font-size: clamp(2rem, 6vw, 3rem);"><span class="es">REDACCIÓN</span><span class="en">JOURNALISTIC</span></h2>
+  <h2 class="section-title" style="font-size: clamp(2rem, 6vw, 3rem); color:var(--press-accent); margin-top:2px;"><span class="es">PERIODÍSTICA</span><span class="en">WRITING</span></h2>
 
-  <p class="bajada" style="color:#C8C8D8;">Escritura propia, sin brief de cliente: notas culturales y narrativa breve.</p>
+  <p class="bajada" style="color:#C8C8D8;"><span class="es">Escritura propia, sin brief de cliente: notas culturales y narrativa breve.</span><span class="en">My own writing, no client brief: cultural pieces and short fiction.</span></p>
 
   <div class="pills" id="press-pills">
     <button class="pill active" data-target="press-indiehoy" style="background:var(--press-accent); color:var(--press-bg);">Indie Hoy</button>
-    <button class="pill" data-target="press-narrativa">Narrativa Breve</button>
+    <button class="pill" data-target="press-narrativa"><span class="es">Narrativa Breve</span><span class="en">Short Fiction</span></button>
   </div>
 
   <div id="press-detail" class="detail-panel" style="background:rgba(255,255,255,0.06); color:#fff;"></div>
 
   <div class="next-up" style="background:var(--contact-bg);">
-    <div class="nu-label" style="color:var(--hero-ink);">Siguiente ↓</div>
-    <div class="nu-name" style="color:var(--hero-ink);">CONTACTO</div>
+    <div class="nu-label" style="color:var(--hero-ink);"><span class="es">Siguiente ↓</span><span class="en">Next ↓</span></div>
+    <div class="nu-name" style="color:var(--hero-ink);"><span class="es">CONTACTO</span><span class="en">CONTACT</span></div>
   </div>
 </section>
 
@@ -966,17 +1003,17 @@ a:focus-visible, .pill:focus-visible, .piece-card:focus-visible{ outline: 3px so
 
 <!-- ============ CONTACTO ============ -->
 <section id="contact" class="section reveal" style="background:var(--contact-bg); color:var(--hero-ink); min-height:70vh; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;">
-  <h2 class="section-title" style="font-size: clamp(2.5rem, 9vw, 5.5rem);">CHARLEMOS</h2>
-  <p style="font-size: clamp(1rem, 2vw, 1.2rem); margin: 1.5rem 0 2rem; max-width:520px;">
+  <h2 class="section-title" style="font-size: clamp(2.5rem, 9vw, 5.5rem);"><span class="es">CHARLEMOS</span><span class="en">LET'S TALK</span></h2>
+  <p style="font-size: clamp(1rem, 2vw, 1.2rem); margin: 1.5rem 0 2rem; max-width:520px;"><span class="es">
     Hacé clic para ir a mi LinkedIn o descargate mi CV. Nos vemos.
-  </p>
+  </span><span class="en">Click to visit my LinkedIn or download my CV. See you soon.</span></p>
   <div style="display:flex; gap:14px; flex-wrap:wrap;">
     <a href="https://www.linkedin.com/in/sebastian-mastruzzo/" target="_blank" rel="noopener" style="background:var(--hero-ink); color:var(--hero-bg); padding:14px 30px; border-radius:999px; font-weight:700; font-size:15px;">LinkedIn ↗</a>
-    <a href="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/sebastian-mastruzzo-cv-castellano.pdf" target="_blank" rel="noopener" style="border:2px solid var(--hero-ink); padding:12px 28px; border-radius:999px; font-weight:700; font-size:15px;">Descargar CV ↓</a>
+    <a href="https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/sebastian-mastruzzo-cv-castellano.pdf" target="_blank" rel="noopener" style="border:2px solid var(--hero-ink); padding:12px 28px; border-radius:999px; font-weight:700; font-size:15px;"><span class="es">Descargar CV ↓</span><span class="en">Download CV ↓</span></a>
   </div>
 </section>
 
-<div class="made-with" style="background:var(--contact-bg); color:var(--hero-ink);">Diseñado y construido por Sebastián Mastruzzo · 2026</div>
+<div class="made-with" style="background:var(--contact-bg); color:var(--hero-ink);"><span class="es">Diseñado y construido por Sebastián Mastruzzo · 2026</span><span class="en">Designed and built by Sebastián Mastruzzo · 2026</span></div>
 
 <script>
 const DETAILS = {
@@ -1093,18 +1130,104 @@ const DETAILS = {
   }
 };
 
+
+/* ===== Traducciones al inglés de las piezas (se muestran con el botón ES / EN) ===== */
+const DETAILS_EN = {
+  "epam-migracion": {
+    label: "Campaign #1 · Digitalization service",
+    quote: "\u201cThis is no child's play. This has to be done by professionals.\u201d", quoteOrig: true,
+    rationale: "Many organizations were \u201ctrapped\u201d paying ever-higher fees to their current infrastructure provider, afraid to migrate because of cost and downtime. The gamer aesthetic speaks directly to the IT audience and builds a clear hero-vs-obstacle narrative, without controversy.",
+    work: "My work: concept, copy, technical script"
+  },
+  "epam-testing": {
+    label: "Campaign #2 · Testing service",
+    quote: "\u201cYou're not an exterminator. You're a developer.\u201d", quoteOrig: true,
+    rationale: "A technical, a priori unappealing topic (software testing) is told with humor through a recurring insect-shaped mascot (a bug) — a dramatic contrast between the literal costume and the real message to make it memorable.",
+    work: "My work: script, technical script for editing, directing the shoot"
+  },
+  "toyota-argentina": {
+    label: "Toyota Argentina · direct and universal",
+    quote: "\u201cConnect with what moves you\u201d", quoteOrig: true,
+    rationale: "It's the central brand that unites all the others — it needed a direct, universal tone. Slogan created for the launch of Connected Services.",
+    work: "My work: creative copy direction, together with the VML design team",
+    captions: ["When you have the reliability and versatility of a Hilux, no road feels like a challenge \ud83d\ude0c", "", ""]
+  },
+  "toyota-club": {
+    label: "Club Toyota · community and belonging",
+    quote: "\u201cBeing part of the Club is awesome\u201d", quoteOrig: true,
+    rationale: "The membership system needed to build a sense of community, not just communicate benefits. The modular slogan allows variations (\u201c...is full of adrenaline\u201d, \u201c...is full of perks\u201d) and enables user-generated content in #AventurasToyoteras (curated UGC).",
+    work: "My work: slogan system, brand tone",
+    captions: ["These Land Cruisers have seen it all... maybe too much. Toyota's unbeatable durability makes them ideal for taking on anything you can think of.\n\n\ud83d\udc49 Tell us what you did with yours.", "", ""]
+  },
+  "toyota-kinto": {
+    label: "Kinto · relaxed and aspirational",
+    quote: "A sense of travel and fun",
+    rationale: "Toyota's car-rental business needed, for a varied audience, a more informal and aspirational tone than the main brand — focused on the travel experience.",
+    work: "My work: creative copy direction"
+  },
+  "toyota-gazoo": {
+    label: "Gazoo Racing",
+    quote: "Adrenaline and passion.",
+    rationale: "Gazoo Racing is Toyota's racing team. Its content is sporty, with its own aesthetic both visually and verbally. Always focused on communicating action, <b>adrenaline</b> and speed.",
+    captions: ["\ud83e\udd14What are the functions on the steering wheel of the Corolla Cross GR-S from @supertc2000?\n\n\ud83d\udde3\ufe0f@misil1misil tells you all about it \ud83d\ude80", ""]
+  },
+  "toyota-boutique": {
+    label: "Boutique",
+    quote: "\u201cAt Boutique there's always something for you\u201d", quoteOrig: true,
+    rationale: "Boutique is Toyota Argentina's merch store, with everything from T-shirts to vehicle tools and electric thermoses. The slogan aimed to sum up that within that huge variety, every fan would find something they wanted."
+  },
+  "elearn-veritran": {
+    label: "Veritran · Academy",
+    quote: "Low-code programming",
+    rationale: "Copywriting for the Veritran Academy on low-code programming — technical in-house training content.",
+    work: "My work: e-learning content writing"
+  },
+  "elearn-patagonia": {
+    label: "Banco Patagonia",
+    quote: "Internal management course",
+    rationale: "Production of an internal management course for Banco Patagonia.",
+    work: "My work: e-learning content production"
+  },
+  "elearn-bimbo": {
+    label: "Bimbo",
+    quote: "English-language course for sales reps",
+    rationale: "Writing of an English-language e-learning course for Bimbo's sales team.",
+    work: "My work: English e-learning writing"
+  },
+  "press-indiehoy": {
+    label: "Indie Hoy · culture magazine",
+    quote: "Profile of Camila Sosa Villada",
+    rationale: "Journalism contributions to the culture magazine Indie Hoy: a profile/interview with the author, and a piece on queer literature to read during lockdown.",
+    links: ["See profile \u2197", "See article \u2197"]
+  },
+  "press-narrativa": {
+    label: "Short Fiction",
+    quote: "First prize \u2014 National University of Hurlingham",
+    rationale: "First prize in Short Fiction awarded by the National University of Hurlingham."
+  }
+};
+
+/* bi(): devuelve el texto en español y en inglés; el CSS muestra uno u otro según <html lang> */
+function bi(es, en, withOrig){
+  if(!en) return es;
+  const orig = withOrig ? `<span class="orig">Original (ES): ${es}</span>` : '';
+  return `<span class="es">${es}</span><span class="en">${en}${orig}</span>`;
+}
+function nl(s){ return String(s).replace(/\n/g, '<br>'); }
+
 const galleryState = {};
 
 function renderDetail(panelId, key){
   const d = DETAILS[key];
   if(!d) return;
   const panel = document.getElementById(panelId);
-  let html = `<div class="label">${d.label}</div><div class="quote">${d.quote}</div><div class="rationale"><b>Racional:</b> ${d.rationale}</div>`;
-  if(d.work) html += `<div class="my-work">${d.work}</div>`;
+  const e = DETAILS_EN[key] || {};
+  let html = `<div class="label">${bi(d.label, e.label)}</div><div class="quote">${bi(d.quote, e.quote, e.quoteOrig)}</div><div class="rationale"><b>${bi('Racional:', 'Rationale:')}</b> ${bi(d.rationale, e.rationale)}</div>`;
+  if(d.work) html += `<div class="my-work">${bi(d.work, e.work)}</div>`;
   if(d.image) html += `<img src="${d.image}" style="margin-top:12px; border-radius:4px; max-width:220px;">`;
   if(d.links){
     html += `<div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">`;
-    d.links.forEach(l => { html += `<a href="${l.url}" target="_blank" rel="noopener" style="background:rgba(232,200,138,0.15); border:1px solid var(--press-accent); border-radius:999px; padding:5px 14px; font-size:11px; color:var(--press-accent);">${l.label}</a>`; });
+    d.links.forEach((l, li) => { html += `<a href="${l.url}" target="_blank" rel="noopener" style="background:rgba(232,200,138,0.15); border:1px solid var(--press-accent); border-radius:999px; padding:5px 14px; font-size:11px; color:var(--press-accent);">${bi(l.label, e.links && e.links[li])}</a>`; });
     html += `</div>`;
   }
   if(d.gallery && !d.linkedin){
@@ -1116,14 +1239,14 @@ function renderDetail(panelId, key){
     // navigable mini-gallery (EPAM campaign cards)
     galleryState[key] = galleryState[key] || 0;
     html += `<div class="mini-gallery" id="gallery-${key}">
-      <button onclick="shiftGallery('${panelId}','${key}',-1)" aria-label="Anterior">‹</button>
+      <button onclick="shiftGallery('${panelId}','${key}',-1)" aria-label="Anterior / Previous">‹</button>
       <img src="${d.gallery[galleryState[key]]}" alt="${d.label}">
-      <button onclick="shiftGallery('${panelId}','${key}',1)" aria-label="Siguiente">›</button>
+      <button onclick="shiftGallery('${panelId}','${key}',1)" aria-label="Siguiente / Next">›</button>
     </div>
     <div class="gallery-count">${galleryState[key]+1} / ${d.gallery.length}</div>`;
   }
   if(d.linkedin){
-    html += `<a href="${d.linkedin}" target="_blank" rel="noopener" class="see-post" style="border-color:currentColor; margin-top:14px;">Ver publicación ↗</a>`;
+    html += `<a href="${d.linkedin}" target="_blank" rel="noopener" class="see-post" style="border-color:currentColor; margin-top:14px;">${bi('Ver publicación ↗', 'See post ↗')}</a>`;
   }
   panel.innerHTML = html;
 }
@@ -1200,18 +1323,19 @@ function renderPieceDetail(key){
   galleryState[key] = galleryState[key] || 0;
   const idx = galleryState[key];
 
+  const e = DETAILS_EN[key] || {};
   let html = `
     <div class="piece-copy">
-      <div class="vs-tag" style="color:var(--epam-accent);">${d.label}</div>
-      <div class="vs-headline">${d.quote}</div>
-      <div class="vs-text"><b>Racional:</b> ${d.rationale}</div>
-      ${d.linkedin ? `<a href="${d.linkedin}" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">Ver publicación ↗</a>` : ''}
+      <div class="vs-tag" style="color:var(--epam-accent);">${bi(d.label, e.label)}</div>
+      <div class="vs-headline">${bi(d.quote, e.quote, e.quoteOrig)}</div>
+      <div class="vs-text"><b>${bi('Racional:', 'Rationale:')}</b> ${bi(d.rationale, e.rationale)}</div>
+      ${d.linkedin ? `<a href="${d.linkedin}" target="_blank" rel="noopener" class="see-post" style="border-color:var(--epam-accent); color:var(--epam-accent);">${bi('Ver publicación ↗', 'See post ↗')}</a>` : ''}
     </div>
     <div class="piece-gallery-wrap">
       <div class="mini-gallery">
-        <button onclick="pieceShift('${key}', -1)" aria-label="Anterior">‹</button>
+        <button onclick="pieceShift('${key}', -1)" aria-label="Anterior / Previous">‹</button>
         <img src="${d.gallery[idx]}" alt="${d.label}">
-        <button onclick="pieceShift('${key}', 1)" aria-label="Siguiente">›</button>
+        <button onclick="pieceShift('${key}', 1)" aria-label="Siguiente / Next">›</button>
       </div>
       <div class="gallery-count">${idx + 1} / ${d.gallery.length}</div>
     </div>
@@ -1230,6 +1354,7 @@ function renderToyotaDetail(panelId, key){
   const d = DETAILS[key];
   if(!d) return;
   const panel = document.getElementById(panelId);
+  const e = DETAILS_EN[key] || {};
   let mediaHtml;
   let isLandscape = false;
 
@@ -1246,28 +1371,28 @@ function renderToyotaDetail(panelId, key){
 
     mediaHtml = `<div class="toy-media">
       <div class="mini-gallery" style="${hasMultiple ? '' : 'display:block;'}">
-        ${hasMultiple ? `<button onclick="toyotaShift('${key}', -1)" aria-label="Anterior">‹</button>` : ''}
+        ${hasMultiple ? `<button onclick="toyotaShift('${key}', -1)" aria-label="Anterior / Previous">‹</button>` : ''}
         <div class="toy-frame${isLandscape ? ' toy-frame-landscape' : ''}">${mediaTag}</div>
-        ${hasMultiple ? `<button onclick="toyotaShift('${key}', 1)" aria-label="Siguiente">›</button>` : ''}
+        ${hasMultiple ? `<button onclick="toyotaShift('${key}', 1)" aria-label="Siguiente / Next">›</button>` : ''}
       </div>
       ${hasMultiple ? `<div class="gallery-count" style="text-align:center;">${idx+1} / ${d.pieces.length}</div>` : ''}
-      ${piece.caption ? `<div class="copyout-label">Copy out</div><div class="toy-copete">${piece.caption.replace(/\n/g,'<br>')}</div>` : ''}
-      ${piece.link ? `<a href="${piece.link}" target="_blank" rel="noopener" class="see-post" style="border-color:var(--toyota-accent); color:var(--toyota-accent); margin-top:10px;">Ver publicación ↗</a>` : ''}
+      ${piece.caption ? `<div class="copyout-label">Copy out</div><div class="toy-copete">${bi(nl(piece.caption), (e.captions && e.captions[idx]) ? nl(e.captions[idx]) : '', true)}</div>` : ''}
+      ${piece.link ? `<a href="${piece.link}" target="_blank" rel="noopener" class="see-post" style="border-color:var(--toyota-accent); color:var(--toyota-accent); margin-top:10px;">${bi('Ver publicación ↗', 'See post ↗')}</a>` : ''}
     </div>`;
   } else {
     mediaHtml = `<div class="toy-placeholder">
       <div class="icon">🖼️ 🎬</div>
-      <div class="txt">Imágenes y videos de esta submarca — próximamente</div>
+      <div class="txt">${bi('Imágenes y videos de esta submarca — próximamente', 'Images and videos for this sub-brand — coming soon')}</div>
     </div>`;
   }
 
   panel.classList.toggle('toy-stacked', isLandscape);
 
   const copyHtml = `<div class="vs-copy">
-    <div class="vs-tag" style="color:var(--toyota-accent);">${d.label}</div>
-    <div class="vs-headline">${d.quote}</div>
-    <div class="vs-text">${d.rationale}</div>
-    ${d.work ? `<div style="font-size:12px; opacity:0.7; margin-top:6px;">${d.work}</div>` : ''}
+    <div class="vs-tag" style="color:var(--toyota-accent);">${bi(d.label, e.label)}</div>
+    <div class="vs-headline">${bi(d.quote, e.quote, e.quoteOrig)}</div>
+    <div class="vs-text">${bi(d.rationale, e.rationale)}</div>
+    ${d.work ? `<div style="font-size:12px; opacity:0.7; margin-top:6px;">${bi(d.work, e.work)}</div>` : ''}
   </div>`;
 
   panel.innerHTML = mediaHtml + copyHtml;
@@ -1302,6 +1427,34 @@ function initToyotaAutoplay(intervalMs){
     toyotaShift(key, 1);
   }, intervalMs);
 }
+
+/* ===== Idioma: botón ES / EN ===== */
+const I18N_META = {
+  es: { title: 'Sebastián Mastruzzo — Redactor ❋ Creativo',
+        desc: 'Portfolio de Sebastián Mastruzzo. Redactor y creativo: EPAM Neoris, Toyota Argentina, Nodus, Mercado Ads, Ford & Lincoln y más.' },
+  en: { title: 'Sebastián Mastruzzo — Copywriter ❋ Creative',
+        desc: 'Portfolio of Sebastián Mastruzzo. Copywriter and creative: EPAM Neoris, Toyota Argentina, Nodus, Mercado Ads, Ford & Lincoln and more.' }
+};
+function applyLang(lang){
+  if(lang !== 'en') lang = 'es';
+  document.documentElement.lang = lang;
+  document.title = I18N_META[lang].title;
+  const md = document.querySelector('meta[name="description"]');
+  if(md) md.setAttribute('content', I18N_META[lang].desc);
+  document.querySelectorAll('.lang-switch button').forEach(b => {
+    b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false');
+  });
+}
+function setLang(lang){
+  applyLang(lang);
+  try { localStorage.setItem('lang', document.documentElement.lang); } catch(e){}
+  try {
+    const u = new URL(location.href);
+    u.searchParams.set('lang', document.documentElement.lang);
+    history.replaceState(null, '', u);
+  } catch(e){}
+}
+applyLang(document.documentElement.lang);
 
 /* ===== Hero: nombre letra por letra (para la animación) ===== */
 (function splitHeroName(){
@@ -1355,6 +1508,30 @@ function madsShift(dir){
   setInterval(() => { if(!state.hover) madsShift(1); }, 3500);
 })();
 renderMadsGallery();
+
+/* ===== E-learning gallery ===== */
+const ELEARN_IMAGES = [
+  'https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-10-18-a-las-10.53.40-1.webp',
+  'https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-10-18-a-las-11.34.31-1.webp',
+  'https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-11-05-a-las-10.22.43.webp',
+  'https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-11-05-a-las-10.23.12.webp',
+  'https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2021-11-05-a-las-10.23.40.webp',
+  'https://sebastianmastruzzo.wordpress.com/wp-content/uploads/2023/03/captura-de-pantalla-2022-03-04-a-las-12.20.17.webp'
+];
+let elearnIndex = 0;
+function renderElearnGallery(){
+  const frame = document.getElementById('elearn-gallery-frame');
+  if(!frame) return;
+  frame.innerHTML = `<img src="${ELEARN_IMAGES[elearnIndex]}" alt="Pieza de e-learning ${elearnIndex + 1}">`;
+  const count = document.getElementById('elearn-gallery-count');
+  if(count) count.textContent = `${elearnIndex + 1} / ${ELEARN_IMAGES.length}`;
+}
+function elearnShift(dir){
+  const n = ELEARN_IMAGES.length;
+  elearnIndex = ((elearnIndex + dir) % n + n) % n;
+  renderElearnGallery();
+}
+renderElearnGallery();
 
 /* ===== Nodus full-width gallery ===== */
 const NODUS_PIECES = [
@@ -1438,12 +1615,20 @@ vsInitAutoplay('epam-vs', 6000);
 
 /* ===== EPAM hero robot: terminal typing synced with arm animation ===== */
 (function(){
-  const lines = [
-    "> reimaginando_campaña.js",
-    "> cargando: narración divertida",
-    "> render(videojuegos_estética)",
-    "> status: pulso humano ✓"
-  ];
+  const LINES = {
+    es: [
+      "> reimaginando_campaña.js",
+      "> cargando: narración divertida",
+      "> render(videojuegos_estética)",
+      "> status: pulso humano ✓"
+    ],
+    en: [
+      "> reimagining_campaign.js",
+      "> loading: fun storytelling",
+      "> render(videogame_aesthetics)",
+      "> status: human pulse ✓"
+    ]
+  };
   let lineIndex = 0, charIndex = 0;
   const termEl = document.getElementById('epam-term-lines');
   const armLeft = document.getElementById('epam-arm-left');
@@ -1457,6 +1642,7 @@ vsInitAutoplay('epam-vs', 6000);
   }
 
   function typeStep(){
+    const lines = LINES[document.documentElement.lang === 'en' ? 'en' : 'es'];
     if(lineIndex < lines.length){
       setTyping(true);
       let html = lines.slice(0, lineIndex).map(l => `<div>${l}</div>`).join('');
