@@ -44,6 +44,10 @@
   --toyota-bg: #6B0F2A;
   --toyota-accent: #FFD9A0;
 
+  --pizza-bg: #F28C28;
+  --pizza-ink: #14090A;
+  --pizza-cream: #FFF4E0;
+
   --nodus-bg: #1A3D2E;
   --nodus-accent: #A0E8C8;
 
@@ -391,6 +395,15 @@ html[lang="en"] .en{ display:inline; }
 .lang-switch button:hover{ background:rgba(255,255,255,.15); }
 .lang-switch button[aria-pressed="true"]{ background:#CFFF00; color:#14090A; }
 
+
+/* ===== PIZZA HUT ===== */
+#pizza .pizza-block{ display:inline-block; background:var(--pizza-cream); color:var(--pizza-ink); padding:0 .18em; transform:rotate(-1.5deg); }
+#pizza .vs-arrow{ background:rgba(20,9,10,.15); }
+#pizza .vs-arrow:hover{ background:rgba(20,9,10,.28); }
+#pizza .vs-dot{ background:rgba(20,9,10,.3); }
+#pizza .vs-dot.active{ background:var(--pizza-ink); }
+.inline-link{ text-decoration:underline; text-underline-offset:2px; font-weight:700; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px){
   .navdots{ display: none; }
@@ -416,6 +429,7 @@ html[lang="en"] .en{ display:inline; }
   <a href="#hero" data-label="Inicio"></a>
   <a href="#epam" data-label="EPAM"></a>
   <a href="#toyota" data-label="Toyota"></a>
+  <a href="#pizza" data-label="Pizza Hut"></a>
   <a href="#nodus" data-label="Nodus"></a>
   <a href="#mads" data-label="Mercado Ads"></a>
   <a href="#google" data-label="Google"></a>
@@ -683,17 +697,78 @@ html[lang="en"] .en{ display:inline; }
 
   <div id="toyota-detail" class="toy-detail"></div>
 
+  <div class="next-up" style="background:var(--pizza-bg);">
+    <div class="nu-label" style="color:var(--pizza-ink);"><span class="es">Siguiente marca ↓</span><span class="en">Next brand ↓</span></div>
+    <div class="nu-name" style="color:var(--pizza-ink);">PIZZA HUT</div>
+  </div>
+</section>
+
+<div class="transition-strip" style="background:linear-gradient(180deg, var(--toyota-bg), var(--pizza-bg));"></div>
+
+<!-- ============ PIZZA HUT ============ -->
+<section id="pizza" class="section reveal" style="background:var(--pizza-bg); color:var(--pizza-ink);">
+  <div class="eyebrow" style="color:var(--pizza-ink);"><span class="es">Caso de marca ✺ 03</span><span class="en">Brand case ✺ 03</span></div>
+  <h2 class="section-title" style="font-size: clamp(1.7rem, 5vw, 2.6rem); color:rgba(20,9,10,0.6);">pizza</h2>
+  <h2 class="section-title" style="font-size: clamp(3.6rem, 13vw, 7.5rem); margin-top:4px;"><span class="pizza-block">HUT</span></h2>
+  <div class="chip" style="background:var(--pizza-ink); color:var(--pizza-cream);"><span class="es">CREATIVIDAD + GUIONES</span><span class="en">CREATIVITY + SCRIPTS</span></div>
+
+  <p class="bajada" style="color:var(--pizza-ink);"><span class="es">Creatividad y guiones para comerciales de Pizza Hut con Tom Brady, estrella del fútbol norteamericano.</span><span class="en">Creativity and scripts for Pizza Hut commercials featuring Tom Brady, the American football star.</span></p>
+
+  <div class="eyebrow" style="color:var(--pizza-ink); font-size:12px;"><span class="es">Las piezas ✺ tocá las flechas para ver más</span><span class="en">The pieces ✺ tap the arrows to see more</span></div>
+  <div class="video-slideshow" id="pizza-vs">
+    <div class="vs-track">
+
+      <div class="vs-slide active">
+        <div class="vs-media">
+          <video controls autoplay muted playsinline preload="metadata">
+            <source src="media/pizza-hut-new-yorker.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="vs-copy">
+          <div class="vs-tag" style="color:var(--pizza-ink);"><span class="es">PIEZA #1</span><span class="en">PIECE #1</span></div>
+          <div class="copyout-label">Copy out</div>
+          <div class="vs-headline"><span class="es">¿Qué podemos decir? El hombre tiene un lindo HUT.<span class="orig">Original (EN): What can we say? The man’s got a nice HUT.</span></span><span class="en">What can we say? The man’s got a nice HUT.</span></div>
+          <div class="vs-text"><span class="es">¡Llevate la Big New Yorker antes del próximo gran partido por solo $10 y tal vez <a class="inline-link" href="https://www.instagram.com/tombrady/" target="_blank" rel="noopener">@tombrady</a> te la entregue! Aunque probablemente no. <a class="inline-link" href="https://www.instagram.com/explore/tags/pizzabeforethehut/" target="_blank" rel="noopener">#PizzaBeforeTheHut</a><span class="orig">Original (EN): Pick up the Big New Yorker before the next big game for just $10 and maybe <a class="inline-link" href="https://www.instagram.com/tombrady/" target="_blank" rel="noopener">@tombrady</a> will deliver it! Probably not though. <a class="inline-link" href="https://www.instagram.com/explore/tags/pizzabeforethehut/" target="_blank" rel="noopener">#PizzaBeforeTheHut</a></span></span><span class="en">Pick up the Big New Yorker before the next big game for just $10 and maybe <a class="inline-link" href="https://www.instagram.com/tombrady/" target="_blank" rel="noopener">@tombrady</a> will deliver it! Probably not though. <a class="inline-link" href="https://www.instagram.com/explore/tags/pizzabeforethehut/" target="_blank" rel="noopener">#PizzaBeforeTheHut</a></span></div>
+          <a href="https://www.instagram.com/p/DTN_78fDWGm/" target="_blank" rel="noopener" class="see-post" style="border-color:var(--pizza-ink); color:var(--pizza-ink);"><span class="es">Ver publicación ↗</span><span class="en">See post ↗</span></a>
+        </div>
+      </div>
+
+      <div class="vs-slide">
+        <div class="vs-media">
+          <video controls autoplay muted playsinline preload="metadata">
+            <source src="media/pizza-hut-goat.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="vs-copy">
+          <div class="vs-tag" style="color:var(--pizza-ink);"><span class="es">PIEZA #2</span><span class="en">PIECE #2</span></div>
+          <div class="copyout-label">Copy out</div>
+          <div class="vs-headline"><span class="es">El GOAT sumando repeticiones 🗣️<span class="orig">Original (EN): The GOAT’s getting reps in 🗣️</span></span><span class="en">The GOAT’s getting reps in 🗣️</span></div>
+          <a href="https://www.instagram.com/p/DTGYaxcDSPm/" target="_blank" rel="noopener" class="see-post" style="border-color:var(--pizza-ink); color:var(--pizza-ink);"><span class="es">Ver publicación ↗</span><span class="en">See post ↗</span></a>
+        </div>
+      </div>
+
+    </div>
+    <div class="vs-controls">
+      <button class="vs-arrow" onclick="vsNav('pizza-vs', -1)" aria-label="Video anterior / Previous video">‹</button>
+      <div class="vs-dots" id="pizza-vs-dots">
+        <span class="vs-dot active" onclick="vsGo('pizza-vs', 0)"></span>
+        <span class="vs-dot" onclick="vsGo('pizza-vs', 1)"></span>
+      </div>
+      <button class="vs-arrow" onclick="vsNav('pizza-vs', 1)" aria-label="Video siguiente / Next video">›</button>
+    </div>
+  </div>
+
   <div class="next-up" style="background:var(--nodus-bg);">
-    <div class="nu-label"><span class="es">Siguiente marca ↓</span><span class="en">Next brand ↓</span></div>
+    <div class="nu-label" style="color:#D8F0E4;"><span class="es">Siguiente marca ↓</span><span class="en">Next brand ↓</span></div>
     <div class="nu-name" style="color:#fff;">NODUS</div>
   </div>
 </section>
 
-<div class="transition-strip" style="background:linear-gradient(180deg, var(--toyota-bg), var(--nodus-bg));"></div>
+<div class="transition-strip" style="background:linear-gradient(180deg, var(--pizza-bg), var(--nodus-bg));"></div>
 
 <!-- ============ NODUS ============ -->
 <section id="nodus" class="section reveal" style="background:var(--nodus-bg); color:#fff;">
-  <div class="eyebrow" style="color:var(--nodus-accent);"><span class="es">Caso de marca ✺ 03</span><span class="en">Brand case ✺ 03</span></div>
+  <div class="eyebrow" style="color:var(--nodus-accent);"><span class="es">Caso de marca ✺ 04</span><span class="en">Brand case ✺ 04</span></div>
 
   <div class="nodus-hero-grid">
     <div>
@@ -797,7 +872,7 @@ html[lang="en"] .en{ display:inline; }
 
 <!-- ============ MERCADO ADS ============ -->
 <section id="mads" class="section reveal" style="background:var(--mads-bg); color:var(--mads-ink);">
-  <div class="eyebrow" style="color:#6B5A00;"><span class="es">Caso de marca ✺ 04</span><span class="en">Brand case ✺ 04</span></div>
+  <div class="eyebrow" style="color:#6B5A00;"><span class="es">Caso de marca ✺ 05</span><span class="en">Brand case ✺ 05</span></div>
 
   <div class="mads-hero-grid">
     <div>
@@ -875,7 +950,7 @@ html[lang="en"] .en{ display:inline; }
 
 <!-- ============ GOOGLE ============ -->
 <section id="google" class="section reveal" style="background:var(--google-bg); color:#fff; padding-bottom: 3rem;">
-  <div class="eyebrow" style="color:var(--google-accent);"><span class="es">Caso de marca ✺ 05</span><span class="en">Brand case ✺ 05</span></div>
+  <div class="eyebrow" style="color:var(--google-accent);"><span class="es">Caso de marca ✺ 06</span><span class="en">Brand case ✺ 06</span></div>
   <h2 class="section-title" style="font-size: clamp(2.5rem, 9vw, 5rem);">GOOGLE</h2>
   <div class="chip" style="background:var(--google-accent); color:var(--google-bg);"><span class="es">GUIONES AUDIOVISUALES</span><span class="en">AUDIOVISUAL SCRIPTS</span></div>
   <p class="bajada" style="color:#FFE3F0;"><span class="es">Redacción de anuncios de Google Argentina.<br>Dirección de las grabaciones.</span><span class="en">Ad copywriting for Google Argentina.<br>Direction of the shoots.</span></p>
@@ -905,7 +980,7 @@ html[lang="en"] .en{ display:inline; }
 
 <!-- ============ E-LEARNING Y COMUNICACIÓN INTERNA ============ -->
 <section id="elearn" class="section reveal" style="background:var(--elearn-bg); color:#fff;">
-  <div class="eyebrow" style="color:var(--elearn-accent);"><span class="es">Caso de marca ✺ 06</span><span class="en">Brand case ✺ 06</span></div>
+  <div class="eyebrow" style="color:var(--elearn-accent);"><span class="es">Caso de marca ✺ 07</span><span class="en">Brand case ✺ 07</span></div>
   <h2 class="section-title" style="font-size: clamp(1.8rem, 6vw, 3rem);"><span class="es">E-LEARNING Y</span><span class="en">E-LEARNING &</span></h2>
   <h2 class="section-title" style="font-size: clamp(1.8rem, 6vw, 3rem); margin-top:2px;"><span class="es">COMUNICACIÓN</span><span class="en">INTERNAL</span></h2>
   <h2 class="section-title" style="font-size: clamp(1.8rem, 6vw, 3rem); margin-top:2px;"><span class="es">INTERNA</span><span class="en">COMMUNICATION</span></h2>
@@ -940,7 +1015,7 @@ html[lang="en"] .en{ display:inline; }
 
 <!-- ============ FORD & LINCOLN ============ -->
 <section id="ford" class="section reveal" style="background:var(--ford-bg); color:#fff;">
-  <div class="eyebrow" style="color:var(--ford-accent);"><span class="es">Caso de marca ✺ 07</span><span class="en">Brand case ✺ 07</span></div>
+  <div class="eyebrow" style="color:var(--ford-accent);"><span class="es">Caso de marca ✺ 08</span><span class="en">Brand case ✺ 08</span></div>
   <h2 class="section-title" style="font-size: clamp(2.4rem, 9vw, 5rem);">FORD &amp;</h2>
   <h2 class="section-title" style="font-size: clamp(2.4rem, 9vw, 5rem); margin-top:2px;">LINCOLN</h2>
   <div class="chip" style="background:var(--ford-accent); color:var(--ford-bg);"><span class="es">EDICIÓN Y UX</span><span class="en">EDITING & UX</span></div>
@@ -980,7 +1055,7 @@ html[lang="en"] .en{ display:inline; }
 
 <!-- ============ REDACCIÓN PERIODÍSTICA ============ -->
 <section id="press" class="section reveal" style="background:var(--press-bg); color:#fff;">
-  <div class="eyebrow" style="color:var(--press-accent);"><span class="es">Caso de marca ✺ 08</span><span class="en">Brand case ✺ 08</span></div>
+  <div class="eyebrow" style="color:var(--press-accent);"><span class="es">Caso de marca ✺ 09</span><span class="en">Brand case ✺ 09</span></div>
   <h2 class="section-title" style="font-size: clamp(2rem, 6vw, 3rem);"><span class="es">REDACCIÓN</span><span class="en">JOURNALISTIC</span></h2>
   <h2 class="section-title" style="font-size: clamp(2rem, 6vw, 3rem); color:var(--press-accent); margin-top:2px;"><span class="es">PERIODÍSTICA</span><span class="en">WRITING</span></h2>
 
@@ -1612,6 +1687,7 @@ const navObserver = new IntersectionObserver((entries) => {
 sections.forEach(s => navObserver.observe(s));
 
 vsInitAutoplay('epam-vs', 6000);
+vsInitAutoplay('pizza-vs', 6500);
 
 /* ===== EPAM hero robot: terminal typing synced with arm animation ===== */
 (function(){
