@@ -23,6 +23,37 @@
   document.documentElement.lang = lang;
 })();
 </script>
+<script>
+/* Si un video no carga (archivo no subido, nombre distinto o formato no soportado),
+   mostrar un aviso con la ruta que falla en vez de una caja vacía. */
+(function(){
+  function showFallback(v, src){
+    if(!v || v.dataset.failed) return;
+    v.dataset.failed = '1';
+    try { console.warn('[portfolio] No se pudo cargar el video:', src); } catch(e){}
+    v.style.display = 'none';
+    var box = document.createElement('div');
+    box.className = 'video-fallback';
+    box.innerHTML = '<span><span class="es">No se pudo cargar este video</span><span class="en">This video could not be loaded</span></span><code></code>';
+    box.querySelector('code').textContent = src || '';
+    if(v.parentElement) v.parentElement.appendChild(box);
+  }
+  document.addEventListener('error', function(ev){
+    var t = ev.target;
+    if(t && t.tagName === 'SOURCE' && t.parentElement && t.parentElement.tagName === 'VIDEO'){
+      showFallback(t.parentElement, t.getAttribute('src'));
+    }
+  }, true);
+  window.addEventListener('load', function(){
+    document.querySelectorAll('video').forEach(function(v){
+      if(v.networkState === 3 || (v.error && v.error.code)){
+        var src = v.querySelector('source');
+        showFallback(v, src ? src.getAttribute('src') : v.getAttribute('src'));
+      }
+    });
+  });
+})();
+</script>
 <style>
 :root{
   --font-display: 'Archivo Black', sans-serif;
@@ -403,6 +434,11 @@ html[lang="en"] .en{ display:inline; }
 #pizza .vs-dot{ background:rgba(20,9,10,.3); }
 #pizza .vs-dot.active{ background:var(--pizza-ink); }
 .inline-link{ text-decoration:underline; text-underline-offset:2px; font-weight:700; }
+
+
+/* Aviso cuando un video no carga */
+.video-fallback{ width:100%; max-width:260px; aspect-ratio:9 / 16; max-height:clamp(300px, 46vh, 460px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; text-align:center; padding:1rem; border:2px dashed currentColor; border-radius:var(--radius-md); font-size:13px; font-weight:700; opacity:.8; }
+.video-fallback code{ font-family:monospace; font-size:11px; font-weight:400; word-break:break-all; opacity:.85; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px){
